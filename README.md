@@ -23,7 +23,8 @@ The site lives at https://stayupsocial.com (registered at GoDaddy). `www.stayups
 ## Search and AI visibility
 
 - Every view has a real address: `/`, `/services`, `/work`, `/contact` (`/dm` redirects to `/contact`). Moving between views updates the address bar, title and canonical link, and Back/Forward work.
-- `index.html` carries the business details (ProfessionalService with the nine services) and the FAQ as structured data (JSON-LD). The services list is read from the `SERVICES` array, so update both together.
+- `index.html` carries the business details (ProfessionalService with the nine services) as structured data (JSON-LD). The services list is read from the `SERVICES` array, so update both together.
+- FAQ structured data is rebuilt by `tools/build_pages.py` from the visible questions: `#faq-home` for the home page and `#faq-svc` for Services. Edit the questions in the page, then run the script.
 - `sitemap.xml` lists the four pages. `robots.txt` allows every crawler, including AI search crawlers.
 - `llms.txt` is a plain-text summary of the business for AI assistants.
 - `404.html` is shown for any address that doesn't exist.
