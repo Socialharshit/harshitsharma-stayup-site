@@ -24,6 +24,8 @@ The site lives at https://stayupsocial.com (registered at GoDaddy). `www.stayups
 
 The Work page is one masonry feed (the `WORK` list in `index.html`): a sticky glass filter bar (All, Posts, Reels, Websites, Branding, Campaigns, AI), Reels that play on hover, websites that scroll on hover, columns that drift at different speeds, and a full-screen viewer.
 
+Website tiles (`site/work/sites/`) are made by `python3 tools/site_thumbs.py` from screenshots in `tools/shots/` (`<key>-desk.png` at 1440 × 900, `<key>-mob.png` at 390 × 844). Each becomes a 3:4 card: the desktop site in a browser window, the mobile site on a phone, the site's name, and a glow in the site's own colours.
+
 ## Search and AI visibility
 
 - Every view has a real address: `/`, `/services`, `/work`, `/contact` (`/dm` redirects to `/contact`). Moving between views updates the address bar, title and canonical link, and Back/Forward work.
