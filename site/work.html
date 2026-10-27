@@ -1111,24 +1111,17 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
   .sf-cols{padding:12px 0 14px}
   .sf h3{margin:10px 0 2px}
 }
-/* ===================== Work: Spotlight + Feed ===================== */
+/* ===================== Work: the Feed ===================== */
 #view-work{padding-bottom:0}
-.wk-spot{position:relative}
-.wk-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
-.wk-head{position:absolute;left:0;right:0;top:calc(var(--head) + 6px);z-index:4;display:flex;align-items:center;gap:16px}
-.wk-head .label{color:var(--ice)}
-.wk-strip{display:flex;gap:6px;margin-inline:auto}
-.wk-strip i{width:34px;height:3px;border-radius:2px;background:rgba(255,255,255,.2);overflow:hidden}
-.wk-strip b{display:block;height:100%;width:0;background:#fff}
-.wk-skip{gap:6px}
-.wk-card{position:absolute;overflow:hidden;background:#0a1258;box-shadow:0 50px 100px -40px rgba(0,0,0,.95),inset 0 0 0 1px rgba(255,255,255,.1);will-change:width,height,top,left,opacity}
-.wk-card img,.wk-card video{display:block;width:100%;height:100%;object-fit:cover}
-.wk-card img.web{object-position:50% 0;animation:webscroll 18s ease-in-out infinite alternate}
-.wk-text{position:absolute;left:50%;bottom:calc(28px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:3;width:min(640px,calc(100% - 32px));display:grid;gap:6px;justify-items:center;text-align:center;transition:opacity .25s}
-.wk-text h2{font-size:clamp(26px,3.6vw,44px);line-height:1.05;text-shadow:0 4px 30px rgba(0,3,36,.8)}
-.wk-text p{color:rgba(214,224,255,.85);font-size:15px}
-.wk-count{font:600 12px/1 var(--f-body);letter-spacing:.2em;color:var(--ice);font-variant-numeric:tabular-nums;margin-top:4px}
-.wk-feed{position:relative;padding-top:clamp(56px,9vh,110px);padding-bottom:20px}
+.wk-feed{position:relative;padding-top:calc(var(--head) + clamp(36px,7vh,80px));padding-bottom:20px}
+/* glass filter bar: sticky under the nav */
+.wk-alt{position:sticky;top:calc(var(--head) + 8px);z-index:7;display:flex;align-items:center;gap:2px;width:max-content;max-width:100%;margin:0 auto clamp(18px,3vh,28px);padding:5px;border-radius:999px;overflow-x:auto;scrollbar-width:none;background:var(--g-bg);border:1px solid var(--g-bd);box-shadow:var(--g-hi),0 18px 40px -24px rgba(0,0,0,.9);-webkit-backdrop-filter:var(--g-blur);backdrop-filter:var(--g-blur)}
+.wk-alt::-webkit-scrollbar{display:none}
+.wk-alt button{flex:none;display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 16px;border-radius:999px;font-size:13.5px;font-weight:500;color:rgba(214,224,255,.75);transition:color .25s,background .25s}
+.wk-alt button small{font:600 11px/1 var(--f-body);color:rgba(214,224,255,.45);font-variant-numeric:tabular-nums}
+.wk-alt button:hover{color:#fff}
+.wk-alt button[aria-pressed="true"]{color:#fff;background:linear-gradient(160deg,#2a4bff,#1F3FFF 50%,#0091f0);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 16px -6px rgba(18,216,250,.8)}
+.wk-alt button[aria-pressed="true"] small{color:rgba(255,255,255,.75)}
 .wk-feed-head{display:grid;gap:8px;justify-items:center;text-align:center;margin-bottom:clamp(22px,4vh,40px)}
 .wk-feed-head h2{font-size:clamp(34px,5vw,64px);line-height:1}
 .wk-grid{display:flex;gap:14px;align-items:flex-start}
@@ -1147,16 +1140,6 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
 .wk-tile:hover .wk-cap,.wk-tile:focus-visible .wk-cap{opacity:1;transform:none}
 .wk-rise{animation:wkRise .7s cubic-bezier(.2,.8,.2,1) both}
 @keyframes wkRise{from{opacity:0;transform:translateY(46px) scale(.96)}}
-/* altimeter filter: a vertical rail on desktop */
-.wk-alt{position:fixed;right:calc(22px + env(safe-area-inset-right,0px));top:50%;transform:translate(14px,-50%);z-index:7;display:flex;flex-direction:column-reverse;gap:14px;align-items:flex-end;padding:14px 16px;border-radius:24px;background:var(--g-bg);border:1px solid var(--g-bd);box-shadow:var(--g-hi),var(--g-sh);-webkit-backdrop-filter:var(--g-blur);backdrop-filter:var(--g-blur);opacity:0;pointer-events:none;transition:opacity .4s,transform .5s cubic-bezier(.2,.8,.2,1)}
-.wk-alt.on{opacity:1;pointer-events:auto;transform:translate(0,-50%)}
-.wk-alt-track{position:absolute;right:20px;top:22px;bottom:22px;width:1px;background:rgba(255,255,255,.14)}
-.wk-alt button{position:relative;display:flex;align-items:center;gap:8px;font-family:var(--f-label);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(214,224,255,.6);transition:color .3s}
-.wk-alt button small{font:600 10px/1 var(--f-body);letter-spacing:0;color:rgba(214,224,255,.45);font-variant-numeric:tabular-nums}
-.wk-alt button i{width:9px;height:9px;border-radius:50%;border:1.5px solid currentColor;background:#000538;transition:background .3s,transform .3s,box-shadow .3s}
-.wk-alt button:hover{color:#fff}
-.wk-alt button[aria-pressed="true"]{color:#fff}
-.wk-alt button[aria-pressed="true"] i{background:var(--cyan);border-color:var(--cyan);transform:scale(1.35);box-shadow:0 0 12px var(--cyan)}
 /* viewer */
 .wk-lb{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:calc(env(safe-area-inset-top,0px) + 64px) max(16px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 24px) max(16px,env(safe-area-inset-left,0px));background:rgba(0,3,31,.82);-webkit-backdrop-filter:blur(28px) saturate(1.4);backdrop-filter:blur(28px) saturate(1.4);animation:wkFade .3s ease}
 @keyframes wkFade{from{opacity:0}}
@@ -1169,27 +1152,18 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
 .wk-lb-cap{font-size:14.5px;color:rgba(230,236,255,.9);text-align:center;max-width:60ch}
 .wk-lb-nav{display:flex;align-items:center;gap:14px;font:600 12px/1 var(--f-body);color:rgba(214,224,255,.7);font-variant-numeric:tabular-nums}
 .wk-x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 16px);right:calc(16px + env(safe-area-inset-right,0px))}
-@media (max-width:1100px){.wk-alt{right:12px}}
 @media (max-width:760px){
-  .wk-head{gap:10px}.wk-head > .label{display:none}.wk-strip{margin-inline:0}.wk-skip{margin-left:auto;height:32px;padding:0 12px;font-size:12.5px}
-  .wk-text{bottom:calc(104px + env(safe-area-inset-bottom,0px))}
-  .wk-text p{font-size:14px}
   .wk-grid,.wk-col{gap:10px}
+  .wk-alt{width:auto;margin:0 0 14px;padding:4px}
+  .wk-alt button{height:36px;padding:0 14px;font-size:12.5px}
+  .wk-alt button small{display:none}
   .wk-tile{border-radius:16px}
   .wk-cap{opacity:1;transform:none;font-size:11.5px;padding:24px 10px 9px}
   .wk-tag{font-size:10px;padding:5px 8px;left:8px;top:8px}
-  /* altimeter becomes a sticky glass filter bar */
-  .wk-alt{position:sticky;top:calc(var(--head) + 4px);right:auto;transform:none;opacity:1;pointer-events:auto;flex-direction:row;align-items:center;gap:2px;padding:4px;margin:0 0 14px;border-radius:999px;overflow-x:auto;scrollbar-width:none}
-  .wk-alt::-webkit-scrollbar{display:none}
-  .wk-alt.on{transform:none}
-  .wk-alt-track{display:none}
-  .wk-alt button{flex:none;height:36px;padding:0 14px;border-radius:999px;font-family:var(--f-body);font-size:12.5px;letter-spacing:0;text-transform:none}
-  .wk-alt button i,.wk-alt button small{display:none}
-  .wk-alt button[aria-pressed="true"]{background:linear-gradient(160deg,#2a4bff,#1F3FFF 50%,#0091f0);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 16px -6px rgba(18,216,250,.8)}
   .wk-lb-media img,.wk-lb-media video{max-height:calc(100svh - 210px)}
   .wk-lb-media.tall{height:calc(100svh - 210px)}
 }
-@media (prefers-reduced-motion:reduce){.wk-card img.web,.wk-lb-media.tall img{animation:none}.wk-rise{animation:none}}
+@media (prefers-reduced-motion:reduce){.wk-lb-media.tall img{animation:none}.wk-rise{animation:none}}
 /* ===== adaptive quality (set by script: perf-1 balanced, perf-2 lite) ===== */
 html.perf-1{--g-blur:blur(12px) saturate(1.4)}
 html.perf-1 #grain,html.perf-1 #spot{display:none}
@@ -1655,14 +1629,8 @@ html.perf-2 .wk-lb{background:rgba(0,3,31,.97)}
 <!-- ================= WORK ================= -->
 <section class="view" id="view-work" data-view="work">
   <h1 class="label" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Our work: reels, websites, brands and AI builds</h1>
-  <section class="wk-spot" id="wk-spot" aria-label="Selected work">
-    <div class="wk-stage" id="wk-stage">
-      <div class="wk-head wrap"><span class="label">Selected work</span><div class="wk-strip" id="wk-strip" aria-hidden="true"></div><button class="chip wk-skip" id="wk-skip" data-hot>Skip to all work<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></button></div>
-      <div class="wk-text"><span class="label" id="wk-cat"></span><h2 id="wk-title"></h2><p id="wk-line"></p><span class="wk-count" id="wk-count"></span></div>
-    </div>
-  </section>
   <section class="wk-feed wrap" id="wk-feed" aria-labelledby="wk-feed-h">
-    <div class="wk-feed-head"><span class="label">Everything we've made</span><h2 id="wk-feed-h">The feed.</h2><p class="muted">Reels, websites, brand identities, ad campaigns and AI builds by our team. Hover to play, click any piece to open it.</p></div>
+    <div class="wk-feed-head"><span class="label">Our work</span><h2 id="wk-feed-h">The feed.</h2><p class="muted">Reels, websites, brand identities, ad campaigns and AI builds by our team. Hover to play, click any piece to open it.</p></div>
     <nav class="wk-alt" id="wk-alt" aria-label="Filter work by type"></nav>
     <div class="wk-grid" id="wk-grid"></div>
   </section>
@@ -1971,7 +1939,7 @@ function swap(v,opts={}){
   if(v==='services') rollStats();
   if(v==='dm') startChat(opts.preset);
   if(v==='home') measureScenes();
-  if(v==='work'){wkLayout();requestAnimationFrame(()=>{wkSpotTick();wkFeedTick()})}
+  if(v==='work'){requestAnimationFrame(wkFeedTick)}
   if(GL) GL.snap();
 }
 async function go(v,opts={}){
@@ -2342,12 +2310,6 @@ const WORK=[
  {c:'Posts',p:'bg/12.webp',ar:'9/16',t:'Story frame set'},
  {c:'Campaigns',p:WSV(1,3),ar:'16/9',t:'Content calendar and reporting'}
 ];
-const WSPOT=[
- {c:'Reel',v:'reels/reel-2.mp4',p:'reels/reel-2.jpg',ar:9/16,h:'Hooks that stop the thumb',l:'Scripted, shot and edited for watch time.'},
- {c:'Website',p:WSV(2,3),ar:3/4,web:1,h:'A website that books itself',l:'Designed around one action: the enquiry.'},
- {c:'Brand identity',p:WSV(4,3),ar:2,h:'A brand in one glance',l:'Logo, colour, type and voice as one system.'},
- {c:'Content',p:WSV(6,3),ar:2,h:'Content made to be saved',l:'Carousels, Reels and stories from one plan.'}
-];
 const WLEVELS=['All','Posts','Reels','Websites','Branding','Campaigns','AI'];
 const wkTag=c=>({Reels:'Reel',Posts:'Post',Websites:'Website',Campaigns:'Campaign'}[c]||c);
 const WPLAY='<span class="wk-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>';
@@ -2355,33 +2317,7 @@ function wkTile(w,i){
   const media=w.v?`<video muted loop playsinline preload="none" poster="${w.p}" src="${w.v}"></video>`:`<img src="${w.p}" alt="" loading="lazy" decoding="async">`;
   return `<button class="wk-tile${w.web?' web':''}" data-i="${i}" data-hot aria-label="${wkTag(w.c)}: ${w.t}" style="aspect-ratio:${w.ar}">${media}<span class="wk-tag">${wkTag(w.c)}</span>${w.v?WPLAY:''}<span class="wk-cap">${w.t}</span></button>`;
 }
-// --- Spotlight: each piece grows from a card to the full stage as you scroll
-const wkSpot=$('#wk-spot'),wkStage=$('#wk-stage'),wkStrip=$('#wk-strip'),SPOT_PER=1.15;
-const wkCards=WSPOT.map(x=>{const d=document.createElement('div');d.className='wk-card';
-  d.innerHTML=x.v?`<video muted loop playsinline preload="none" poster="${x.p}" src="${x.v}"></video>`:`<img src="${x.p}" alt="" loading="lazy" decoding="async"${x.web?' class="web"':''}>`;
-  wkStage.appendChild(d);wkStrip.insertAdjacentHTML('beforeend','<i><b></b></i>');return d});
-function wkLayout(){wkSpot.style.height=(WSPOT.length*SPOT_PER*innerHeight+innerHeight*.35)+'px'}
-function wkSpotTick(){
-  if(S.view!=='work') return;
-  const H=innerHeight, y=scrollY-wkSpot.offsetTop, seg=H*SPOT_PER, k=clamp(Math.floor(y/seg),0,WSPOT.length-1), p=clamp((y-k*seg)/seg,0,1);
-  const head=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--head'))||80, mob=innerWidth<761;
-  const textH=mob?150:170, availW=Math.min(innerWidth-(mob?32:96),1180), availH=H-head-28-textH, cy=head+14+availH/2;
-  wkCards.forEach((c,i)=>{
-    const ar=WSPOT[i].ar; let fw=availW, fh=fw/ar; if(fh>availH){fh=availH;fw=fh*ar}
-    let grow,o,ty;
-    if(i<k){grow=1;o=0;ty=-30}else if(i===k){grow=RM?1:Math.min(1,p/.62);o=p>.84&&i<WSPOT.length-1?1-(p-.84)/.16:1;ty=0}else{grow=0;o=i===k+1&&p>.84?(p-.84)/.16:0;ty=30}
-    const sc=.52+.48*(1-Math.pow(1-grow,3)), w=fw*sc, h=fh*sc;
-    c.style.width=w+'px';c.style.height=h+'px';c.style.left=(innerWidth-w)/2+'px';c.style.top=(cy-h/2+ty)+'px';
-    c.style.opacity=o.toFixed(3);c.style.zIndex=i===k?2:1;c.style.borderRadius=(30-grow*12)+'px';
-    const v=$('video',c); if(v){if(i===k&&o>.5){v.play().catch(()=>{})}else v.pause()}
-  });
-  const x=WSPOT[k]; $('#wk-cat').textContent=x.c; $('#wk-title').textContent=x.h; $('#wk-line').textContent=x.l;
-  $('#wk-count').textContent=`0${k+1} / 0${WSPOT.length}`;
-  $('.wk-text').style.opacity=(p>.86&&k<WSPOT.length-1)?Math.max(0,1-(p-.86)/.1):1;
-  $$('b',wkStrip).forEach((b,i)=>b.style.width=(i<k?100:i===k?p*100:0)+'%');
-}
-$('#wk-skip').addEventListener('click',()=>scrollTo({top:$('#wk-feed').offsetTop-20,behavior:RM?'auto':'smooth'}));
-// --- Feed: masonry, filtered by the altimeter
+// --- Feed: masonry wall with a glass filter bar
 const wkGrid=$('#wk-grid'),wkAlt=$('#wk-alt'); let wkCat='All',wkCols=[];
 const wkN=()=>innerWidth<761?2:innerWidth<1100?3:4;
 function wkBuild(anim){
@@ -2398,17 +2334,16 @@ function wkBuild(anim){
   $$('button',wkAlt).forEach(b=>b.setAttribute('aria-pressed',b.dataset.c===wkCat));
   wkFeedTick();
 }
-wkAlt.innerHTML='<span class="wk-alt-track" aria-hidden="true"></span>'+WLEVELS.map(c=>`<button data-c="${c}" data-hot aria-pressed="${c==='All'}"><span>${c}</span><small>${c==='All'?WORK.length:WORK.filter(w=>w.c===c).length}</small><i></i></button>`).join('');
+wkAlt.innerHTML=WLEVELS.map(c=>`<button data-c="${c}" data-hot aria-pressed="${c==='All'}"><span>${c}</span><small>${c==='All'?WORK.length:WORK.filter(w=>w.c===c).length}</small><i></i></button>`).join('');
 $$('button',wkAlt).forEach(b=>b.addEventListener('click',()=>{if(wkCat===b.dataset.c)return;wkCat=b.dataset.c;wkBuild(true);
   const top=$('#wk-feed').offsetTop-20; if(scrollY>top) scrollTo({top,behavior:RM?'auto':'smooth'})}));
 function wkFeedTick(){
   if(S.view!=='work'||RM) return;
   const f=$('#wk-feed'),r=f.getBoundingClientRect(),prog=clamp((innerHeight-r.top)/(r.height+innerHeight),0,1);
   wkCols.forEach(c=>c.el.style.transform=`translate3d(0,${((prog-.5)*c.sp*90).toFixed(1)}px,0)`);
-  wkAlt.classList.toggle('on',r.top<innerHeight*.6&&r.bottom>innerHeight*.4);
 }
-addEventListener('scroll',()=>{if(S.view==='work')requestAnimationFrame(()=>{wkSpotTick();wkFeedTick()})},{passive:true});
-let wkLastN=0; function wkResize(){wkLayout();if(wkN()!==wkLastN){wkLastN=wkN();wkBuild(false)}wkSpotTick()}
+addEventListener('scroll',()=>{if(S.view==='work')requestAnimationFrame(wkFeedTick)},{passive:true});
+let wkLastN=0; function wkResize(){if(wkN()!==wkLastN){wkLastN=wkN();wkBuild(false)}}
 addEventListener('resize',wkResize); wkResize();
 // --- full-screen viewer
 let wkLB=null,wkList=[],wkK=0;

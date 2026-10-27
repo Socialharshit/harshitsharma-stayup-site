@@ -20,6 +20,10 @@ Netlify deploys automatically every time `main` changes. Every deploy is kept, s
 
 The site lives at https://stayupsocial.com (registered at GoDaddy). `www.stayupsocial.com` redirects there (see `netlify.toml`). The canonical link, link-preview tags, `robots.txt` and `sitemap.xml` all use this address.
 
+## Work page
+
+The Work page is one masonry feed (the `WORK` list in `index.html`): a sticky glass filter bar (All, Posts, Reels, Websites, Branding, Campaigns, AI), Reels that play on hover, websites that scroll on hover, columns that drift at different speeds, and a full-screen viewer.
+
 ## Search and AI visibility
 
 - Every view has a real address: `/`, `/services`, `/work`, `/contact` (`/dm` redirects to `/contact`). Moving between views updates the address bar, title and canonical link, and Back/Forward work.
