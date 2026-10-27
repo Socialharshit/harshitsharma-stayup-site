@@ -15,9 +15,9 @@ The live website for StayUp Social: Home, Services, Work and DM pages.
 
 Netlify deploys automatically every time `main` changes. Every deploy is kept, so any earlier version can be restored from **Netlify → Deploys → Publish deploy**.
 
-## Before launch
+## Domain
 
-Replace `YOUR-DOMAIN.com` with the real domain in `site/index.html`, `site/robots.txt` and `site/sitemap.xml`.
+The site lives at https://stayupsocial.com (registered at GoDaddy). `www.stayupsocial.com` redirects there (see `netlify.toml`). The canonical link, link-preview tags, `robots.txt` and `sitemap.xml` all use this address.
 
 ## Performance
 

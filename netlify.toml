@@ -30,3 +30,10 @@
   for = "/*.mp4"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
+
+# one address for search engines: www goes to the bare domain
+[[redirects]]
+  from = "https://www.stayupsocial.com/*"
+  to = "https://stayupsocial.com/:splat"
+  status = 301
+  force = true
