@@ -6,7 +6,8 @@ The live website for StayUp Social: Home, Services, Work and DM pages.
 ## Layout
 
 - `site/` is the website itself. Only this folder is published.
-- `site/index.html` holds the whole site (layout, styles and scripts).
+- `site/index.html` holds the whole site (layout, styles and scripts). It is the only page file to edit.
+- `site/services.html`, `site/work.html` and `site/contact.html` are made from it by `python3 tools/build_pages.py`. Run that after every change to `index.html`. Each copy opens on its own view with its own title, description and canonical address, taken from the `#routes` block in `index.html`.
 - `site/logo`, `site/services`, `site/reels`, `site/bg`, `site/clients`, `site/founder` hold the media.
 - `site/vendor/three.min.js` is the 3D library, served from the site itself.
 - `netlify.toml` tells Netlify to publish `site/` and sets caching and security headers.
@@ -18,6 +19,14 @@ Netlify deploys automatically every time `main` changes. Every deploy is kept, s
 ## Domain
 
 The site lives at https://stayupsocial.com (registered at GoDaddy). `www.stayupsocial.com` redirects there (see `netlify.toml`). The canonical link, link-preview tags, `robots.txt` and `sitemap.xml` all use this address.
+
+## Search and AI visibility
+
+- Every view has a real address: `/`, `/services`, `/work`, `/contact` (`/dm` redirects to `/contact`). Moving between views updates the address bar, title and canonical link, and Back/Forward work.
+- `index.html` carries the business details (ProfessionalService with the nine services) and the FAQ as structured data (JSON-LD). The services list is read from the `SERVICES` array, so update both together.
+- `sitemap.xml` lists the four pages. `robots.txt` allows every crawler, including AI search crawlers.
+- `llms.txt` is a plain-text summary of the business for AI assistants.
+- `404.html` is shown for any address that doesn't exist.
 
 ## Performance
 

@@ -37,3 +37,26 @@
   to = "https://stayupsocial.com/:splat"
   status = 301
   force = true
+
+# each view has its own address (pages are made by tools/build_pages.py)
+[[redirects]]
+  from = "/services"
+  to = "/services.html"
+  status = 200
+[[redirects]]
+  from = "/work"
+  to = "/work.html"
+  status = 200
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+[[redirects]]
+  from = "/dm"
+  to = "/contact"
+  status = 301
+
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
