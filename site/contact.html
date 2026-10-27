@@ -331,7 +331,7 @@ html.js .rv:not(.in){opacity:0;transform:translateY(36px) scale(.96)}
 .founder-copy .tap{display:inline-flex;align-items:center;gap:8px;color:var(--ice);font-size:13px}
 .follow-row{display:flex;gap:10px;flex-wrap:wrap}
 .latest{margin-top:clamp(28px,5vw,56px);display:grid;gap:14px}
-.latest-row{display:grid;grid-template-columns:repeat(3,minmax(0,180px)) minmax(0,1fr);gap:14px;align-items:end}
+.latest-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,24px);align-items:end;width:min(100%,640px)}
 .mini-phone{aspect-ratio:9/16;border-radius:20px;padding:5px;background:linear-gradient(160deg,rgba(127,239,255,.5),rgba(31,63,255,.3));box-shadow:0 20px 40px -20px rgba(18,216,250,.7);animation:bob 5s ease-in-out infinite}
 .mini-phone:nth-child(2){animation-delay:-1.6s}.mini-phone:nth-child(3){animation-delay:-3.2s}
 .mini-phone div{height:100%;border-radius:16px;background:linear-gradient(180deg,#132093,#000538);display:grid;place-items:center;position:relative;overflow:hidden}
@@ -348,14 +348,11 @@ html.js .rv:not(.in){opacity:0;transform:translateY(36px) scale(.96)}
 .rc-mute{position:absolute;right:8px;bottom:8px;z-index:2;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.5);color:#fff;display:grid;place-items:center}
 .mini-phone .rc-mute svg{width:16px;height:16px}
 .reel-card:focus-visible{outline:2px solid var(--ice);outline-offset:4px}
-.li-card{border-radius:20px;padding:16px;background:var(--glass);border:1px solid var(--line);display:grid;gap:10px;min-width:0;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.li-head{display:flex;gap:10px;align-items:center}
 .av-s{width:36px;height:36px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-family:var(--f-display);font-weight:700;flex:none}
 @media (max-width:760px){
   .founder-grid{grid-template-columns:1fr;justify-items:center;text-align:center}
   .follow-row{justify-content:center}
   .latest-row{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .li-card{grid-column:1/-1;text-align:left}
 }
 
 /* Scene 4: followed by */
@@ -949,7 +946,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
 .chip:not([aria-pressed="true"]){background:var(--g-bg);border-color:var(--g-bd);box-shadow:var(--g-hi);-webkit-backdrop-filter:blur(14px) saturate(1.6);backdrop-filter:blur(14px) saturate(1.6)}
 .chip[aria-pressed="true"]{background:#fff;color:#000538}
 .heart-btn{border-radius:999px;background:var(--g-bg);border-color:var(--g-bd);box-shadow:var(--g-hi)}
-.side-card,.li-card,.result-chip{background:var(--g-bg);border-color:var(--g-bd);box-shadow:var(--g-hi),var(--g-sh);-webkit-backdrop-filter:var(--g-blur);backdrop-filter:var(--g-blur)}
+.side-card,.result-chip{background:var(--g-bg);border-color:var(--g-bd);box-shadow:var(--g-hi),var(--g-sh);-webkit-backdrop-filter:var(--g-blur);backdrop-filter:var(--g-blur)}
 /* footer: one glass card, Apple-style columns */
 .sf{position:relative;width:100%;box-sizing:border-box;margin-top:56px;border-radius:32px;padding:clamp(24px,4vw,44px);background:var(--g-bg);border:1px solid var(--g-bd);box-shadow:var(--g-hi),var(--g-sh);-webkit-backdrop-filter:var(--g-blur);backdrop-filter:var(--g-blur);overflow:hidden;text-align:left;color:#fff}
 .page-foot .sf{margin-top:0}
@@ -1337,7 +1334,7 @@ html.perf-2 .wk-lb{background:rgba(0,3,31,.97)}
       <div class="founder-grid">
         <div class="ring-wrap rv">
           <button class="story-ring" id="open-story" data-hot aria-label="Open Harshit's story">
-            <span class="face"><img loading="lazy" src="founder/harshit.jpg" alt="Harshit Sharma" width="640" height="640"></span>
+            <span class="face"><img loading="lazy" src="founder/harshit-v2.jpg" alt="Harshit Sharma" width="640" height="640"></span>
           </button>
           <a class="float-ico ig" href="https://www.instagram.com/socialharshit_/" target="_blank" rel="noopener" aria-label="Harshit on Instagram" data-hot><svg viewBox="0 0 48 48"><use href="#i-ig-logo"/></svg></a>
           <a class="float-ico li" href="https://www.linkedin.com/in/socialharshit" target="_blank" rel="noopener" aria-label="Harshit on LinkedIn" data-hot><svg viewBox="0 0 48 48"><use href="#i-li-logo"/></svg></a>
@@ -1361,10 +1358,6 @@ html.perf-2 .wk-lb{background:rgba(0,3,31,.97)}
           <div class="mini-phone reel-card" data-reel tabindex="0" role="button" aria-label="Play Harshit's Reel 1"><div><video src="reels/reel-1.mp4" poster="reels/reel-1.jpg" muted loop playsinline preload="none" width="540" height="960"></video><span class="rc-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span><button class="rc-mute" aria-label="Turn sound on" aria-pressed="false" data-hot><svg><use href="#i-mute"/></svg></button></div></div>
           <div class="mini-phone reel-card" data-reel tabindex="0" role="button" aria-label="Play Harshit's Reel 2"><div><video src="reels/reel-2.mp4" poster="reels/reel-2.jpg" muted loop playsinline preload="none" width="540" height="960"></video><span class="rc-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span><button class="rc-mute" aria-label="Turn sound on" aria-pressed="false" data-hot><svg><use href="#i-mute"/></svg></button></div></div>
           <div class="mini-phone reel-card" data-reel tabindex="0" role="button" aria-label="Play Harshit's Reel 3"><div><video src="reels/reel-3.mp4" poster="reels/reel-3.jpg" muted loop playsinline preload="none" width="540" height="960"></video><span class="rc-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span><button class="rc-mute" aria-label="Turn sound on" aria-pressed="false" data-hot><svg><use href="#i-mute"/></svg></button></div></div>
-          <div class="li-card">
-            <div class="li-head"><span class="av-s"><img loading="lazy" src="founder/harshit.jpg" alt="" width="36" height="36"></span><div><b style="font-size:14px">Harshit Sharma</b><div class="muted" style="font-size:12px">Founder, StayUp Social · LinkedIn</div></div></div>
-            <p class="muted" style="font-size:14px">Notes on personal branding, content and growth for founders, doctors and experts. Follow along on LinkedIn.</p>
-          </div>
         </div>
       </div>
     </div>
@@ -1841,7 +1834,7 @@ html.perf-2 .wk-lb{background:rgba(0,3,31,.97)}
 <div class="story" id="story" hidden role="dialog" aria-modal="true" aria-label="Harshit's story">
   <div class="story-frame" id="story-frame">
     <div class="bars" id="bars"></div>
-    <div class="story-top"><span class="av-s"><img loading="lazy" src="founder/harshit.jpg" alt="" width="36" height="36"></span><b>socialharshit_</b><span class="muted" id="st-time">now</span><button class="icon-btn x" id="story-x" aria-label="Close story" data-hot><svg><use href="#i-x"/></svg></button></div>
+    <div class="story-top"><span class="av-s"><img loading="lazy" src="founder/harshit-v2.jpg" alt="" width="36" height="36"></span><b>socialharshit_</b><span class="muted" id="st-time">now</span><button class="icon-btn x" id="story-x" aria-label="Close story" data-hot><svg><use href="#i-x"/></svg></button></div>
     <div id="st-body"></div>
     <button class="st-tap l" id="st-l" aria-label="Previous"></button>
     <button class="st-tap r" id="st-r" aria-label="Next"></button>
@@ -1904,7 +1897,7 @@ const PROJECTS=[
 ];
 const FILTERS=['All','Healthcare','Hospitality','E-commerce','AI'];
 const STORY=[
- {t:"Hi, I'm Harshit.",v:'<div class="selfie"><img src="founder/harshit-portrait.jpg" alt="Harshit Sharma" width="600" height="800"></div>'},
+ {t:"Hi, I'm Harshit.",v:'<div class="selfie"><img src="founder/harshit-portrait-v2.jpg" alt="Harshit Sharma" width="600" height="800"></div>'},
  {t:'I build influential personal brands.',v:'<div class="st-vis"><span class="trail"></span><img class="rocket-up" src="logo/stayup-mark-circle.png" alt="" width="90" height="90" style="border-radius:50%"></div>'},
  {t:'For founders, doctors and experts.',v:'<div class="pcards">'+['Founder','Doctor','Expert'].map((x,i)=>`<div class="pcard"><span class="av-s">${x[0]}</span><b>${x}</b><svg class="tick"><use href="#i-tick"/></svg></div>`).join('')+'</div>'},
  {t:'Content that turns expertise into influence.',v:'<div class="montage"><i></i><i></i><i></i><i></i></div>'},
