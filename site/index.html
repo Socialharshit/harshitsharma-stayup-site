@@ -25,7 +25,7 @@
 <meta name="twitter:image" content="https://stayupsocial.com/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&family=Josefin+Sans:wght@300;400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Instrument+Serif:ital@1&family=Inter:wght@300;400;500;600&family=Josefin+Sans:wght@300;400;600&display=swap">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://stayupsocial.com/#org","name":"StayUp Social","url":"https://stayupsocial.com/","logo":"https://stayupsocial.com/icon-512.png","image":"https://stayupsocial.com/og-image.jpg","description":"StayUp Social is a social media marketing agency based in Indore, India. We manage social media, run Meta and Google ads, create reels and content, and build brands, websites and AI agents for growing businesses.","slogan":"We build presence the world can't scroll past.","email":"stayupsocial@gmail.com","telephone":["+91 91314 02699","+91 98934 03488"],"address":{"@type":"PostalAddress","addressLocality":"Indore","addressRegion":"Madhya Pradesh","addressCountry":"IN"},"areaServed":[{"@type":"City","name":"Indore"},{"@type":"Country","name":"India"},"Worldwide"],"knowsAbout":["Social media marketing","Social media management","Instagram marketing","Personal branding","Meta Ads","Google Ads","Search engine optimisation","WhatsApp chatbots","Web development","Video editing","Branding","Performance marketing","Content creation","AI agents","Personal branding"],"parentOrganization":{"@type":"Organization","name":"Crescive Ventures"},"sameAs":["https://www.instagram.com/stayup.social/"],"founder":{"@type":"Person","name":"Harshit Sharma","jobTitle":"Founder","sameAs":["https://www.instagram.com/socialharshit_/","https://www.linkedin.com/in/socialharshit"]},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Social Media Management","description":"Your Instagram, Facebook and LinkedIn, planned, posted and grown for you. Strategic content strategy, purposeful posting, community management, and connecting your brand to your target audience.","areaServed":"India","provider":{"@id":"https://stayupsocial.com/#org"}}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Web Development","description":"Custom websites designed to impress and built to convert. Strategy, design, development and launch, all optimised for mobile, speed and SEO.","areaServed":"India","provider":{"@id":"https://stayupsocial.com/#org"}}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Video Editing","description":"Reels, ads, podcasts and YouTube videos, edited for how people watch today. Strong hooks, captions, sound, effects, and pacing made for each platform.","areaServed":"India","provider":{"@id":"https://stayupsocial.com/#org"}}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Branding","description":"Your logo, colours, fonts and voice, built as one clear identity. Research, concepts and a brand guide your whole team can follow.","areaServed":"India","provider":{"@id":"https://stayupsocial.com/#org"}}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Performance Marketing","description":"Meta, LinkedIn, and Google ads aimed at leads, sales, and bookings. Sharp targeting, tested creatives, and weekly tuning based on real numbers.","areaServed":"India","provider":{"@id":"https://stayupsocial.com/#org"}}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Content Creation","description":"Scripts, shoots, graphics and carousels that sound like you. We plan the ideas, write the hooks and produce content for each platform.","areaServed":"India","provider":{"@id":"https://stayupsocial.com/#org"}}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"AI-Powered Website & App Development","description":"Websites and apps with AI built in: chat, search, personalisation and automation. We design around your users, then build with modern AI tools to ship faster.","areaServed":"India","provider":{"@id":"https://stayupsocial.com/#org"}}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"AI Agent Development","description":"Custom AI assistants for WhatsApp, your website and your workflows. We map your busywork, train the agent on your business and connect it to your tools.","areaServed":"India","provider":{"@id":"https://stayupsocial.com/#org"}}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Digital Strategy & Growth Consulting","description":"A 1:1 consultation call based on a clear growth plan for your brand, built around your goals. An audit of where you stand, then the right channels, budget and a roadmap.","areaServed":"India","provider":{"@id":"https://stayupsocial.com/#org"}}}]}},{"@type":"WebSite","@id":"https://stayupsocial.com/#website","url":"https://stayupsocial.com/","name":"StayUp Social","publisher":{"@id":"https://stayupsocial.com/#org"},"inLanguage":"en"}]}
 </script>
@@ -236,64 +236,55 @@ html.js .rv:not(.in){opacity:0;transform:translateY(36px) scale(.96)}
   .hero{align-content:start;padding-top:calc(var(--head) + 28px)}
   .scroll-up{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 }
-/* Hero visual: a glass phone scrolling through real work, with one notification per service around it */
+/* Editorial hero (MotionSites style): centred headline with a serif-italic accent, words blur into focus once, glass pill and liquid-glass button */
+.hero-ed{display:grid;justify-items:center;text-align:center;gap:clamp(18px,2.6vh,26px);max-width:1000px}
+.hx-pill{display:inline-flex;align-items:center;gap:9px;height:36px;padding:0 16px 0 6px;border-radius:999px;font-size:13px;color:var(--soft);background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.3);-webkit-backdrop-filter:blur(14px) saturate(1.6);backdrop-filter:blur(14px) saturate(1.6)}
+.hx-pill b{width:24px;height:24px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:12px}
+.hero .hx{margin:0;font-family:var(--f-body);font-weight:500;font-size:clamp(44px,7.4vw,100px);line-height:1;letter-spacing:-.035em;text-shadow:0 4px 40px rgba(0,5,56,.6)}
+.hx .w{display:inline-block}
+.hx .it{font-family:'Instrument Serif',Georgia,'Times New Roman',serif;font-style:italic;font-weight:400;letter-spacing:-.01em;padding-right:.06em;background:linear-gradient(90deg,#7FEFFF,#fff 75%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
+.hx-sub{max-width:36em;font-size:clamp(15.5px,1.4vw,18px);font-weight:300;color:var(--soft);text-shadow:0 2px 20px rgba(0,5,56,.9)}
+.hx-cta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center}
+.hx-lgb{display:inline-flex;align-items:center;gap:12px;height:54px;padding:0 9px 0 24px;border-radius:999px;font-size:15.5px;font-weight:500;color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,.08));border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -6px 12px rgba(31,63,255,.28),0 14px 34px -12px rgba(18,216,250,.5);-webkit-backdrop-filter:blur(14px) saturate(1.8);backdrop-filter:blur(14px) saturate(1.8);transition:transform .3s var(--spring),box-shadow .3s}
+.hx-lgb:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -6px 12px rgba(31,63,255,.28),0 20px 40px -12px rgba(18,216,250,.7)}
+.hx-lgb b{width:36px;height:36px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.hx-lgb svg{width:16px;height:16px;fill:none;stroke:var(--blue);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.hx-ghost{height:54px;padding:0 20px;font-size:15.5px;color:var(--soft);border-radius:999px;transition:color .2s}
+.hx-ghost:hover{color:#fff}
+.hx .w,.hx-in{animation:hxIn 1.1s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--i)}
+@keyframes hxIn{from{filter:blur(14px);opacity:0;transform:translateY(18px)}to{filter:blur(0);opacity:1;transform:none}}
+#view-home .scene.hero{align-content:center;justify-items:center}
+/* Our Clients loop: two rows gliding in opposite directions, three identical sets per row so each loop moves one set and never jumps */
+.cl-loop{display:grid;gap:14px;width:100vw;margin:clamp(26px,4vh,44px) calc(50% - 50vw) 6px}
+.cl-row{overflow:hidden}
+.cl-track{display:flex;width:max-content;animation:clL 64s linear infinite;will-change:transform}
+.cl-row.rtl .cl-track{animation-name:clR;animation-duration:72s}
+.cl-loop:hover .cl-track{animation-play-state:paused}
+.cl-loop.off .cl-track{animation-play-state:paused}
+.cl-set{list-style:none;margin:0;padding:0 14px 0 0;display:flex;gap:14px;flex:none}
+.cl-set li{flex:none;padding:7px;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 16px 34px -20px rgba(0,0,0,.8);transition:transform .35s var(--spring)}
+.cl-set li:hover{transform:translateY(-3px) scale(1.03)}
+.cl-set span{height:58px;min-width:164px;padding:0 22px;border-radius:15px;display:grid;place-items:center}
+.cl-set img{display:block;height:40px;width:auto;max-width:160px;object-fit:contain}
+@keyframes clL{to{transform:translate3d(-33.3333%,0,0)}}
+@keyframes clR{from{transform:translate3d(-33.3333%,0,0)}to{transform:translate3d(0,0,0)}}
 .hero-chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .hero-chips li{height:34px;display:inline-flex;align-items:center;gap:8px;padding:0 14px;border-radius:999px;font-size:13.5px;font-weight:500;color:#fff;background:var(--g-bg);border:1px solid var(--g-bd);box-shadow:var(--g-hi)}
 .hero-chips li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
-.hero-vis{--u:10px;position:relative;font-size:var(--u);height:58em;width:100%;max-width:56em;justify-self:center}
-.hv-phone{position:absolute;left:50%;top:2em;width:26em;height:53em;margin-left:-13em;border-radius:4.6em;padding:1em;background:linear-gradient(160deg,rgba(255,255,255,.34),rgba(255,255,255,.08));box-shadow:0 5em 9em -3em rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.24),inset 0 1px 0 rgba(255,255,255,.5);animation:hvFloat 7s ease-in-out infinite}
-.hv-scr{position:relative;width:100%;height:100%;border-radius:3.6em;overflow:hidden;background:#050a3a;transform:translateZ(0)}
-.hv-isl{position:absolute;top:.9em;left:50%;width:7.8em;height:2.2em;margin-left:-3.9em;border-radius:2em;background:#000;z-index:3}
-.hv-top{position:absolute;left:0;right:0;top:0;height:6.6em;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;padding:0 1.6em .8em;background:linear-gradient(#050a3a 72%,rgba(5,10,58,0));font-weight:600;font-size:1em}
-.hv-top span{font-size:1.45em}
-.hv-top img{width:2.4em;height:2.4em;border-radius:.7em}
-.hv-feed{position:absolute;left:0;right:0;top:6.6em;display:grid;gap:1em;padding:0 1em;animation:hvFeed 20s cubic-bezier(.65,0,.2,1) infinite;will-change:transform}
-.hv-post{border-radius:1.6em;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
-.hv-ph{position:relative;height:26em}
-.hv-ph img{display:block;width:100%;height:100%;object-fit:cover}
-.hv-reel::after{content:"";position:absolute;right:1em;top:1em;width:2.4em;height:2.4em;border-radius:.7em;background:rgba(0,0,0,.4) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7v10l8-5z' fill='white'/%3E%3C/svg%3E") center/70% no-repeat}
-.hv-meta{display:flex;align-items:center;gap:.7em;height:3.6em;padding:0 1.2em;font-size:1.2em;font-weight:600;color:#fff}
-.hv-meta svg{width:1.3em;height:1.3em;color:var(--red);flex:none}
-.hv-toast{position:absolute;display:flex;align-items:center;gap:1.2em;width:25em;padding:1.1em 1.4em 1.1em 1.1em;border-radius:2em;background:rgba(18,30,128,.72);border:1px solid rgba(255,255,255,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 2.4em 5em -2.4em rgba(0,0,0,.9);-webkit-backdrop-filter:blur(14px) saturate(1.6);backdrop-filter:blur(14px) saturate(1.6);animation:hvPop 10s ease-in-out infinite both}
-.hv-toast b{display:block;font-size:1.36em;font-weight:600;line-height:1.3;color:#fff}
-.hv-toast small{display:block;font-size:1.2em;color:var(--steel);line-height:1.3}
-.hv-ic{width:3.8em;height:3.8em;border-radius:1.2em;display:grid;place-items:center;flex:none;font-weight:700;font-size:1em;color:#fff}
-.hv-ic svg{width:1.8em;height:1.8em}
-.hv-ic.ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)}
-.hv-ic.ad{background:#1877F2;font-size:1.9em;font-family:var(--f-display)}
-.hv-ic.ai{background:var(--grad)}
-.hv-ic.web{background:#fff;color:var(--blue)}
-.hv-toast.t1{left:0;top:9em;animation-delay:0s}
-.hv-toast.t2{right:0;top:21em;animation-delay:2.5s}
-.hv-toast.t3{left:-1em;top:34em;animation-delay:5s}
-.hv-toast.t4{right:-1em;top:45em;animation-delay:7.5s}
-.hero-vis.hv-off *,.trusted.hv-off .tr-track{animation-play-state:paused!important}
-@keyframes hvFeed{0%,13%{transform:translateY(0)}20%,33%{transform:translateY(-30.6em)}40%,53%{transform:translateY(-61.2em)}60%,73%{transform:translateY(-91.8em)}80%,93%{transform:translateY(-122.4em)}100%{transform:translateY(-153em)}}
-@keyframes hvPop{0%,3%{opacity:0;transform:translateY(1.4em) scale(.96)}9%,40%{opacity:1;transform:none}46%,100%{opacity:0;transform:translateY(-.8em) scale(.98)}}
-@keyframes hvFloat{50%{transform:translateY(-1em)}}
-/* trusted-by strip: full width, three identical sets moving one set-width per loop, so it never jumps */
-.trusted{display:grid;gap:14px;margin-top:clamp(28px,5vh,56px)}
-.tr-logos{overflow:hidden;width:100%}
-.tr-track{display:flex;width:max-content;animation:trq 60s linear infinite;will-change:transform}
-.tr-set{list-style:none;margin:0;padding:0 14px 0 0;display:flex;gap:14px;flex:none}
-.tr-set li{flex:none;height:64px;min-width:170px;padding:0 22px;border-radius:18px;display:grid;place-items:center;box-shadow:0 12px 30px -18px rgba(0,0,0,.6)}
-.tr-set img{display:block;height:44px;width:auto;max-width:170px;object-fit:contain}
-.tr-logos:hover .tr-track{animation-play-state:paused}
-@keyframes trq{to{transform:translate3d(-33.3333%,0,0)}}
 .hero .scroll-up{display:none}
-@media (max-width:1100px) and (min-width:761px){.hero-vis{--u:8.4px;max-width:46em;justify-self:start}}
 @media (max-width:760px){
-  .hero-vis{--u:6.4px;height:56em;max-width:none;margin-top:4px}
-  .hv-toast{width:24em;-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(18,30,128,.94)}
-  .hv-toast.t1{left:0;top:6em}.hv-toast.t2{right:0;top:19em}.hv-toast.t3{left:0;top:33em}.hv-toast.t4{right:0;top:44em}
-  .trusted{gap:12px;margin-top:24px}
-  .trusted .label{display:block;text-align:center}
-  .tr-set{gap:10px;padding-right:10px}
-  .tr-set li{height:52px;min-width:124px;padding:0 16px;border-radius:14px}
-  .tr-set img{height:34px;max-width:130px}
+  .hero .hx{font-size:clamp(38px,11.5vw,48px)}
+  .hero-ed{gap:16px}
+  .hx-cta{flex-direction:column;align-items:stretch;width:100%;gap:6px}
+  .hx-lgb{justify-content:space-between;height:52px}
+  .cl-loop{gap:10px}
+  .cl-set{gap:10px;padding-right:10px}
+  .cl-set li{padding:5px;border-radius:18px}
+  .cl-set span{height:46px;min-width:120px;padding:0 14px;border-radius:13px}
+  .cl-set img{height:30px;max-width:120px}
   #view-home .scene.hero{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
 }
-@media (prefers-reduced-motion:reduce){.hv-phone,.hv-feed,.tr-track{animation:none}.hv-toast{animation:none;opacity:1}.hv-toast.t3,.hv-toast.t4{display:none}}
+@media (prefers-reduced-motion:reduce){.hx .w,.hx-in{animation:none}.cl-track{animation:none}}
 #notif-layer{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}
 .notif{position:absolute;display:flex;align-items:center;gap:4px;padding:5px 9px 5px 7px;border-radius:999px;background:var(--red);color:#fff;font-weight:700;font-size:12px;box-shadow:0 6px 18px -6px rgba(255,45,85,.8);animation:notif 1.9s var(--spring) forwards;will-change:transform,opacity}
 .notif svg{width:12px;height:12px}
@@ -1269,25 +1260,14 @@ html.perf-2 .wk-lb{background:rgba(0,3,31,.97)}
 <!-- ================= HOME ================= -->
 <section class="view" id="view-home" data-view="home">
   <section class="scene hero" id="s0">
-    <div class="wrap hero-grid">
-      <div class="hero-copy shadow-txt">
-        <span class="label rv in">Social Media Agency · Web · AI</span>
-        <h1 class="rv in">We build <em>presence</em> the world can’t scroll past.</h1>
-        <p class="hero-line rv in">A social media agency for brands ready to rise. Websites, AI agents and content that take you up, and keep you there.</p>
-        <ul class="hero-chips rv in" aria-label="What we do"><li>Social media</li><li>Websites</li><li>AI agents</li></ul>
-        <div class="hero-sub rv in">
-          <button class="btn grad" data-go="dm" data-hot><svg><use href="#i-arrow"/></svg>Start your climb</button>
-          <button class="btn" data-go="work" data-hot>See our work</button>
-        </div>
+    <div class="wrap hero-ed">
+      <span class="hx-pill hx-in" style="--i:0s"><b aria-hidden="true">✦</b>Social Media Agency · Web · AI</span>
+      <h1 class="hx"><span class="w" style="--i:0.15s">We</span> <span class="w" style="--i:0.24s">build</span> <span class="w it" style="--i:0.33s">presence</span> <br><span class="w" style="--i:0.42s">the</span> <span class="w" style="--i:0.51s">world</span> <span class="w" style="--i:0.60s">can’t</span> <br><span class="w" style="--i:0.69s">scroll</span> <span class="w" style="--i:0.78s">past.</span></h1>
+      <p class="hx-sub hx-in" style="--i:.95s">A social media agency for brands ready to rise. Websites, AI agents and content that take you up, and keep you there.</p>
+      <div class="hx-cta hx-in" style="--i:1.1s">
+        <button class="hx-lgb" data-go="dm" data-hot>Start your climb<b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></b></button>
+        <button class="hx-ghost" data-go="work" data-hot>See our work</button>
       </div>
-      <div class="hero-vis" aria-hidden="true">
-        <div class="hv-phone"><div class="hv-scr"><i class="hv-isl"></i><div class="hv-top"><span>stayup.social</span><img src="logo/stayup-mark-96.webp" alt="" width="44" height="44"></div><div class="hv-feed"><div class="hv-post"><div class="hv-ph hv-reel"><img loading="lazy" src="hero/feed-1.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Real-estate reel</div></div><div class="hv-post"><div class="hv-ph"><img loading="lazy" src="hero/feed-2.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Interior launch post</div></div><div class="hv-post"><div class="hv-ph hv-reel"><img loading="lazy" src="hero/feed-3.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Personal-brand reel</div></div><div class="hv-post"><div class="hv-ph"><img loading="lazy" src="hero/feed-4.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Retail store post</div></div><div class="hv-post"><div class="hv-ph hv-reel"><img loading="lazy" src="hero/feed-5.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Doctor’s growth reel</div></div><div class="hv-post"><div class="hv-ph hv-reel"><img loading="lazy" src="hero/feed-1.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Real-estate reel</div></div><div class="hv-post"><div class="hv-ph"><img loading="lazy" src="hero/feed-2.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Interior launch post</div></div></div></div></div>
-        <div class="hv-toast t1"><span class="hv-ic ig"><svg><use href="#i-heart"/></svg></span><span><b>Your reel is trending</b><small>Instagram · just now</small></span></div><div class="hv-toast t2"><span class="hv-ic ad">f</span><span><b>New lead from your ad</b><small>Meta Ads · 2 min ago</small></span></div><div class="hv-toast t3"><span class="hv-ic ai"><svg><use href="#i-send"/></svg></span><span><b>AI agent booked a call</b><small>WhatsApp · 10:42 AM</small></span></div><div class="hv-toast t4"><span class="hv-ic web"><svg><use href="#i-grid"/></svg></span><span><b>New website enquiry</b><small>Contact form · today</small></span></div>
-      </div>
-    </div>
-    <div class="trusted rv in">
-      <div class="wrap"><span class="label">Trusted by</span></div>
-      <div class="tr-logos"><div class="tr-track"><ul class="tr-set"><li style="background:#fff"><img loading="lazy" src="hero/logos/mura.png" alt="Hotel Mura Bliss" decoding="async"></li><li style="background:#fefefe"><img loading="lazy" src="hero/logos/hiranandani.jpg" alt="Hiranandani" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/godrej-properties.jpg" alt="Godrej Properties" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/ananta-hospital.jpg" alt="Ananta Multispeciality Hospital" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/joom.jpg" alt="Joom" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/nivesh-sarthi.png" alt="Nivesh Sarthi" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/onestream.jpg" alt="OneStream" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/avani-interior.png" alt="Avani Interior" decoding="async"></li><li style="background:#F3EFE6"><img loading="lazy" src="hero/logos/dereva-pharma.jpg" alt="Dereva Pharma" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/rare-bean.jpg" alt="Rare Bean" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/the-decor-vibe.jpg" alt="The Decor Vibe" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/chorus.jpg" alt="Chorus" decoding="async"></li><li style="background:#FEF5E9"><img loading="lazy" src="hero/logos/cakes-and-bakes.jpg" alt="Cakes &amp; Bakes" decoding="async"></li><li style="background:#EEEEEE"><img loading="lazy" src="hero/logos/open-interior.jpg" alt="Open Interior Design" decoding="async"></li></ul><ul class="tr-set" aria-hidden="true"><li style="background:#fff"><img loading="lazy" src="hero/logos/mura.png" alt="" decoding="async"></li><li style="background:#fefefe"><img loading="lazy" src="hero/logos/hiranandani.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/godrej-properties.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/ananta-hospital.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/joom.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/nivesh-sarthi.png" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/onestream.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/avani-interior.png" alt="" decoding="async"></li><li style="background:#F3EFE6"><img loading="lazy" src="hero/logos/dereva-pharma.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/rare-bean.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/the-decor-vibe.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/chorus.jpg" alt="" decoding="async"></li><li style="background:#FEF5E9"><img loading="lazy" src="hero/logos/cakes-and-bakes.jpg" alt="" decoding="async"></li><li style="background:#EEEEEE"><img loading="lazy" src="hero/logos/open-interior.jpg" alt="" decoding="async"></li></ul><ul class="tr-set" aria-hidden="true"><li style="background:#fff"><img loading="lazy" src="hero/logos/mura.png" alt="" decoding="async"></li><li style="background:#fefefe"><img loading="lazy" src="hero/logos/hiranandani.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/godrej-properties.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/ananta-hospital.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/joom.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/nivesh-sarthi.png" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/onestream.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/avani-interior.png" alt="" decoding="async"></li><li style="background:#F3EFE6"><img loading="lazy" src="hero/logos/dereva-pharma.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/rare-bean.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/the-decor-vibe.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/chorus.jpg" alt="" decoding="async"></li><li style="background:#FEF5E9"><img loading="lazy" src="hero/logos/cakes-and-bakes.jpg" alt="" decoding="async"></li><li style="background:#EEEEEE"><img loading="lazy" src="hero/logos/open-interior.jpg" alt="" decoding="async"></li></ul></div></div>
     </div>
     <div class="scroll-up" aria-hidden="true"><span><svg><use href="#i-arrow"/></svg></span>Scroll up</div>
   </section>
@@ -1306,6 +1286,7 @@ html.perf-2 .wk-lb{background:rgba(0,3,31,.97)}
         <div class="orbit-center"><div class="pf"><div><img src="logo/stayup-mark-circle-400.webp" alt=""></div></div></div><b class="orbit-name">StayUp Social <svg class="tick"><use href="#i-tick"/></svg></b>
       </div>
       <p class="fb-line shadow-txt">Followed by <span class="fb-names" id="fb-names"><b>Hiranandani</b>, <b>Godrej Properties</b></span> and others.</p>
+      <div class="cl-loop" aria-label="Brands we work with"><div class="cl-row ltr"><div class="cl-track"><ul class="cl-set"><li><span style="background:#fff"><img loading="lazy" src="hero/logos/mura.png" alt="Hotel Mura Bliss" decoding="async"></span></li><li><span style="background:#fefefe"><img loading="lazy" src="hero/logos/hiranandani.jpg" alt="Hiranandani" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/godrej-properties.jpg" alt="Godrej Properties" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/ananta-hospital.jpg" alt="Ananta Multispeciality Hospital" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/joom.jpg" alt="Joom" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/nivesh-sarthi.png" alt="Nivesh Sarthi" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/onestream.jpg" alt="OneStream" decoding="async"></span></li></ul><ul class="cl-set" aria-hidden="true"><li><span style="background:#fff"><img loading="lazy" src="hero/logos/mura.png" alt="" decoding="async"></span></li><li><span style="background:#fefefe"><img loading="lazy" src="hero/logos/hiranandani.jpg" alt="" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/godrej-properties.jpg" alt="" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/ananta-hospital.jpg" alt="" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/joom.jpg" alt="" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/nivesh-sarthi.png" alt="" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/onestream.jpg" alt="" decoding="async"></span></li></ul><ul class="cl-set" aria-hidden="true"><li><span style="background:#fff"><img loading="lazy" src="hero/logos/mura.png" alt="" decoding="async"></span></li><li><span style="background:#fefefe"><img loading="lazy" src="hero/logos/hiranandani.jpg" alt="" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/godrej-properties.jpg" alt="" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/ananta-hospital.jpg" alt="" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/joom.jpg" alt="" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/nivesh-sarthi.png" alt="" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/onestream.jpg" alt="" decoding="async"></span></li></ul></div></div><div class="cl-row rtl"><div class="cl-track"><ul class="cl-set"><li><span style="background:#fff"><img loading="lazy" src="hero/logos/avani-interior.png" alt="Avani Interior" decoding="async"></span></li><li><span style="background:#F3EFE6"><img loading="lazy" src="hero/logos/dereva-pharma.jpg" alt="Dereva Pharma" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/rare-bean.jpg" alt="Rare Bean" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/the-decor-vibe.jpg" alt="The Decor Vibe" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/chorus.jpg" alt="Chorus" decoding="async"></span></li><li><span style="background:#FEF5E9"><img loading="lazy" src="hero/logos/cakes-and-bakes.jpg" alt="Cakes &amp; Bakes" decoding="async"></span></li><li><span style="background:#EEEEEE"><img loading="lazy" src="hero/logos/open-interior.jpg" alt="Open Interior Design" decoding="async"></span></li></ul><ul class="cl-set" aria-hidden="true"><li><span style="background:#fff"><img loading="lazy" src="hero/logos/avani-interior.png" alt="" decoding="async"></span></li><li><span style="background:#F3EFE6"><img loading="lazy" src="hero/logos/dereva-pharma.jpg" alt="" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/rare-bean.jpg" alt="" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/the-decor-vibe.jpg" alt="" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/chorus.jpg" alt="" decoding="async"></span></li><li><span style="background:#FEF5E9"><img loading="lazy" src="hero/logos/cakes-and-bakes.jpg" alt="" decoding="async"></span></li><li><span style="background:#EEEEEE"><img loading="lazy" src="hero/logos/open-interior.jpg" alt="" decoding="async"></span></li></ul><ul class="cl-set" aria-hidden="true"><li><span style="background:#fff"><img loading="lazy" src="hero/logos/avani-interior.png" alt="" decoding="async"></span></li><li><span style="background:#F3EFE6"><img loading="lazy" src="hero/logos/dereva-pharma.jpg" alt="" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/rare-bean.jpg" alt="" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/the-decor-vibe.jpg" alt="" decoding="async"></span></li><li><span style="background:#fff"><img loading="lazy" src="hero/logos/chorus.jpg" alt="" decoding="async"></span></li><li><span style="background:#FEF5E9"><img loading="lazy" src="hero/logos/cakes-and-bakes.jpg" alt="" decoding="async"></span></li><li><span style="background:#EEEEEE"><img loading="lazy" src="hero/logos/open-interior.jpg" alt="" decoding="async"></span></li></ul></div></div></div>
       <div class="result-chip" id="result-chip" aria-live="polite"><svg><use href="#i-arrow"/></svg><span>Hover a planet to see the client.</span></div>
     </div>
   </section>
@@ -2666,7 +2647,7 @@ function initGL(){
   const glow=new T.Mesh(new T.CircleGeometry(7,48),new T.MeshBasicMaterial({map:radial('rgba(31,63,255,.75)','rgba(0,5,56,0)'),transparent:true,depthWrite:false,blending:T.AdditiveBlending}));
   glow.rotation.x=-Math.PI/2; glow.position.y=.01;
 
-  // hero anchors: the HTML hero (.hero-vis) replaced the 3D logo tile and phone; these empty nodes only give the arrow a starting point
+  // hero anchors: the HTML hero (.hero-ed) replaced the 3D logo tile and phone; these empty nodes only give the arrow a starting point
   const hero=new T.Group(); hero.visible=false; scene.add(hero);
   const logoMat={emissiveIntensity:0};
   const logo=new T.Object3D(); logo.position.set(-1.75,.95,0); hero.add(logo);
@@ -2814,7 +2795,7 @@ function initGL(){
   let camY=1.6, t=0, launchAt=2.0, launched=false, burstDone=0;
   const ray=new T.Raycaster(), tmp=new T.Vector3(), tmp2=new T.Vector3(), uT=new T.Vector3();
   // like-hearts pop from the hero phone once, only when the home hero is on screen and motion is allowed
-  const heroPhone=()=>{if(RM||S.view!=='home')return null;const el=document.querySelector('.hv-phone'),r=el&&el.getBoundingClientRect();return r&&r.width&&r.bottom>0&&r.top<innerHeight?{x:r.left+r.width/2,y:r.top+r.height*.35}:null};
+  const heroPhone=()=>{if(RM||S.view!=='home')return null;const el=document.querySelector('.hx-lgb'),r=el&&el.getBoundingClientRect();return r&&r.width&&r.bottom>0&&r.top<innerHeight?{x:r.left+r.width/2,y:r.top}:null};
   const heroSeq=[{at:.6,f:()=>{const p=heroPhone();if(p)burst(1,p.x,p.y,20,20,0)}},
                  {at:1.5,f:()=>{const p=heroPhone();const n=TIER==='lite'?8:TIER==='medium'?10:12;if(p)burst(n,p.x,p.y,isMobile()?300:380,isMobile()?320:460,22)}}];
 
@@ -2849,7 +2830,7 @@ function initGL(){
     starMat.opacity=clamp((camY-26)/16,0,1);
 
     // hero
-    hero.visible=false; // the hero visual is now HTML (.hero-vis)
+    hero.visible=false; // the hero is now HTML (.hero-ed)
     if(hero.visible){
       const lift=launched?clamp((t-launchAt-.3)/1.4,0,1):0, e=1-Math.pow(1-lift,3);
       phone.position.y=1.95+e*.45+(RM?0:Math.sin(t*1.3)*.06*e);
@@ -2926,9 +2907,9 @@ try{const ld=document.createElement('script');ld.type='application/ld+json';
   ld.textContent=JSON.stringify({'@context':'https://schema.org','@graph':[{'@type':'FAQPage',mainEntity:$$('#faq-home details').map(d=>({'@type':'Question',name:$('summary',d).textContent,acceptedAnswer:{'@type':'Answer',text:$('p',d).textContent}}))}].concat(SERVICES.map(x=>({'@type':'Service',name:x.name,description:x.what,provider:{'@type':'Organization',name:'StayUp Social'}})))});
   document.head.appendChild(ld)}catch(e){}
 
-/* Hero visual: animate only while it is on screen */
-(function(){const v=document.querySelector('.hero-vis'),tr=document.querySelector('.trusted');if(!('IntersectionObserver' in window))return;
-  const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('hv-off',!e.isIntersecting)));[v,tr].forEach(el=>el&&io.observe(el))})();
+/* Our Clients loop: glide only while it is on screen */
+(function(){const el=document.querySelector('.cl-loop');if(!el||!('IntersectionObserver' in window))return;
+  new IntersectionObserver(es=>el.classList.toggle('off',!es[0].isIntersecting)).observe(el)})();
 /* ---------- Boot ---------- */
 measureScenes(); computeAlt();
 let fbOn=false;

@@ -40,7 +40,8 @@ Every device gets the same full look (3D sky, moving gallery wall, glass). The h
 - The 3D sky uses dynamic resolution: on a weaker graphics chip it renders a little softer instead of dropping frames, then sharpens again. It redraws at 30 fps while nothing is moving and at 60 fps while scrolling.
 - The gallery wall moves with CSS animations, which run off the main thread, and fades its centre columns with per-column opacity instead of full-screen masks.
 - Glass blur radii are moderate, and the film grain uses a normal blend.
-- The home hero is plain HTML and CSS: a glass phone scrolling through real work (`site/hero/`), four notification cards, service chips and a trusted-by logo strip. Its animations pause when the hero is off screen.
+- The home hero is editorial (MotionSites style): a centred headline with a serif-italic accent word (Instrument Serif), words that blur into focus once on load, a glass pill badge and a liquid-glass button, over the moving background grid.
+- Client logos glide in two rows (opposite directions) under Our Clients. Each row holds three identical sets and moves one set per loop, so it never jumps; it pauses on hover and off screen.
 - Three.js loads after the page's own pictures (on the window `load` event), so content shows first on slow 4G.
 - Pictures in views that are not showing never download: hero images and logos are lazy, and video posters are set only when the video nears the screen (`lazyPosters`).
 - The Services grid and the Work feed reserve their height before they are built, so nothing jumps while loading.
