@@ -1148,6 +1148,8 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
 .wk-lb-media.tall{height:calc(100svh - 230px);aspect-ratio:3/4}
 .wk-lb-media.tall img{height:100%;width:100%;object-fit:cover;object-position:50% 0;animation:webscroll 22s ease-in-out infinite alternate;max-height:none}
 .wk-lb-cap{font-size:14.5px;color:rgba(230,236,255,.9);text-align:center;max-width:60ch}
+.wk-visit{display:inline-flex;align-items:center;height:34px;margin-left:10px;padding:0 14px;border-radius:999px;background:#fff;color:#000538;font-weight:600;font-size:13.5px;text-decoration:none}
+.wk-live{position:absolute;right:10px;top:10px;z-index:2;font:600 11px/1 var(--f-body);padding:6px 10px;border-radius:999px;color:#000538;background:#fff}
 .wk-lb-nav{display:flex;align-items:center;gap:14px;font:600 12px/1 var(--f-body);color:rgba(214,224,255,.7);font-variant-numeric:tabular-nums}
 .wk-x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 16px);right:calc(16px + env(safe-area-inset-right,0px))}
 @media (max-width:760px){
@@ -2274,6 +2276,10 @@ $('#prev').addEventListener('click',()=>slideTo(-1)); $('#next').addEventListene
 // stand-in portfolio: type, media, shape and one line on the work. No client names.
 const WSV=(n,k)=>`services/0${n}-${k}.webp`;
 const WORK=[
+ {c:'Websites',p:'work/sites/minikin.webp',ar:'3/4',url:'https://www.minikin.shop/',t:'Minikin, online store'},
+ {c:'Websites',p:'work/sites/spexy.webp',ar:'3/4',url:'https://spexy-studio.pages.dev/',t:'Spexy Studio, studio website'},
+ {c:'Websites',p:'work/sites/prashant.webp',ar:'3/4',url:'https://prashant-dhakad.dhakadprashant06.workers.dev/',t:'Prashant Dhakad, personal brand site'},
+ {c:'Websites',p:'work/sites/cafepress.webp',ar:'3/4',url:'https://www.cafepress.com/',t:'CafePress, e-commerce storefront'},
  {c:'Reels',v:'reels/reel-2.mp4',p:'reels/reel-2.jpg',ar:'9/16',t:'Real-estate tips Reel, hook-first edit'},
  {c:'Posts',p:'bg/01.webp',ar:'9/16',t:'Lifestyle post for a launch week'},
  {c:'Websites',p:WSV(2,3),ar:'3/4',web:1,t:'Interior studio website, booking-first homepage'},
@@ -2303,7 +2309,7 @@ const wkTag=c=>({Reels:'Reel',Posts:'Post',Websites:'Website',Campaigns:'Campaig
 const WPLAY='<span class="wk-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>';
 function wkTile(w,i){
   const media=w.v?`<video muted loop playsinline preload="none" data-poster="${w.p}" src="${w.v}"></video>`:`<img src="${w.p}" alt="" loading="lazy" decoding="async">`;
-  return `<button class="wk-tile${w.web?' web':''}" data-i="${i}" data-hot aria-label="${wkTag(w.c)}: ${w.t}" style="aspect-ratio:${w.ar}">${media}<span class="wk-tag">${wkTag(w.c)}</span>${w.v?WPLAY:''}<span class="wk-cap">${w.t}</span></button>`;
+  return `<button class="wk-tile${w.web?' web':''}" data-i="${i}" data-hot aria-label="${wkTag(w.c)}: ${w.t}" style="aspect-ratio:${w.ar}">${media}<span class="wk-tag">${wkTag(w.c)}</span>${w.v?WPLAY:''}${w.url?'<span class="wk-live">Live site ↗</span>':''}<span class="wk-cap">${w.t}</span></button>`;
 }
 // --- Feed: masonry wall with a glass filter bar
 const wkGrid=$('#wk-grid'),wkAlt=$('#wk-alt'); let wkCat='All',wkCols=[];
@@ -2359,7 +2365,8 @@ function wkFill(){const w=WORK[wkList[wkK]],m=$('.wk-lb-media',wkLB);
   m.innerHTML=w.v?`<video src="${w.v}" poster="${w.p}" autoplay loop playsinline controls></video>`:`<img src="${w.p}" alt="${w.t}"${w.web?' class="web"':''}>`;
   const v=$('video',m); if(v){v.muted=!RS.on; v.play().catch(()=>{v.muted=true;v.play().catch(()=>{})})}
   m.style.setProperty('--ar',w.ar); m.classList.toggle('tall',!!w.web);
-  $('.wk-lb-cap',wkLB).textContent=`${wkTag(w.c)} · ${w.t}`; $('.wk-lb-n',wkLB).textContent=`${wkK+1} / ${wkList.length}`;
+  const cap=$('.wk-lb-cap',wkLB);cap.textContent=`${wkTag(w.c)} · ${w.t}`;
+  if(w.url){const a=document.createElement('a');a.className='wk-visit';a.href=w.url;a.target='_blank';a.rel='noopener';a.setAttribute('data-hot','');a.textContent='Visit live site ↗';cap.append(' ',a)} $('.wk-lb-n',wkLB).textContent=`${wkK+1} / ${wkList.length}`;
 }
 function wkClose(){if(!wkLB||wkLB.hidden)return;wkLB.hidden=true;$('.wk-lb-media',wkLB).innerHTML='';document.body.classList.remove('modal-open');S.overlay=false}
 addEventListener('keydown',e=>{if(!wkLB||wkLB.hidden)return;if(e.key==='Escape')wkClose();if(e.key==='ArrowRight')wkStep(1);if(e.key==='ArrowLeft')wkStep(-1)});
