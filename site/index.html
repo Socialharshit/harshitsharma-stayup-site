@@ -402,6 +402,7 @@ html.js .rv:not(.in){opacity:0;transform:translateY(36px) scale(.96)}
 .grid-bar .label{display:flex;align-items:center;gap:10px;color:var(--white)}
 .grid-bar svg{width:16px;height:16px}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(5px,1.4vw,16px);max-width:760px;margin:0 auto}
+#grid:empty{aspect-ratio:1}
 .tile{position:relative;aspect-ratio:1;border-radius:clamp(12px,2.2vw,24px);background:linear-gradient(160deg,rgba(127,239,255,.09),rgba(31,63,255,.06) 60%,rgba(0,5,56,.2));border:1px solid var(--line);text-align:left;overflow:hidden;transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .35s var(--spring),border-color .3s,box-shadow .3s;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
 .tile:hover{border-color:rgba(127,239,255,.55);box-shadow:0 20px 50px -20px rgba(18,216,250,.6),inset 0 1px 0 rgba(255,255,255,.2)}
 .tile-stage{position:absolute;left:0;right:0;top:0;height:78%}
@@ -971,6 +972,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
 .sf ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
 .sf li,.sf li a,.sf li button{font-size:13.5px;line-height:1.35;color:rgba(214,224,255,.72);text-decoration:none;padding:0;text-align:left;overflow-wrap:anywhere;transition:color .2s}
 .sf li a:hover,.sf li button:hover{color:#fff}
+@media (pointer:coarse){.sf li a,.sf li button{display:inline-block;padding:9px 0;margin:-9px 0}.sc-pill{min-height:40px}}
 .sf-base{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:18px;font-size:12.5px;color:rgba(214,224,255,.55)}
 .sf-tier{display:none}
 .sf-up{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:rgba(214,224,255,.8);padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);transition:background .2s,color .2s}
@@ -1098,6 +1100,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
   .sf-base{padding-top:14px;gap:6px 12px;font-size:12px;color:rgba(230,236,255,.65)}
   /* services: two bigger columns, with a glass CTA tile in the last spot */
   .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  #grid:empty{aspect-ratio:2/5}
   .tile-cta{display:flex;flex-direction:column;justify-content:flex-end;gap:8px;aspect-ratio:1;padding:14px;border-radius:clamp(12px,2.2vw,24px);text-align:left;color:#fff;background:radial-gradient(90% 70% at 100% 0%,rgba(18,216,250,.25),transparent 70%),var(--g-bg);border:1px solid var(--g-bd);box-shadow:var(--g-hi),var(--g-sh);-webkit-backdrop-filter:var(--g-blur);backdrop-filter:var(--g-blur)}
   .tile-cta .tc-k{font:500 11px/1 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:#7FEFFF}
   .tile-cta b{font:600 17px/1.15 var(--f-display)}
@@ -1128,6 +1131,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
 .wk-feed-head{display:grid;gap:8px;justify-items:center;text-align:center;margin-bottom:clamp(22px,4vh,40px)}
 .wk-feed-head h2{font-size:clamp(34px,5vw,64px);line-height:1}
 .wk-grid{display:flex;gap:14px;align-items:flex-start}
+.wk-grid:empty{min-height:150vh}
 .wk-col{flex:1;min-width:0;display:flex;flex-direction:column;gap:14px;will-change:transform}
 .wk-tile{all:unset;position:relative;display:block;width:100%;border-radius:20px;overflow:hidden;background:#0a1258;cursor:pointer;isolation:isolate;box-shadow:0 18px 44px -26px rgba(0,0,0,.95);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
 .wk-tile:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 30px 60px -28px rgba(18,216,250,.45)}
@@ -1277,13 +1281,13 @@ html.perf-2 .wk-lb{background:rgba(0,3,31,.97)}
         </div>
       </div>
       <div class="hero-vis" aria-hidden="true">
-        <div class="hv-phone"><div class="hv-scr"><i class="hv-isl"></i><div class="hv-top"><span>stayup.social</span><img src="logo/stayup-mark-square.png" alt="" width="44" height="44"></div><div class="hv-feed"><div class="hv-post"><div class="hv-ph hv-reel"><img src="hero/feed-1.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Real-estate reel</div></div><div class="hv-post"><div class="hv-ph"><img src="hero/feed-2.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Interior launch post</div></div><div class="hv-post"><div class="hv-ph hv-reel"><img src="hero/feed-3.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Personal-brand reel</div></div><div class="hv-post"><div class="hv-ph"><img src="hero/feed-4.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Retail store post</div></div><div class="hv-post"><div class="hv-ph hv-reel"><img src="hero/feed-5.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Doctor’s growth reel</div></div><div class="hv-post"><div class="hv-ph hv-reel"><img src="hero/feed-1.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Real-estate reel</div></div><div class="hv-post"><div class="hv-ph"><img src="hero/feed-2.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Interior launch post</div></div></div></div></div>
+        <div class="hv-phone"><div class="hv-scr"><i class="hv-isl"></i><div class="hv-top"><span>stayup.social</span><img src="logo/stayup-mark-96.webp" alt="" width="44" height="44"></div><div class="hv-feed"><div class="hv-post"><div class="hv-ph hv-reel"><img loading="lazy" src="hero/feed-1.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Real-estate reel</div></div><div class="hv-post"><div class="hv-ph"><img loading="lazy" src="hero/feed-2.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Interior launch post</div></div><div class="hv-post"><div class="hv-ph hv-reel"><img loading="lazy" src="hero/feed-3.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Personal-brand reel</div></div><div class="hv-post"><div class="hv-ph"><img loading="lazy" src="hero/feed-4.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Retail store post</div></div><div class="hv-post"><div class="hv-ph hv-reel"><img loading="lazy" src="hero/feed-5.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Doctor’s growth reel</div></div><div class="hv-post"><div class="hv-ph hv-reel"><img loading="lazy" src="hero/feed-1.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Real-estate reel</div></div><div class="hv-post"><div class="hv-ph"><img loading="lazy" src="hero/feed-2.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Interior launch post</div></div></div></div></div>
         <div class="hv-toast t1"><span class="hv-ic ig"><svg><use href="#i-heart"/></svg></span><span><b>Your reel is trending</b><small>Instagram · just now</small></span></div><div class="hv-toast t2"><span class="hv-ic ad">f</span><span><b>New lead from your ad</b><small>Meta Ads · 2 min ago</small></span></div><div class="hv-toast t3"><span class="hv-ic ai"><svg><use href="#i-send"/></svg></span><span><b>AI agent booked a call</b><small>WhatsApp · 10:42 AM</small></span></div><div class="hv-toast t4"><span class="hv-ic web"><svg><use href="#i-grid"/></svg></span><span><b>New website enquiry</b><small>Contact form · today</small></span></div>
       </div>
     </div>
     <div class="trusted rv in">
       <div class="wrap"><span class="label">Trusted by</span></div>
-      <div class="tr-logos"><div class="tr-track"><ul class="tr-set"><li style="background:#fff"><img src="hero/logos/mura.png" alt="Hotel Mura Bliss" decoding="async"></li><li style="background:#fefefe"><img src="hero/logos/hiranandani.jpg" alt="Hiranandani" decoding="async"></li><li style="background:#fff"><img src="hero/logos/godrej-properties.jpg" alt="Godrej Properties" decoding="async"></li><li style="background:#fff"><img src="hero/logos/ananta-hospital.jpg" alt="Ananta Multispeciality Hospital" decoding="async"></li><li style="background:#fff"><img src="hero/logos/joom.jpg" alt="Joom" decoding="async"></li><li style="background:#fff"><img src="hero/logos/nivesh-sarthi.png" alt="Nivesh Sarthi" decoding="async"></li><li style="background:#fff"><img src="hero/logos/onestream.jpg" alt="OneStream" decoding="async"></li><li style="background:#fff"><img src="hero/logos/avani-interior.png" alt="Avani Interior" decoding="async"></li><li style="background:#F3EFE6"><img src="hero/logos/dereva-pharma.jpg" alt="Dereva Pharma" decoding="async"></li><li style="background:#fff"><img src="hero/logos/rare-bean.jpg" alt="Rare Bean" decoding="async"></li><li style="background:#fff"><img src="hero/logos/the-decor-vibe.jpg" alt="The Decor Vibe" decoding="async"></li><li style="background:#fff"><img src="hero/logos/chorus.jpg" alt="Chorus" decoding="async"></li><li style="background:#FEF5E9"><img src="hero/logos/cakes-and-bakes.jpg" alt="Cakes &amp; Bakes" decoding="async"></li><li style="background:#EEEEEE"><img src="hero/logos/open-interior.jpg" alt="Open Interior Design" decoding="async"></li></ul><ul class="tr-set" aria-hidden="true"><li style="background:#fff"><img src="hero/logos/mura.png" alt="" decoding="async"></li><li style="background:#fefefe"><img src="hero/logos/hiranandani.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/godrej-properties.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/ananta-hospital.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/joom.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/nivesh-sarthi.png" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/onestream.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/avani-interior.png" alt="" decoding="async"></li><li style="background:#F3EFE6"><img src="hero/logos/dereva-pharma.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/rare-bean.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/the-decor-vibe.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/chorus.jpg" alt="" decoding="async"></li><li style="background:#FEF5E9"><img src="hero/logos/cakes-and-bakes.jpg" alt="" decoding="async"></li><li style="background:#EEEEEE"><img src="hero/logos/open-interior.jpg" alt="" decoding="async"></li></ul><ul class="tr-set" aria-hidden="true"><li style="background:#fff"><img src="hero/logos/mura.png" alt="" decoding="async"></li><li style="background:#fefefe"><img src="hero/logos/hiranandani.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/godrej-properties.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/ananta-hospital.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/joom.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/nivesh-sarthi.png" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/onestream.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/avani-interior.png" alt="" decoding="async"></li><li style="background:#F3EFE6"><img src="hero/logos/dereva-pharma.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/rare-bean.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/the-decor-vibe.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/chorus.jpg" alt="" decoding="async"></li><li style="background:#FEF5E9"><img src="hero/logos/cakes-and-bakes.jpg" alt="" decoding="async"></li><li style="background:#EEEEEE"><img src="hero/logos/open-interior.jpg" alt="" decoding="async"></li></ul></div></div>
+      <div class="tr-logos"><div class="tr-track"><ul class="tr-set"><li style="background:#fff"><img loading="lazy" src="hero/logos/mura.png" alt="Hotel Mura Bliss" decoding="async"></li><li style="background:#fefefe"><img loading="lazy" src="hero/logos/hiranandani.jpg" alt="Hiranandani" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/godrej-properties.jpg" alt="Godrej Properties" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/ananta-hospital.jpg" alt="Ananta Multispeciality Hospital" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/joom.jpg" alt="Joom" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/nivesh-sarthi.png" alt="Nivesh Sarthi" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/onestream.jpg" alt="OneStream" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/avani-interior.png" alt="Avani Interior" decoding="async"></li><li style="background:#F3EFE6"><img loading="lazy" src="hero/logos/dereva-pharma.jpg" alt="Dereva Pharma" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/rare-bean.jpg" alt="Rare Bean" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/the-decor-vibe.jpg" alt="The Decor Vibe" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/chorus.jpg" alt="Chorus" decoding="async"></li><li style="background:#FEF5E9"><img loading="lazy" src="hero/logos/cakes-and-bakes.jpg" alt="Cakes &amp; Bakes" decoding="async"></li><li style="background:#EEEEEE"><img loading="lazy" src="hero/logos/open-interior.jpg" alt="Open Interior Design" decoding="async"></li></ul><ul class="tr-set" aria-hidden="true"><li style="background:#fff"><img loading="lazy" src="hero/logos/mura.png" alt="" decoding="async"></li><li style="background:#fefefe"><img loading="lazy" src="hero/logos/hiranandani.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/godrej-properties.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/ananta-hospital.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/joom.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/nivesh-sarthi.png" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/onestream.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/avani-interior.png" alt="" decoding="async"></li><li style="background:#F3EFE6"><img loading="lazy" src="hero/logos/dereva-pharma.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/rare-bean.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/the-decor-vibe.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/chorus.jpg" alt="" decoding="async"></li><li style="background:#FEF5E9"><img loading="lazy" src="hero/logos/cakes-and-bakes.jpg" alt="" decoding="async"></li><li style="background:#EEEEEE"><img loading="lazy" src="hero/logos/open-interior.jpg" alt="" decoding="async"></li></ul><ul class="tr-set" aria-hidden="true"><li style="background:#fff"><img loading="lazy" src="hero/logos/mura.png" alt="" decoding="async"></li><li style="background:#fefefe"><img loading="lazy" src="hero/logos/hiranandani.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/godrej-properties.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/ananta-hospital.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/joom.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/nivesh-sarthi.png" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/onestream.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/avani-interior.png" alt="" decoding="async"></li><li style="background:#F3EFE6"><img loading="lazy" src="hero/logos/dereva-pharma.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/rare-bean.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/the-decor-vibe.jpg" alt="" decoding="async"></li><li style="background:#fff"><img loading="lazy" src="hero/logos/chorus.jpg" alt="" decoding="async"></li><li style="background:#FEF5E9"><img loading="lazy" src="hero/logos/cakes-and-bakes.jpg" alt="" decoding="async"></li><li style="background:#EEEEEE"><img loading="lazy" src="hero/logos/open-interior.jpg" alt="" decoding="async"></li></ul></div></div>
     </div>
     <div class="scroll-up" aria-hidden="true"><span><svg><use href="#i-arrow"/></svg></span>Scroll up</div>
   </section>
@@ -1299,7 +1303,7 @@ html.perf-2 .wk-lb{background:rgba(0,3,31,.97)}
       <span class="label rv">Followed by</span>
       <h2 class="rv sig shadow-txt">Our Clients</h2>
       <div class="orbit" id="orbit">
-        <div class="orbit-center"><div class="pf"><div><img src="logo/stayup-mark-circle.png" alt=""></div></div></div><b class="orbit-name">StayUp Social <svg class="tick"><use href="#i-tick"/></svg></b>
+        <div class="orbit-center"><div class="pf"><div><img src="logo/stayup-mark-circle-400.webp" alt=""></div></div></div><b class="orbit-name">StayUp Social <svg class="tick"><use href="#i-tick"/></svg></b>
       </div>
       <p class="fb-line shadow-txt">Followed by <span class="fb-names" id="fb-names"><b>Hiranandani</b>, <b>Godrej Properties</b></span> and others.</p>
       <div class="result-chip" id="result-chip" aria-live="polite"><svg><use href="#i-arrow"/></svg><span>Hover a planet to see the client.</span></div>
@@ -1332,9 +1336,9 @@ html.perf-2 .wk-lb{background:rgba(0,3,31,.97)}
       <div class="latest rv">
         <span class="label">Latest from Harshit</span>
         <div class="latest-row">
-          <div class="mini-phone reel-card" data-reel tabindex="0" role="button" aria-label="Play Harshit's Reel 1"><div><video src="reels/reel-1.mp4" poster="reels/reel-1.jpg" muted loop playsinline preload="none" width="540" height="960"></video><span class="rc-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span><button class="rc-mute" aria-label="Turn sound on" aria-pressed="false" data-hot><svg><use href="#i-mute"/></svg></button></div></div>
-          <div class="mini-phone reel-card" data-reel tabindex="0" role="button" aria-label="Play Harshit's Reel 2"><div><video src="reels/reel-2.mp4" poster="reels/reel-2.jpg" muted loop playsinline preload="none" width="540" height="960"></video><span class="rc-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span><button class="rc-mute" aria-label="Turn sound on" aria-pressed="false" data-hot><svg><use href="#i-mute"/></svg></button></div></div>
-          <div class="mini-phone reel-card" data-reel tabindex="0" role="button" aria-label="Play Harshit's Reel 3"><div><video src="reels/reel-3.mp4" poster="reels/reel-3.jpg" muted loop playsinline preload="none" width="540" height="960"></video><span class="rc-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span><button class="rc-mute" aria-label="Turn sound on" aria-pressed="false" data-hot><svg><use href="#i-mute"/></svg></button></div></div>
+          <div class="mini-phone reel-card" data-reel tabindex="0" role="button" aria-label="Play Harshit's Reel 1"><div><video src="reels/reel-1.mp4" data-poster="reels/reel-1.jpg" muted loop playsinline preload="none" width="540" height="960"></video><span class="rc-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span><button class="rc-mute" aria-label="Turn sound on" aria-pressed="false" data-hot><svg><use href="#i-mute"/></svg></button></div></div>
+          <div class="mini-phone reel-card" data-reel tabindex="0" role="button" aria-label="Play Harshit's Reel 2"><div><video src="reels/reel-2.mp4" data-poster="reels/reel-2.jpg" muted loop playsinline preload="none" width="540" height="960"></video><span class="rc-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span><button class="rc-mute" aria-label="Turn sound on" aria-pressed="false" data-hot><svg><use href="#i-mute"/></svg></button></div></div>
+          <div class="mini-phone reel-card" data-reel tabindex="0" role="button" aria-label="Play Harshit's Reel 3"><div><video src="reels/reel-3.mp4" data-poster="reels/reel-3.jpg" muted loop playsinline preload="none" width="540" height="960"></video><span class="rc-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span><button class="rc-mute" aria-label="Turn sound on" aria-pressed="false" data-hot><svg><use href="#i-mute"/></svg></button></div></div>
         </div>
       </div>
     </div>
@@ -1518,7 +1522,7 @@ html.perf-2 .wk-lb{background:rgba(0,3,31,.97)}
 <section class="view page" id="view-services" data-view="services" hidden>
   <div class="wrap">
     <div class="profile">
-      <div class="pf-big"><div><img src="logo/stayup-mark-circle.png" alt=""></div></div>
+      <div class="pf-big"><div><img src="logo/stayup-mark-circle-400.webp" alt=""></div></div>
       <div class="pf-info">
         <div class="handle">stayup.social <svg class="tick"><use href="#i-tick"/></svg></div>
         <div class="stats">
@@ -1699,7 +1703,7 @@ html.perf-2 .wk-lb{background:rgba(0,3,31,.97)}
     <div class="dm-grid">
       <div class="chat">
         <div class="chat-head">
-          <span class="av-s"><div><img src="logo/stayup-mark-circle.png" alt=""></div></span>
+          <span class="av-s"><div><img src="logo/stayup-mark-circle-400.webp" alt=""></div></span>
           <div><b>stayup.social <svg class="tick" style="width:15px;height:15px"><use href="#i-tick"/></svg></b><span class="online">Active now</span></div>
           <button class="chip" id="restart" style="margin-left:auto" data-hot>Start over</button>
         </div>
@@ -1794,7 +1798,7 @@ html.perf-2 .wk-lb{background:rgba(0,3,31,.97)}
   <div class="post-card" id="post-card">
     <div class="post-media" id="post-media"><span class="label" id="post-num">Service</span><button class="pm-snd" data-rs aria-pressed="true" aria-label="Reel sound on" data-hot><svg><use href="#i-sound"/></svg></button><p class="post-tag" id="post-tag"></p></div>
     <div class="post-panel">
-      <div class="post-head"><img src="logo/stayup-mark-circle.png" alt="" width="30" height="30" style="border-radius:50%;flex:none"><b id="post-title">Service</b><button class="icon-btn x" id="post-x" aria-label="Close" data-hot><svg><use href="#i-x"/></svg></button></div>
+      <div class="post-head"><img src="logo/stayup-mark-circle-400.webp" alt="" width="30" height="30" style="border-radius:50%;flex:none"><b id="post-title">Service</b><button class="icon-btn x" id="post-x" aria-label="Close" data-hot><svg><use href="#i-x"/></svg></button></div>
       <div class="slides" id="slides"></div>
       <div class="post-foot"><div class="dots" id="dots"></div><div class="arrows"><button class="icon-btn" id="prev" aria-label="Previous slide" data-hot><svg><use href="#i-left"/></svg></button><button class="icon-btn" id="next" aria-label="Next slide" data-hot><svg><use href="#i-right"/></svg></button></div></div>
     </div>
@@ -1869,7 +1873,7 @@ const PROJECTS=[
 const FILTERS=['All','Healthcare','Hospitality','E-commerce','AI'];
 const STORY=[
  {t:"Hi, I'm Harshit.",v:'<div class="selfie"><img src="founder/harshit-portrait-v2.jpg" alt="Harshit Sharma" width="600" height="800"></div>'},
- {t:'I build influential personal brands.',v:'<div class="st-vis"><span class="trail"></span><img class="rocket-up" src="logo/stayup-mark-circle.png" alt="" width="90" height="90" style="border-radius:50%"></div>'},
+ {t:'I build influential personal brands.',v:'<div class="st-vis"><span class="trail"></span><img class="rocket-up" src="logo/stayup-mark-circle-400.webp" alt="" width="90" height="90" style="border-radius:50%"></div>'},
  {t:'For founders, doctors and experts.',v:'<div class="pcards">'+['Founder','Doctor','Expert'].map((x,i)=>`<div class="pcard"><span class="av-s">${x[0]}</span><b>${x}</b><svg class="tick"><use href="#i-tick"/></svg></div>`).join('')+'</div>'},
  {t:'Content that turns expertise into influence.',v:'<div class="montage"><i></i><i></i><i></i><i></i></div>'},
  {t:'Follow the journey.',v:'<div class="st-actions"><a class="btn grad" href="https://www.instagram.com/socialharshit_/" target="_blank" rel="noopener" data-hot><svg><use href="#i-ig"/></svg>Follow on Instagram</a><a class="btn" href="https://www.linkedin.com/in/socialharshit" target="_blank" rel="noopener" data-hot><svg><use href="#i-li"/></svg>Follow on LinkedIn</a><button class="btn" id="st-brand" data-hot><svg><use href="#i-arrow"/></svg>Build my brand</button></div>'}
@@ -1942,7 +1946,7 @@ function swap(v,opts={}){
   if(v==='services') rollStats();
   if(v==='dm') startChat(opts.preset);
   if(v==='home') measureScenes();
-  if(v==='work'){requestAnimationFrame(wkFeedTick)}
+  if(v==='work'){$$('.wk-col',wkGrid).forEach(c=>{const i=$('.wk-tile img',c);if(i){i.loading='eager';i.fetchPriority='high'}});requestAnimationFrame(wkFeedTick)}
   if(GL) GL.snap();
 }
 async function go(v,opts={}){
@@ -2152,7 +2156,7 @@ const MO_SCENE={
   echo:d=>`<div class="ms b grid"><div class="mo-ec">${[...Array(7)].map((_,i)=>`<span style="--i:${i};--s:${(5+i*1.25).toFixed(2)};--ty:${((3-i)*7)}cqmin">${d.a}</span>`).join('')}</div><div class="mo-ef">${LT(d.b)}</div></div>`,
   count:d=>`<div class="ms d"><img class="mo-bgimg" src="${d.img}" alt=""><div class="mo-cn"><span class="mo-num">${d.pre||''}<b style="--to:${d.n}"></b>${d.suf||''}</span><span class="mo-cl">${d.l}</span><div class="mo-pb"><i></i></div></div></div>`,
   steps:d=>`<div class="ms w"><div class="mo-sh">How we do it</div><div class="mo-steps">${d.s.map((x,k)=>`<div class="mo-step" style="--d:${.35+k*.5}s"><i>0${k+1}</i><div><b>${x[0]}</b><span>${x[1]}</span></div></div>`).join('')}</div></div>`,
-  cta:d=>`<div class="ms b"><div class="rings"></div><div class="mo-logo"><img src="logo/stayup-mark-circle.png" alt=""></div><div class="mo-ct">${LT(d.t)}</div><div class="mo-tap">${d.tap||'Tap to see the plan →'}</div></div>`
+  cta:d=>`<div class="ms b"><div class="rings"></div><div class="mo-logo"><img src="logo/stayup-mark-circle-400.webp" alt=""></div><div class="mo-ct">${LT(d.t)}</div><div class="mo-tap">${d.tap||'Tap to see the plan →'}</div></div>`
 };
 const sv=(n,k)=>`services/0${n}-${k}.webp`, svAll=n=>[sv(n,1),sv(n,2),sv(n,3)];
 const MOTIONS=[
@@ -2317,7 +2321,7 @@ const WLEVELS=['All','Posts','Reels','Websites','Branding','Campaigns','AI'];
 const wkTag=c=>({Reels:'Reel',Posts:'Post',Websites:'Website',Campaigns:'Campaign'}[c]||c);
 const WPLAY='<span class="wk-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>';
 function wkTile(w,i){
-  const media=w.v?`<video muted loop playsinline preload="none" poster="${w.p}" src="${w.v}"></video>`:`<img src="${w.p}" alt="" loading="lazy" decoding="async">`;
+  const media=w.v?`<video muted loop playsinline preload="none" data-poster="${w.p}" src="${w.v}"></video>`:`<img src="${w.p}" alt="" loading="lazy" decoding="async">`;
   return `<button class="wk-tile${w.web?' web':''}" data-i="${i}" data-hot aria-label="${wkTag(w.c)}: ${w.t}" style="aspect-ratio:${w.ar}">${media}<span class="wk-tag">${wkTag(w.c)}</span>${w.v?WPLAY:''}<span class="wk-cap">${w.t}</span></button>`;
 }
 // --- Feed: masonry wall with a glass filter bar
@@ -2335,6 +2339,7 @@ function wkBuild(anim){
       t.addEventListener('pointerleave',()=>{v.pause();v.muted=true})}
   });
   $$('button',wkAlt).forEach(b=>b.setAttribute('aria-pressed',b.dataset.c===wkCat));
+  if(window.lazyPostersIn) lazyPostersIn(wkGrid); // set up further down; the first build is picked up there
   wkFeedTick();
 }
 wkAlt.innerHTML=WLEVELS.map(c=>`<button data-c="${c}" data-hot aria-pressed="${c==='All'}"><span>${c}</span><small>${c==='All'?WORK.length:WORK.filter(w=>w.c===c).length}</small><i></i></button>`).join('');
@@ -2456,14 +2461,13 @@ async function send(btn,tray,run){
   else{await bot("I couldn't send that from here. Tap below to send the same message on WhatsApp.",run);
     const t=document.createElement('div');t.className='tray';t.innerHTML=`<a class="btn grad" href="${wa}" target="_blank" rel="noopener" data-hot><svg><use href="#i-wa"/></svg>Send on WhatsApp</a>`;thread.appendChild(t);scrollThread()}
   addLikes(40);
-  const a=chat.ans, svc=a.services||[a.intent], bud=a.budget||'', when=a.when||'';
-  const hot=['₹75K to ₹1.5L','₹1.5L+'].includes(bud)&&when!=='Just exploring', warm=bud&&when!=='Just exploring';
-  const lead=document.createElement('div'); lead.className='lead';
-  lead.innerHTML=`<span class="label" style="letter-spacing:.25em">How this lands in your inbox</span><span class="score ${hot?'':warm?'warm':'cool'}">${hot?'Hot lead':warm?'Warm lead':'Explorer'}</span><div class="lead-tags">${[].concat(svc,a.biz||[],bud||[],when||[]).map(x=>`<span>${x}</span>`).join('')}</div><span class="muted" style="font-size:12px">Sent to Google Sheets with a WhatsApp alert in the live build.</span>`;
-  thread.appendChild(lead); scrollThread();
 }
 
 /* ---------- Harshit's Reels ---------- */
+/* video posters load only when the video comes near the screen (hidden views never fetch them) */
+const posterIO='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const v=e.target;v.poster=v.dataset.poster;v.removeAttribute('data-poster');posterIO.unobserve(v)}}),{rootMargin:'800px 0px'}):null;
+function lazyPosters(root){$$('video[data-poster]',root).forEach(v=>{if(posterIO)posterIO.observe(v);else{v.poster=v.dataset.poster}})}
+lazyPosters(document); window.lazyPostersIn=lazyPosters;
 $$('[data-reel]').forEach(card=>{
   const v=$('video',card),m=$('.rc-mute',card);
   const play=()=>{const pr=v.play();card.classList.add('playing');if(pr&&pr.catch)pr.catch(()=>card.classList.remove('playing'))};
@@ -2554,7 +2558,7 @@ const galleryEl=$('#gallery'), GCOLS=[];
     wall.appendChild(col); GCOLS.push({el:col,dir:c%2?1:-1,sp:16+(c%3)*5,par:c%2?.12:.22,h:0,ph:c*137});
   });
   // each column loops as a CSS animation, which the browser runs off the main thread, so the wall keeps gliding while the page is busy
-  const measure=()=>{GCOLS.forEach(o=>{o.h=o.el.firstElementChild.offsetHeight;if(!o.h)return;o.el.style.setProperty('--h',o.h+'px');
+  const measure=()=>{GCOLS.forEach(o=>{o.h=o.el.firstElementChild.offsetHeight});GCOLS.forEach(o=>{if(!o.h)return;o.el.style.setProperty('--h',o.h+'px');
     o.el.style.animation=RM?'none':`gloop ${(o.h/o.sp).toFixed(1)}s linear ${(-(o.ph%o.h)/o.sp).toFixed(1)}s infinite ${o.dir>0?'normal':'reverse'}`}); fadeCols()};
   // centre columns fade so text stays readable (replaces a full-screen mask that had to be redrawn every frame)
   function fadeCols(){const vw=innerWidth,P=[[0,1],[.26,.55],[.5,.22],[.74,.55],[1,1]];
@@ -2662,40 +2666,12 @@ function initGL(){
   const glow=new T.Mesh(new T.CircleGeometry(7,48),new T.MeshBasicMaterial({map:radial('rgba(31,63,255,.75)','rgba(0,5,56,0)'),transparent:true,depthWrite:false,blending:T.AdditiveBlending}));
   glow.rotation.x=-Math.PI/2; glow.position.y=.01;
 
-  // hero: logo square + glass phone
-  const hero=new T.Group(); scene.add(hero);
-  const logoMat=new T.MeshPhysicalMaterial({color:0x0b1a8a,roughness:.15,metalness:.2,clearcoat:1,emissive:0x1f3fff,emissiveIntensity:.35});
-  const logo=new T.Mesh(rbox(1.5,1.5,.5,.36),logoMat); logo.position.set(-1.75,.95,0); hero.add(logo);
-  const logoFace=new T.Mesh(new T.PlaneGeometry(1.52,1.52),new T.MeshBasicMaterial({map:new T.TextureLoader().load('logo/stayup-mark-square.png'),transparent:true})); logoFace.position.z=.28; logo.add(logoFace);
-  const logoRim=new T.Mesh(rbox(1.62,1.62,.42,.4),new T.MeshBasicMaterial({color:0x12d8fa,transparent:true,opacity:.5})); logoRim.position.copy(logo.position); logoRim.position.z-=.06; hero.add(logoRim);
-  const logoGlow=new T.Sprite(new T.SpriteMaterial({map:radial('rgba(18,216,250,.9)','rgba(18,216,250,0)'),transparent:true,depthWrite:false,blending:T.AdditiveBlending}));
-  logoGlow.scale.set(3.4,3.4,1); logoGlow.position.copy(logo.position); logoGlow.position.z-=.3; hero.add(logoGlow);
-
-  const phone=new T.Group(); phone.position.set(.75,1.95,.4); hero.add(phone);
-  phone.add(new T.Mesh(rbox(1.62,3.22,.16,.26),M.glass));
-  const pc=document.createElement('canvas'); pc.width=360; pc.height=720; const px=pc.getContext('2d');
-  const screenTex=new T.CanvasTexture(pc);
-  const screen=new T.Mesh(new T.PlaneGeometry(1.44,2.95),new T.MeshBasicMaterial({map:screenTex})); screen.position.z=.1; phone.add(screen);
-  let phoneLit=0,phoneCount=0;
-  function drawPhone(){
-    const x=px; x.fillStyle='#04083a'; x.fillRect(0,0,360,720);
-    x.fillStyle='#fff'; x.font='600 17px Inter, system-ui, sans-serif'; x.fillText('9:41',26,34);
-    x.font='600 25px Fredoka, Inter, sans-serif'; x.fillText('stayup.social',24,84);
-    heart2d(x,300,76,30,null,phoneLit?'#fff':'#5a6090');
-    if(phoneLit){x.fillStyle='#FF2D55';x.beginPath();x.arc(318,62,15,0,7);x.fill();x.fillStyle='#fff';x.font='700 12px Inter, sans-serif';x.textAlign='center';x.fillText(phoneLit>.3?'99+':'1',318,66);x.textAlign='left'}
-    const mult=[1,.62,.34];
-    for(let i=0;i<3;i++){const y=112+i*198;
-      rr2d(x,16,y,328,184,20); x.fillStyle='rgba(255,255,255,.05)'; x.fill();
-      rr2d(x,28,y+12,304,116,14);
-      if(phoneLit){const g=x.createLinearGradient(28,y,332,y+128);g.addColorStop(0,i===1?'#1F3FFF':'#12D8FA');g.addColorStop(1,i===1?'#12D8FA':'#1F3FFF');x.fillStyle=g}else x.fillStyle='#161b46';
-      x.fill();
-      heart2d(x,44,y+156,26,phoneLit?'#FF2D55':null,phoneLit?null:'#4a5080');
-      x.fillStyle=phoneLit?'#fff':'#5a6090'; x.font='600 17px Inter, sans-serif';
-      x.fillText(fmt(phoneCount*mult[i])+' likes',66,y+162);
-    }
-    screenTex.needsUpdate=true;
-  }
-  drawPhone(); if(document.fonts) document.fonts.ready.then(drawPhone);
+  // hero anchors: the HTML hero (.hero-vis) replaced the 3D logo tile and phone; these empty nodes only give the arrow a starting point
+  const hero=new T.Group(); hero.visible=false; scene.add(hero);
+  const logoMat={emissiveIntensity:0};
+  const logo=new T.Object3D(); logo.position.set(-1.75,.95,0); hero.add(logo);
+  const phone=new T.Object3D(); phone.position.set(.75,1.95,.4); hero.add(phone);
+  let phoneLit=0,phoneCount=0; function drawPhone(){}
 
   // Uppy: the logo arrow as a glossy glass mascot
   const uppyMat=new T.MeshPhysicalMaterial({color:0x7fefff,roughness:.05,metalness:.1,clearcoat:1,clearcoatRoughness:.05,emissive:0x12d8fa,emissiveIntensity:.4,transparent:true,opacity:.95,envMapIntensity:1.6});
@@ -2707,20 +2683,6 @@ function initGL(){
   const trail=[]; for(let i=0;i<50;i++){const s=new T.Sprite(trailMat.clone());s.visible=false;scene.add(s);trail.push({s,life:0})}
   let trailK=0;
 
-  // floating posts (the feed), magnetic to the cursor
-  const postTexs=[0,1,2,3].map(k=>canvasTex(256,320,(x)=>{
-    rr2d(x,4,4,248,312,30); x.fillStyle='rgba(9,18,105,.92)'; x.fill(); x.strokeStyle='rgba(127,239,255,.55)'; x.lineWidth=3; x.stroke();
-    const g0=x.createLinearGradient(0,0,40,40);g0.addColorStop(0,'#12D8FA');g0.addColorStop(1,'#1F3FFF');x.fillStyle=g0;x.beginPath();x.arc(34,34,14,0,7);x.fill();
-    x.fillStyle='rgba(255,255,255,.8)';rr2d(x,56,24,96,9,4);x.fill();x.fillStyle='rgba(138,147,201,.7)';rr2d(x,56,39,60,7,3);x.fill();
-    const g=x.createLinearGradient(16,60,240,250);const cs=[['#12D8FA','#1F3FFF'],['#1F3FFF','#7FEFFF'],['#7FEFFF','#1F3FFF'],['#1F3FFF','#0B1468']][k];g.addColorStop(0,cs[0]);g.addColorStop(1,cs[1]);
-    rr2d(x,16,60,224,190,20);x.fillStyle=g;x.fill();
-    x.fillStyle='rgba(255,255,255,.85)';
-    if(k===0){x.beginPath();x.moveTo(128,95);x.lineTo(170,150);x.lineTo(145,150);x.lineTo(145,210);x.lineTo(111,210);x.lineTo(111,150);x.lineTo(86,150);x.closePath();x.fill()}
-    if(k===1){x.beginPath();x.arc(128,155,48,0,7);x.fill()}
-    if(k===2){x.lineWidth=8;x.strokeStyle='#fff';x.beginPath();x.moveTo(40,220);x.lineTo(90,180);x.lineTo(130,195);x.lineTo(210,95);x.stroke()}
-    if(k===3){heart2d(x,128,158,90,'#FF2D55')}
-    heart2d(x,32,282,26,'#FF2D55'); x.fillStyle='#fff'; x.font='600 21px Inter, sans-serif'; x.fillText(['1.2K','8.4K','23K','312'][k],54,290);
-  }));
   const posts=[]; // background photos removed; the CSS gallery wall (#gallery) replaces them
   function placeBgCards(){ // keep each lane near the screen edges at any width
     const mob=isMobile();
@@ -2834,7 +2796,6 @@ function initGL(){
       g.rotation.x=.18;
       return t=>{g.rotation.y=t*.45;pins.forEach((p,i)=>p.position.y=-.76+Math.abs(Math.sin(t*2+i))*.12)}}
   ];
-  const tiles=TB.map(tileScene);
 
   /* dim overlay for when a post is open */
   const dimScene=new T.Scene(),dimCam=new T.OrthographicCamera(-1,1,1,-1,0,1);
@@ -2843,22 +2804,8 @@ function initGL(){
   /* layout */
   function layout(){
     renderer.setSize(innerWidth,innerHeight,false); camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix();
-    if(isMobile()) placeHeroMobile(); else{hero.position.set(2.9,.9,0);hero.scale.setScalar(1)}
+    hero.position.set(isMobile()?0:2.9,.9,0);
     placeBgCards();
-  }
-  // phones: size and centre the 3D logo + phone in the band between the hero buttons and the scroll cue
-  let heroBox=null;
-  function placeHeroMobile(){
-    if(!heroBox){hero.position.set(0,0,-.6);hero.scale.setScalar(1);hero.updateMatrixWorld(true);const b=new T.Box3().setFromObject(logo).union(new T.Box3().setFromObject(phone));b.max.y+=.45;/* phone lifts after launch */heroBox={h:Math.max(.5,b.max.y-b.min.y),cy:(b.max.y+b.min.y)/2}}
-    const H=innerHeight, cta=document.querySelector('.hero .hero-sub'), cue=document.querySelector('.hero .scroll-up'), s1=document.getElementById('s1');
-    const top=(cta?cta.getBoundingClientRect().bottom+scrollY:H*.55)+10, ph=document.querySelector('.hero .hero-grid > [aria-hidden]'), bot=(cue&&cue.offsetParent?cue.getBoundingClientRect().top+scrollY-6:ph?ph.getBoundingClientRect().bottom+scrollY+24:H-150);
-    // camera pose at the top of the page: altitude already climbs a little because the scroll probe sits 35% down the screen (1.6 to 12 = first two ALTS)
-    const f=clamp(H*.35/Math.max(1,s1?s1.offsetTop:H),0,1), y0=lerp(1.6,12,f*4/6);
-    const c=camera.clone(); c.fov=50; c.aspect=innerWidth/H; c.updateProjectionMatrix(); c.position.set(0,y0,9); c.lookAt(0,y0+.25,0); c.updateMatrixWorld(true);
-    const rc=new T.Raycaster(), atY=py=>{rc.setFromCamera({x:0,y:1-2*py/H},c);const o=rc.ray.origin,d=rc.ray.direction;return o.y+d.y*((-.6-o.z)/d.z)};
-    const dockTop=(document.querySelector('nav.bar')||{getBoundingClientRect:()=>({top:H})}).getBoundingClientRect().top||H;
-    const wt=atY(top), wb=atY(Math.max(top+110,Math.min(bot,dockTop-10))), sc=Math.min(.82,(wt-wb)*.94/heroBox.h);
-    hero.scale.setScalar(sc); hero.position.set(.25,(wt+wb)/2-heroBox.cy*sc,-.6);
   }
   layout(); addEventListener('resize',layout); document.fonts&&document.fonts.ready.then(layout);
 
@@ -2866,9 +2813,10 @@ function initGL(){
   const camTarget=()=>{if(S.view==='home'){const q=(S.altP||0)*4,i=Math.floor(q),f=q-i;return i>=4?ALTS[4]:lerp(ALTS[i],ALTS[i+1],f)}return VIEW_ALT[S.view]};
   let camY=1.6, t=0, launchAt=2.0, launched=false, burstDone=0;
   const ray=new T.Raycaster(), tmp=new T.Vector3(), tmp2=new T.Vector3(), uT=new T.Vector3();
-  const heroSeq=[{at:.6,f:()=>{phoneLit=.1;drawPhone();const p=proj(phone);burst(1,p.x,p.y,20,20,0)}},
-                 {at:1.5,f:()=>{phoneLit=1;const p=proj(phone);const n=TIER==='lite'?8:TIER==='medium'?10:12;burst(RM?8:n,p.x,p.y,isMobile()?300:380,isMobile()?320:460,RM?0:22)}}];
-  function proj(o){const el=document.querySelector('.hv-phone');if(el){const r=el.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height*.35}}o.getWorldPosition(tmp2);tmp2.project(camera);return{x:(tmp2.x+1)/2*innerWidth,y:(1-tmp2.y)/2*innerHeight}}
+  // like-hearts pop from the hero phone once, only when the home hero is on screen and motion is allowed
+  const heroPhone=()=>{if(RM||S.view!=='home')return null;const el=document.querySelector('.hv-phone'),r=el&&el.getBoundingClientRect();return r&&r.width&&r.bottom>0&&r.top<innerHeight?{x:r.left+r.width/2,y:r.top+r.height*.35}:null};
+  const heroSeq=[{at:.6,f:()=>{const p=heroPhone();if(p)burst(1,p.x,p.y,20,20,0)}},
+                 {at:1.5,f:()=>{const p=heroPhone();const n=TIER==='lite'?8:TIER==='medium'?10:12;if(p)burst(n,p.x,p.y,isMobile()?300:380,isMobile()?320:460,22)}}];
 
   function renderStage(ts,el,dt){
     const r=el.getBoundingClientRect(); if(r.bottom<0||r.top>innerHeight||r.width<2) return;
@@ -2888,7 +2836,6 @@ function initGL(){
     const dt=Math.max(0,Math.min((now-last)/1000,.05)); last=now; t+=dt;
     tickLikes(); tickCursor(); tickSpot(); updOrbit(dt); tickStory(dt); if(S.view==='home') drawAlt();
     heroSeq.forEach(h=>{if(!h.done&&t>h.at){h.done=1;h.f()}});
-    if(phoneLit===1&&phoneCount<12840){phoneCount=Math.min(12840,phoneCount+dt*6400+phoneCount*dt*1.5);drawPhone()}
 
     // camera rises with scroll (inverted gravity)
     const ty=camTarget(); camY=RM?ty:lerp(camY,ty,.075);
@@ -2966,10 +2913,11 @@ const stackCards=$$('#stack .scard');
 stackCards.forEach(c=>c.firstElementChild.insertAdjacentHTML('beforeend','<i class="sc-dim" aria-hidden="true"></i>'));
 function updStack(){
   if(S.view!=='home'||!stackCards.length) return;
-  stackCards.forEach((c,i)=>{const nx=stackCards[i+1],inn=c.firstElementChild;
-    const dim=inn.querySelector('.sc-dim');
-    if(!nx){inn.style.transform='';dim.style.opacity=0;return}
-    const r=c.getBoundingClientRect(),n=nx.getBoundingClientRect(),p=clamp((r.bottom-n.top)/r.height,0,1);
+  // read every card position first, then write, so scrolling costs one layout instead of one per card
+  const R=stackCards.map(c=>c.getBoundingClientRect());
+  stackCards.forEach((c,i)=>{const inn=c.firstElementChild,dim=inn.querySelector('.sc-dim');
+    if(i===stackCards.length-1){inn.style.transform='';dim.style.opacity=0;return}
+    const r=R[i],n=R[i+1],p=clamp((r.bottom-n.top)/r.height,0,1);
     inn.style.transform=`scale(${(1-p*.06).toFixed(4)})`;dim.style.opacity=(p*.4).toFixed(3);});
 }
 addEventListener('scroll',()=>requestAnimationFrame(updStack),{passive:true});
@@ -2991,7 +2939,9 @@ function startFallback(show){if(show!==false)document.documentElement.classList.
   startFallback(false); // keep the page ticking while Three.js arrives
   const sc=document.createElement('script'); sc.src=window.THREE_SRC; sc.async=true;
   sc.onerror=()=>startFallback(); sc.onload=()=>{try{const g=initGL();fbOn=false;document.documentElement.classList.remove('no-gl');GL=g;GL.snap()}catch(e){startFallback()}};
-  document.head.appendChild(sc);
+  // the 3D sky arrives after the page's own pictures, so on slow 4G the content shows first
+  const add=()=>document.head.appendChild(sc);
+  if(document.readyState==='complete') add(); else addEventListener('load',add,{once:true});
 })();
 const hv=(location.hash||'').slice(1), hashView=['home','services','work','dm'].includes(hv)?hv:null;
 const start=PATHS?(hashView||viewFromPath()):(hashView||'home');
