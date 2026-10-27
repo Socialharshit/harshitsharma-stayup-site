@@ -268,25 +268,26 @@ html.js .rv:not(.in){opacity:0;transform:translateY(36px) scale(.96)}
 @keyframes hvFeed{0%,13%{transform:translateY(0)}20%,33%{transform:translateY(-30.6em)}40%,53%{transform:translateY(-61.2em)}60%,73%{transform:translateY(-91.8em)}80%,93%{transform:translateY(-122.4em)}100%{transform:translateY(-153em)}}
 @keyframes hvPop{0%,3%{opacity:0;transform:translateY(1.4em) scale(.96)}9%,40%{opacity:1;transform:none}46%,100%{opacity:0;transform:translateY(-.8em) scale(.98)}}
 @keyframes hvFloat{50%{transform:translateY(-1em)}}
-/* trusted-by strip */
-.trusted{display:flex;align-items:center;gap:24px;margin-top:clamp(28px,5vh,56px)}
-.trusted .label{white-space:nowrap;flex:none}
-.tr-logos{flex:1;min-width:0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-.tr-track{list-style:none;margin:0;padding:0;display:flex;gap:12px;width:max-content;animation:trq 48s linear infinite}
-.tr-track li{flex:none;width:124px;height:54px;border-radius:16px;background:#fff;display:grid;place-items:center;padding:8px 14px;box-shadow:0 10px 24px -14px rgba(0,0,0,.8)}
-.tr-track img{max-width:100%;max-height:36px;width:auto;height:auto;object-fit:contain}
+/* trusted-by strip: full width, three identical sets moving one set-width per loop, so it never jumps */
+.trusted{display:grid;gap:14px;margin-top:clamp(28px,5vh,56px)}
+.tr-logos{overflow:hidden;width:100%}
+.tr-track{display:flex;width:max-content;animation:trq 60s linear infinite;will-change:transform}
+.tr-set{list-style:none;margin:0;padding:0 14px 0 0;display:flex;gap:14px;flex:none}
+.tr-set li{flex:none;height:64px;min-width:170px;padding:0 22px;border-radius:18px;display:grid;place-items:center;box-shadow:0 12px 30px -18px rgba(0,0,0,.6)}
+.tr-set img{display:block;height:44px;width:auto;max-width:170px;object-fit:contain}
 .tr-logos:hover .tr-track{animation-play-state:paused}
-@keyframes trq{to{transform:translateX(calc(-50% - 6px))}}
+@keyframes trq{to{transform:translate3d(-33.3333%,0,0)}}
 .hero .scroll-up{display:none}
 @media (max-width:1100px) and (min-width:761px){.hero-vis{--u:8.4px;max-width:46em;justify-self:start}}
 @media (max-width:760px){
   .hero-vis{--u:6.4px;height:56em;max-width:none;margin-top:4px}
   .hv-toast{width:24em;-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(18,30,128,.94)}
   .hv-toast.t1{left:0;top:6em}.hv-toast.t2{right:0;top:19em}.hv-toast.t3{left:0;top:33em}.hv-toast.t4{right:0;top:44em}
-  .trusted{flex-direction:column;align-items:stretch;gap:12px;margin-top:24px}
-  .trusted .label{text-align:center}
-  .tr-track li{width:104px;height:48px;border-radius:14px}
-  .tr-track img{max-height:30px}
+  .trusted{gap:12px;margin-top:24px}
+  .trusted .label{display:block;text-align:center}
+  .tr-set{gap:10px;padding-right:10px}
+  .tr-set li{height:52px;min-width:124px;padding:0 16px;border-radius:14px}
+  .tr-set img{height:34px;max-width:130px}
   #view-home .scene.hero{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
 }
 @media (prefers-reduced-motion:reduce){.hv-phone,.hv-feed,.tr-track{animation:none}.hv-toast{animation:none;opacity:1}.hv-toast.t3,.hv-toast.t4{display:none}}
@@ -783,17 +784,12 @@ body.modal-open main .view{visibility:hidden}
 #open-story .face img,.av-s img{border-radius:50%}
 .selfie{overflow:hidden}.av-s{overflow:hidden}
 .orbit-center .pf{padding:0;background:none}.orbit-center .pf div{border:0;background:none}
-@media (prefers-reduced-motion:reduce){#s2 .marquee-track{animation-duration:36s!important;animation-iteration-count:infinite!important}}
 .fb-names{display:inline-block;transition:transform .35s var(--spring),opacity .3s ease}.fb-names.out{opacity:0;transform:translateY(-10px)}
-#s2 .marquee{width:100vw;max-width:none;justify-self:start;margin-left:calc(50% - 50vw);-webkit-mask:none;mask:none}
 @media (max-width:760px){.orbit{aspect-ratio:1/1}}
-.marquee{width:100%;overflow:hidden;margin-top:30px;-webkit-mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.marquee-track{display:flex;width:max-content;animation:marq 36s linear infinite}
 .mq-set{display:flex;gap:14px;padding-right:14px}
 @keyframes marq{to{transform:translateX(-50%)}}
 .brand-logo{flex:none;height:64px;min-width:170px;padding:0 24px;border-radius:18px;display:grid;place-items:center;background:var(--glass);border:1px solid var(--line);font-family:var(--f-display);font-weight:600;font-size:18px;white-space:nowrap}
 .brand-logo img{display:block;height:46px;width:auto;max-width:190px;object-fit:contain}
-.marquee .brand-logo{height:74px;min-width:250px;padding:0 22px;border:0;box-shadow:0 12px 30px -18px rgba(0,0,0,.6)}
 .brand-logo.slot{border-style:dashed;color:var(--steel);font-family:var(--f-label);font-weight:300;font-size:11px;letter-spacing:.3em;text-transform:uppercase}
 /* v2: founder copy */
 .founder-copy h2{font-size:clamp(30px,4.2vw,52px)}
@@ -1311,9 +1307,9 @@ html.perf-2 .wk-lb{background:rgba(0,3,31,.97)}
         <div class="hv-toast t1"><span class="hv-ic ig"><svg><use href="#i-heart"/></svg></span><span><b>Your reel is trending</b><small>Instagram · just now</small></span></div><div class="hv-toast t2"><span class="hv-ic ad">f</span><span><b>New lead from your ad</b><small>Meta Ads · 2 min ago</small></span></div><div class="hv-toast t3"><span class="hv-ic ai"><svg><use href="#i-send"/></svg></span><span><b>AI agent booked a call</b><small>WhatsApp · 10:42 AM</small></span></div><div class="hv-toast t4"><span class="hv-ic web"><svg><use href="#i-grid"/></svg></span><span><b>New website enquiry</b><small>Contact form · today</small></span></div>
       </div>
     </div>
-    <div class="wrap trusted rv in">
-      <span class="label">Trusted by</span>
-      <div class="tr-logos"><ul class="tr-track"><li><img src="clients/mura.png" alt="Hotel Mura Bliss" width="160" height="80" decoding="async"></li><li><img src="clients/hiranandani.png" alt="Hiranandani" width="160" height="80" decoding="async"></li><li><img src="clients/godrej-properties.jpg" alt="Godrej Properties" width="160" height="80" decoding="async"></li><li><img src="clients/ananta-hospital.jpg" alt="Ananta Multispeciality Hospital" width="160" height="80" decoding="async"></li><li><img src="clients/joom.jpg" alt="Joom" width="160" height="80" decoding="async"></li><li><img src="clients/nivesh-sarthi.png" alt="Nivesh Sarthi" width="160" height="80" decoding="async"></li><li><img src="clients/onestream.jpg" alt="OneStream" width="160" height="80" decoding="async"></li><li><img src="clients/avani-interior.png" alt="Avani Interior" width="160" height="80" decoding="async"></li><li><img src="clients/dereva-pharma.jpg" alt="Dereva Pharma" width="160" height="80" decoding="async"></li><li><img src="clients/rare-bean.jpg" alt="Rare Bean" width="160" height="80" decoding="async"></li><li><img src="clients/the-decor-vibe.jpg" alt="The Decor Vibe" width="160" height="80" decoding="async"></li><li><img src="clients/chorus.jpg" alt="Chorus" width="160" height="80" decoding="async"></li><li><img src="clients/cakes-and-bakes.png" alt="Cakes &amp; Bakes" width="160" height="80" decoding="async"></li><li><img src="clients/open-interior.png" alt="Open Interior Design" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/mura.png" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/hiranandani.png" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/godrej-properties.jpg" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/ananta-hospital.jpg" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/joom.jpg" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/nivesh-sarthi.png" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/onestream.jpg" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/avani-interior.png" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/dereva-pharma.jpg" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/rare-bean.jpg" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/the-decor-vibe.jpg" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/chorus.jpg" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/cakes-and-bakes.png" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/open-interior.png" alt="" width="160" height="80" decoding="async"></li></ul></div>
+    <div class="trusted rv in">
+      <div class="wrap"><span class="label">Trusted by</span></div>
+      <div class="tr-logos"><div class="tr-track"><ul class="tr-set"><li style="background:#fff"><img src="hero/logos/mura.png" alt="Hotel Mura Bliss" decoding="async"></li><li style="background:#fefefe"><img src="hero/logos/hiranandani.jpg" alt="Hiranandani" decoding="async"></li><li style="background:#fff"><img src="hero/logos/godrej-properties.jpg" alt="Godrej Properties" decoding="async"></li><li style="background:#fff"><img src="hero/logos/ananta-hospital.jpg" alt="Ananta Multispeciality Hospital" decoding="async"></li><li style="background:#fff"><img src="hero/logos/joom.jpg" alt="Joom" decoding="async"></li><li style="background:#fff"><img src="hero/logos/nivesh-sarthi.png" alt="Nivesh Sarthi" decoding="async"></li><li style="background:#fff"><img src="hero/logos/onestream.jpg" alt="OneStream" decoding="async"></li><li style="background:#fff"><img src="hero/logos/avani-interior.png" alt="Avani Interior" decoding="async"></li><li style="background:#F3EFE6"><img src="hero/logos/dereva-pharma.jpg" alt="Dereva Pharma" decoding="async"></li><li style="background:#fff"><img src="hero/logos/rare-bean.jpg" alt="Rare Bean" decoding="async"></li><li style="background:#fff"><img src="hero/logos/the-decor-vibe.jpg" alt="The Decor Vibe" decoding="async"></li><li style="background:#fff"><img src="hero/logos/chorus.jpg" alt="Chorus" decoding="async"></li><li style="background:#FEF5E9"><img src="hero/logos/cakes-and-bakes.jpg" alt="Cakes &amp; Bakes" decoding="async"></li><li style="background:#EEEEEE"><img src="hero/logos/open-interior.jpg" alt="Open Interior Design" decoding="async"></li></ul><ul class="tr-set" aria-hidden="true"><li style="background:#fff"><img src="hero/logos/mura.png" alt="" decoding="async"></li><li style="background:#fefefe"><img src="hero/logos/hiranandani.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/godrej-properties.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/ananta-hospital.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/joom.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/nivesh-sarthi.png" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/onestream.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/avani-interior.png" alt="" decoding="async"></li><li style="background:#F3EFE6"><img src="hero/logos/dereva-pharma.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/rare-bean.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/the-decor-vibe.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/chorus.jpg" alt="" decoding="async"></li><li style="background:#FEF5E9"><img src="hero/logos/cakes-and-bakes.jpg" alt="" decoding="async"></li><li style="background:#EEEEEE"><img src="hero/logos/open-interior.jpg" alt="" decoding="async"></li></ul><ul class="tr-set" aria-hidden="true"><li style="background:#fff"><img src="hero/logos/mura.png" alt="" decoding="async"></li><li style="background:#fefefe"><img src="hero/logos/hiranandani.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/godrej-properties.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/ananta-hospital.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/joom.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/nivesh-sarthi.png" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/onestream.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/avani-interior.png" alt="" decoding="async"></li><li style="background:#F3EFE6"><img src="hero/logos/dereva-pharma.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/rare-bean.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/the-decor-vibe.jpg" alt="" decoding="async"></li><li style="background:#fff"><img src="hero/logos/chorus.jpg" alt="" decoding="async"></li><li style="background:#FEF5E9"><img src="hero/logos/cakes-and-bakes.jpg" alt="" decoding="async"></li><li style="background:#EEEEEE"><img src="hero/logos/open-interior.jpg" alt="" decoding="async"></li></ul></div></div>
     </div>
     <div class="scroll-up" aria-hidden="true"><span><svg><use href="#i-arrow"/></svg></span>Scroll up</div>
   </section>
@@ -1333,7 +1329,6 @@ html.perf-2 .wk-lb{background:rgba(0,3,31,.97)}
       </div>
       <p class="fb-line shadow-txt">Followed by <span class="fb-names" id="fb-names"><b>Hiranandani</b>, <b>Godrej Properties</b></span> and others.</p>
       <div class="result-chip" id="result-chip" aria-live="polite"><svg><use href="#i-arrow"/></svg><span>Hover a planet to see the client.</span></div>
-      <div class="marquee" aria-label="Brands we work with"><div class="marquee-track" id="marquee-track"></div></div>
     </div>
   </section>
 
@@ -2094,8 +2089,6 @@ function updOrbit(dt){
     p.el.style.zIndex=d>.5?3:1; p.el.style.opacity=(.5+d*.5).toFixed(2);
   });
 }
-const mqSet=hide=>`<div class="mq-set"${hide?' aria-hidden="true"':''}>${BRANDS.map(b=>`<span class="brand-logo" style="background:${b.bg}"><img src="${b.logo}" alt="${hide?'':b.n}" height="60" loading="lazy"></span>`).join('')}</div>`;
-$('#marquee-track').innerHTML=mqSet(false)+mqSet(true);
 // "Followed by" line loops through the clients, two at a time
 (function(){const pairs=[['Hiranandani','Godrej Properties'],['Mura','Dereva Pharma'],['Ananta Hospital','Nivesh Sarthi'],['Avani Interior','OneStream'],['Cakes & Bakes','Joom'],['Open Interior Design','Rare Bean'],['Chorus','The Decor Vibe']];
   const el=$('#fb-names');let k=0;setInterval(()=>{el.classList.add('out');setTimeout(()=>{k=(k+1)%pairs.length;el.innerHTML=`<b>${pairs[k][0]}</b>, <b>${pairs[k][1]}</b>`;el.classList.remove('out')},320)},2800)})();
