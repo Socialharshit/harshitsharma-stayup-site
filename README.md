@@ -21,11 +21,12 @@ Replace `YOUR-DOMAIN.com` with the real domain in `site/index.html`, `site/robot
 
 ## Performance
 
-The site adapts to each device. It starts at a quality level based on the device and connection (`perf-1` balanced for 4-thread CPUs, low-memory devices and entry phones; `perf-2` lite for slow data, data-saver or reduced motion). It then watches the real frame rate and steps down if a device drops below 40 fps. The chosen level is remembered for 3 days.
+Every device gets the same full look (3D sky, moving gallery wall, glass). The heavy effects are built to be cheap to draw:
 
-- Full: 3D sky, moving gallery wall, glass blur.
-- Balanced: 3D at 1x resolution and 30 fps, still gallery wall, lighter blur, no grain.
-- Lite: no 3D (Three.js is never downloaded), no blur, no gallery wall; the hero shows the logo instead.
+- The 3D sky uses dynamic resolution: on a weaker graphics chip it renders a little softer instead of dropping frames, then sharpens again. It redraws at 30 fps while nothing is moving and at 60 fps while scrolling.
+- The gallery wall moves with CSS animations, which run off the main thread, and fades its centre columns with per-column opacity instead of full-screen masks.
+- Glass blur radii are moderate, and the film grain uses a normal blend.
+- Three.js loads after the page and the images load lazily, so the first screen appears quickly on 4G.
 
 ## Contact form
 

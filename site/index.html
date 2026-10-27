@@ -1154,6 +1154,14 @@ html.no-gl .hero .hero-grid > [aria-hidden]{display:block;min-height:300px;backg
 @keyframes heroFloat{to{transform:translateY(-14px)}}
 @media (max-width:760px){html.no-gl .hero .hero-grid > [aria-hidden]{min-height:0;background-size:auto 78%}}
 @media (prefers-reduced-motion:reduce){html.no-gl .hero .hero-grid > [aria-hidden]{animation:none}}
+/* ===== smooth rendering, same look ===== */
+@keyframes gloop{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,calc(-1 * var(--h)),0)}}
+#gallery,#gallery .gfade{-webkit-mask-image:none;mask-image:none}
+#gallery .gwall{height:160vh}
+#grain{mix-blend-mode:normal;opacity:.035}
+:root{--g-blur:blur(18px) saturate(1.7)}
+@media (hover:hover) and (min-width:761px){.scard-in{-webkit-backdrop-filter:blur(18px) saturate(1.6);backdrop-filter:blur(18px) saturate(1.6)}}
+.scard-in > .sc-dim{position:absolute;inset:0;z-index:6;border-radius:inherit;background:#000;opacity:0;pointer-events:none;will-change:opacity}
 </style>
 </head>
 <body>
@@ -1824,35 +1832,7 @@ const touchDev=matchMedia('(pointer: coarse)').matches;
 const TIER=!touchDev?(mem>=4?'high':'medium'):(cores>=6&&mem>=4?'medium':'lite');
 $('#tier-label').textContent='Rendering: '+TIER[0].toUpperCase()+TIER.slice(1);
 
-/* ---------- Adaptive quality ----------
-   0 full · 1 balanced (lighter glass, 3D at 30fps and 1x, still background) · 2 lite (no 3D, no blur, no background wall).
-   Starts from what the device and connection report, then watches the real frame rate and steps down while a device struggles. */
-const PERF={level:-1};
-function setPerf(L,save){
-  L=Math.min(2,L); if(L<=PERF.level) return; PERF.level=L;
-  const c=document.documentElement.classList; c.toggle('perf-1',L>=1); c.toggle('perf-2',L>=2);
-  if(save){try{localStorage.setItem('stayup-perf',JSON.stringify({L,t:Date.now()}))}catch(e){}}
-  if(L>=2&&typeof startFallback==='function'&&save) startFallback();
-}
-(function(){
-  const net=navigator.connection||{}, slow=net.saveData||/2g|3g/.test(net.effectiveType||'');
-  let L=0;
-  if(cores<=4||mem<=4) L=1;                 // e.g. i3 laptops, entry phones
-  if(touchDev&&(cores<6||mem<4)) L=1;
-  if(slow||RM) L=2;                         // slow data or reduced motion: lightest page
-  try{const s=JSON.parse(localStorage.getItem('stayup-perf')||'null');if(s&&Date.now()-s.t<3*864e5)L=Math.max(L,s.L)}catch(e){}
-  setPerf(L,false);
-})();
-(function watchFps(){ // step down after 2.5s of under 40fps (ignores hidden tabs and page transitions)
-  let n=0,t0=0,calm=performance.now()+4000;
-  requestAnimationFrame(function f(t){
-    requestAnimationFrame(f);
-    if(document.hidden||(typeof busy!=='undefined'&&busy)||PERF.level>=2||t<calm){n=0;t0=t;return}
-    n++; if(t-t0<2500) return;
-    const fps=n*1000/(t-t0); n=0; t0=t;
-    if(fps<40){setPerf(PERF.level+1,true);calm=t+3000}
-  });
-})();
+const PERF={level:0}; // every device gets the full look; heavy effects are made cheaper instead of switched off
 
 /* ---------- State ---------- */
 const S={view:'home',likes:0,shown:0,sound:false,px:innerWidth/2,py:innerHeight/2,nx:0,ny:0,scrollY:0,vel:0,altIdx:0,dive:0,modal:null,overlay:false,portalUppy:false};
@@ -1959,7 +1939,7 @@ function drawAlt(){
 $$('#alt-ticks button').forEach(b=>b.addEventListener('click',()=>{const s=scenes[Math.round(+b.dataset.scene/4*(scenes.length-1))];window.scrollTo({top:s.offsetTop,behavior:RM?'auto':'smooth'})}));
 let lastY=0;
 addEventListener('scroll',()=>{
-  S.scrollY=scrollY; const dy=scrollY-lastY; lastY=scrollY;
+  S.scrollY=scrollY; S.lastMove=performance.now(); const dy=scrollY-lastY; lastY=scrollY;
   S.vel=lerp(S.vel,dy,.3); addLikes(Math.abs(dy)*.22);
   if(S.view==='home') computeAlt();
 },{passive:true});
@@ -2504,8 +2484,9 @@ function setAurora(p){
   const st=auroraEl.style; st.setProperty('--o1',(a.o1+(b.o1-a.o1)*t).toFixed(3)); st.setProperty('--o2',(a.o2+(b.o2-a.o2)*t).toFixed(3)); st.setProperty('--o3',(a.o3+(b.o3-a.o3)*t).toFixed(3));
   st.setProperty('--abg',mixHex(a.b,b.b,t)); st.setProperty('--abg2',mixHex(a.b2,b.b2,t));
 }
-function tickSpot(){ tickGallery();
-  const show=FINE&&S.view==='home'?clamp(1-S.scrollY/(innerHeight*.75),0,1):0;
+function tickSpot(){
+  const show=FINE&&S.view==='home'?clamp(1-S.scrollY/(innerHeight*.75),0,1):0, key=show.toFixed(2)+'|'+S.px+'|'+S.py;
+  if(key===tickSpot.k) return; tickSpot.k=key;
   spotEl.style.opacity=show.toFixed(2); if(show>0){spotEl.style.setProperty('--mx',S.px+'px');spotEl.style.setProperty('--my',S.py+'px')}
 }
 
@@ -2539,14 +2520,20 @@ const galleryEl=$('#gallery'), GCOLS=[];
   ORDER.forEach((list,c)=>{
     const col=document.createElement('div');col.className='gcol';
     const set=list.map((k,i)=>C[k](c*3+i)).join('');
-    col.innerHTML=`<div class="gset">${set}</div><div class="gset">${set}</div><div class="gset">${set}</div>`;
+    col.innerHTML=`<div class="gset">${set}</div><div class="gset">${set}</div>`;
     wall.appendChild(col); GCOLS.push({el:col,dir:c%2?1:-1,sp:16+(c%3)*5,par:c%2?.12:.22,h:0,ph:c*137});
   });
-  const measure=()=>GCOLS.forEach(o=>o.h=o.el.firstElementChild.offsetHeight);
+  // each column loops as a CSS animation, which the browser runs off the main thread, so the wall keeps gliding while the page is busy
+  const measure=()=>{GCOLS.forEach(o=>{o.h=o.el.firstElementChild.offsetHeight;if(!o.h)return;o.el.style.setProperty('--h',o.h+'px');
+    o.el.style.animation=RM?'none':`gloop ${(o.h/o.sp).toFixed(1)}s linear ${(-(o.ph%o.h)/o.sp).toFixed(1)}s infinite ${o.dir>0?'normal':'reverse'}`}); fadeCols()};
+  // centre columns fade so text stays readable (replaces a full-screen mask that had to be redrawn every frame)
+  function fadeCols(){const vw=innerWidth,P=[[0,1],[.26,.55],[.5,.22],[.74,.55],[1,1]];
+    GCOLS.forEach(o=>{const r=o.el.getBoundingClientRect();if(!r.width)return;const x=clamp((r.left+r.width/2)/vw,0,1);let k=0;while(k<P.length-2&&x>P[k+1][0])k++;
+      const [x0,a0]=P[k],[x1,a1]=P[k+1];o.el.style.opacity=(a0+(a1-a0)*(x-x0)/(x1-x0)).toFixed(2)})}
   measure(); addEventListener('resize',measure);
 })();
 let gT=0, gLast=0, gSy=0;
-function tickGallery(){ if(PERF.level>=1) return; // each column loops on its own, alternate directions; scroll is eased in so the wall glides instead of jumping
+function tickGallery(){ return; // the wall now moves with CSS animations (see buildGallery) // each column loops on its own, alternate directions; scroll is eased in so the wall glides instead of jumping
   const now=performance.now()/1000, dt=gLast?Math.min(.05,now-gLast):0; gLast=now;
   if(!RM) gT+=dt;
   const target=S.view==='home'?(S.scrollY||0):0;
@@ -2557,7 +2544,7 @@ function tickGallery(){ if(PERF.level>=1) return; // each column loops on its ow
 /* ---------- Cursor ---------- */
 const cur=$('#cur'); let cx=S.px,cy=S.py;
 if(FINE) document.documentElement.classList.add('cursor-on');
-addEventListener('pointermove',e=>{S.px=e.clientX;S.py=e.clientY;S.nx=e.clientX/innerWidth*2-1;S.ny=-(e.clientY/innerHeight*2-1);
+addEventListener('pointermove',e=>{S.lastMove=performance.now();S.px=e.clientX;S.py=e.clientY;S.nx=e.clientX/innerWidth*2-1;S.ny=-(e.clientY/innerHeight*2-1);
   if(FINE) cur.classList.toggle('hot',!!e.target.closest('[data-hot],a,button,summary'))},{passive:true});
 function tickCursor(){if(!FINE)return;cx=lerp(cx,S.px,RM?1:.35);cy=lerp(cy,S.py,RM?1:.35);cur.style.transform=`translate(${cx}px,${cy}px)`}
 
@@ -2583,9 +2570,18 @@ let GL=null;
 function initGL(){
   if(typeof THREE==='undefined') throw new Error('no three');
   const T=THREE, canvas=$('#gl');
-  const renderer=new T.WebGLRenderer({canvas,antialias:TIER!=='lite',alpha:true,powerPreference:'high-performance'}); renderer.setClearColor(0x000000,0);
-  const PR=Math.min(devicePixelRatio||1,TIER==='high'?2:TIER==='medium'?1.5:1);
-  renderer.setPixelRatio(PR); renderer.setSize(innerWidth,innerHeight,false); renderer.autoClear=false;
+  const renderer=new T.WebGLRenderer({canvas,antialias:TIER!=='lite'&&(devicePixelRatio||1)<1.5,alpha:true,powerPreference:'high-performance'}); renderer.setClearColor(0x000000,0);
+  const PRmax=Math.min(devicePixelRatio||1,TIER==='high'?2:TIER==='medium'?1.5:1);
+  // dynamic resolution: on a weaker GPU the sky renders a little softer instead of dropping frames, and sharpens again when there is headroom
+  let pr=PRmax, ema=16.7, lastF=0, chk=0, good=0;
+  function dynRes(now){
+    if(lastF){const d=now-lastF; if(d<120) ema=ema*.9+d*.1} lastF=now;
+    if(++chk<40) return; chk=0;
+    if(ema>19&&pr>.7){pr=Math.max(.7,+(pr-.15).toFixed(2));renderer.setPixelRatio(pr);layout();good=0}
+    else if(ema<15.5&&pr<PRmax){if(++good>=5){pr=Math.min(PRmax,+(pr+.1).toFixed(2));renderer.setPixelRatio(pr);layout();good=0}}
+    else good=0;
+  }
+  renderer.setPixelRatio(pr); renderer.setSize(innerWidth,innerHeight,false); renderer.autoClear=false;
 
   /* helpers */
   function rrShape(w,h,r){const s=new T.Shape(),x=-w/2,y=-h/2;s.moveTo(x+r,y);s.lineTo(x+w-r,y);s.quadraticCurveTo(x+w,y,x+w,y+r);s.lineTo(x+w,y+h-r);s.quadraticCurveTo(x+w,y+h,x+w-r,y+h);s.lineTo(x+r,y+h);s.quadraticCurveTo(x,y+h,x,y+h-r);s.lineTo(x,y+r);s.quadraticCurveTo(x,y,x+r,y);return s}
@@ -2855,10 +2851,10 @@ function initGL(){
 
   let last=performance.now();
   function frame(now){
-    if(PERF.level>=2){renderer.dispose();startFallback();return}
     requestAnimationFrame(frame);
-    if(PERF.level>=1&&renderer.getPixelRatio()>1){renderer.setPixelRatio(1);layout()}
-    if((TIER==='lite'||PERF.level>=1)&&now-last<32) return;
+    if(TIER==='lite'&&now-last<32) return;
+    if(now-last<32&&t>4&&now-(S.lastMove||0)>500&&Math.abs(camY-camTarget())<.02&&!busy) return; // idle: 30fps is plenty for drifting stars
+    if(!document.hidden) dynRes(now);
     const dt=Math.max(0,Math.min((now-last)/1000,.05)); last=now; t+=dt;
     tickLikes(); tickCursor(); tickSpot(); updOrbit(dt); tickStory(dt); if(S.view==='home') drawAlt();
     heroSeq.forEach(h=>{if(!h.done&&t>h.at){h.done=1;h.f()}});
@@ -2936,12 +2932,14 @@ $$('.sc-pill').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();go('
   addEventListener('load',()=>setTimeout(()=>{const c=navigator.connection||{};if(!c.saveData&&!/2g|3g/.test(c.effectiveType||''))go()},6000))})();
 /* Stacked service cards: earlier cards shrink and dim as the next one slides over them */
 const stackCards=$$('#stack .scard');
+stackCards.forEach(c=>c.firstElementChild.insertAdjacentHTML('beforeend','<i class="sc-dim" aria-hidden="true"></i>'));
 function updStack(){
   if(S.view!=='home'||!stackCards.length) return;
   stackCards.forEach((c,i)=>{const nx=stackCards[i+1],inn=c.firstElementChild;
-    if(!nx){inn.style.transform='';inn.style.filter='';return}
+    const dim=inn.querySelector('.sc-dim');
+    if(!nx){inn.style.transform='';dim.style.opacity=0;return}
     const r=c.getBoundingClientRect(),n=nx.getBoundingClientRect(),p=clamp((r.bottom-n.top)/r.height,0,1);
-    inn.style.transform=`scale(${(1-p*.06).toFixed(4)})`;inn.style.filter=p>0?`brightness(${(1-p*.4).toFixed(3)})`:'';});
+    inn.style.transform=`scale(${(1-p*.06).toFixed(4)})`;dim.style.opacity=(p*.4).toFixed(3);});
 }
 addEventListener('scroll',()=>requestAnimationFrame(updStack),{passive:true});
 /* FAQ + Service schema for search and AI assistants, built from the page's own text */
@@ -2953,12 +2951,12 @@ try{const ld=document.createElement('script');ld.type='application/ld+json';
 measureScenes(); computeAlt();
 let fbOn=false;
 function fallbackLoop(){if(!fbOn)return;requestAnimationFrame(fallbackLoop);const dt=1/60;tickLikes();tickCursor();tickSpot();setAurora(S.view==='home'?(S.altP||0):({services:.45,work:.65,dm:.98}[S.view]||0));updOrbit(dt);tickStory(dt);if(S.view==='home')drawAlt()}
-function startFallback(){document.documentElement.classList.add('no-gl');GL=null;if(!fbOn){fbOn=true;fallbackLoop()}}
+function startFallback(show){if(show!==false)document.documentElement.classList.add('no-gl');GL=null;if(!fbOn){fbOn=true;fallbackLoop()}}
 (function bootGL(){
-  startFallback(); // the CSS sky runs until the 3D is ready
-  if(PERF.level>=2||!window.WebGLRenderingContext||!window.THREE_SRC) return;
+  if(!window.WebGLRenderingContext||!window.THREE_SRC){startFallback();return}
+  startFallback(false); // keep the page ticking while Three.js arrives
   const sc=document.createElement('script'); sc.src=window.THREE_SRC; sc.async=true;
-  sc.onload=()=>{if(PERF.level>=2)return;try{const g=initGL();fbOn=false;document.documentElement.classList.remove('no-gl');GL=g;GL.snap()}catch(e){startFallback()}};
+  sc.onerror=()=>startFallback(); sc.onload=()=>{try{const g=initGL();fbOn=false;document.documentElement.classList.remove('no-gl');GL=g;GL.snap()}catch(e){startFallback()}};
   document.head.appendChild(sc);
 })();
 const start=(location.hash||'').slice(1);
