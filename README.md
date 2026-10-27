@@ -19,6 +19,14 @@ Netlify deploys automatically every time `main` changes. Every deploy is kept, s
 
 Replace `YOUR-DOMAIN.com` with the real domain in `site/index.html`, `site/robots.txt` and `site/sitemap.xml`.
 
+## Performance
+
+The site adapts to each device. It starts at a quality level based on the device and connection (`perf-1` balanced for 4-thread CPUs, low-memory devices and entry phones; `perf-2` lite for slow data, data-saver or reduced motion). It then watches the real frame rate and steps down if a device drops below 40 fps. The chosen level is remembered for 3 days.
+
+- Full: 3D sky, moving gallery wall, glass blur.
+- Balanced: 3D at 1x resolution and 30 fps, still gallery wall, lighter blur, no grain.
+- Lite: no 3D (Three.js is never downloaded), no blur, no gallery wall; the hero shows the logo instead.
+
 ## Contact form
 
 The DM page sends leads to Netlify Forms (form name `contact`). Turn on **Forms → Enable form detection** in Netlify once, and add an email notification. If a send fails, the chat offers a pre-filled WhatsApp message instead.

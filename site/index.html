@@ -23,7 +23,6 @@
 <meta name="twitter:title" content="StayUp Social | Websites, AI and Social Media Studio in Indore">
 <meta name="twitter:description" content="StayUp Social is a web, AI, social media and content studio in Indore. We build websites, AI agents and content that help brands rise.">
 <meta name="twitter:image" content="https://YOUR-DOMAIN.com/og-image.jpg">
-<link rel="preload" href="vendor/three.min.js" as="script">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&family=Josefin+Sans:wght@300;400;600&display=swap">
@@ -1141,6 +1140,20 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
   .wk-lb-media.tall{height:calc(100svh - 210px)}
 }
 @media (prefers-reduced-motion:reduce){.wk-card img.web,.wk-lb-media.tall img{animation:none}.wk-rise{animation:none}}
+/* ===== adaptive quality (set by script: perf-1 balanced, perf-2 lite) ===== */
+html.perf-1{--g-blur:blur(12px) saturate(1.4)}
+html.perf-1 #grain,html.perf-1 #spot{display:none}
+html.perf-1 .scard-in{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.03) 42%),rgba(12,22,96,.94)}
+html.perf-2{--g-blur:none;--g-bg:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.03)),rgba(10,18,84,.95)}
+html.perf-2 *,html.perf-2 *::before,html.perf-2 *::after{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html.perf-2 #gallery{display:none}
+html.perf-2 #aurora i{animation:none}
+html.perf-2 .wk-lb{background:rgba(0,3,31,.97)}
+/* without 3D, the hero shows the logo where the 3D scene would be */
+html.no-gl .hero .hero-grid > [aria-hidden]{display:block;min-height:300px;background:url(logo/stayup-mark-circle.png) center/min(260px,70%) no-repeat;filter:drop-shadow(0 24px 60px rgba(18,216,250,.5));animation:heroFloat 6s ease-in-out infinite alternate}
+@keyframes heroFloat{to{transform:translateY(-14px)}}
+@media (max-width:760px){html.no-gl .hero .hero-grid > [aria-hidden]{min-height:0;background-size:auto 78%}}
+@media (prefers-reduced-motion:reduce){html.no-gl .hero .hero-grid > [aria-hidden]{animation:none}}
 </style>
 </head>
 <body>
@@ -1259,7 +1272,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
       <div class="founder-grid">
         <div class="ring-wrap rv">
           <button class="story-ring" id="open-story" data-hot aria-label="Open Harshit's story">
-            <span class="face"><img src="founder/harshit.jpg" alt="Harshit Sharma" width="480" height="480"></span>
+            <span class="face"><img loading="lazy" src="founder/harshit.jpg" alt="Harshit Sharma" width="480" height="480"></span>
           </button>
           <a class="float-ico ig" href="https://www.instagram.com/socialharshit_/" target="_blank" rel="noopener" aria-label="Harshit on Instagram" data-hot><svg viewBox="0 0 48 48"><use href="#i-ig-logo"/></svg></a>
           <a class="float-ico li" href="https://www.linkedin.com/in/socialharshit" target="_blank" rel="noopener" aria-label="Harshit on LinkedIn" data-hot><svg viewBox="0 0 48 48"><use href="#i-li-logo"/></svg></a>
@@ -1284,7 +1297,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
           <div class="mini-phone reel-card" data-reel tabindex="0" role="button" aria-label="Play Harshit's Reel 2"><div><video src="reels/reel-2.mp4" poster="reels/reel-2.jpg" muted loop playsinline preload="none" width="540" height="960"></video><span class="rc-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span><button class="rc-mute" aria-label="Turn sound on" aria-pressed="false" data-hot><svg><use href="#i-mute"/></svg></button></div></div>
           <div class="mini-phone reel-card" data-reel tabindex="0" role="button" aria-label="Play Harshit's Reel 3"><div><video src="reels/reel-3.mp4" poster="reels/reel-3.jpg" muted loop playsinline preload="none" width="540" height="960"></video><span class="rc-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span><button class="rc-mute" aria-label="Turn sound on" aria-pressed="false" data-hot><svg><use href="#i-mute"/></svg></button></div></div>
           <div class="li-card">
-            <div class="li-head"><span class="av-s"><img src="founder/harshit.jpg" alt="" width="36" height="36"></span><div><b style="font-size:14px">Harshit Sharma</b><div class="muted" style="font-size:12px">Founder, StayUp Social · LinkedIn</div></div></div>
+            <div class="li-head"><span class="av-s"><img loading="lazy" src="founder/harshit.jpg" alt="" width="36" height="36"></span><div><b style="font-size:14px">Harshit Sharma</b><div class="muted" style="font-size:12px">Founder, StayUp Social · LinkedIn</div></div></div>
             <p class="muted" style="font-size:14px">Your newest LinkedIn post shows here, pulled in automatically.</p>
           </div>
         </div>
@@ -1303,7 +1316,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
               <div class="sc-title"><span class="sc-label">Social</span><h3>Social Media Management</h3><p>We run your feed, so you can run your business. Planned, posted, and grown every week.</p></div>
               <button class="sc-pill" data-svc="0" data-hot>Explore</button>
             </header>
-            <div class="sc-grid g-pair"><div class="sc-img has" data-slot="0-0"><img src="services/01-1.webp" alt="Instagram profile grid on a phone with likes, comments and a growth chart" width="900" height="506" decoding="async"></div><div class="sc-img has" data-slot="0-1"><img src="services/01-2.webp" alt="TikTok, Instagram and YouTube posts with engagement stats" width="900" height="506" decoding="async"></div><div class="sc-img big has" data-slot="0-2"><img src="services/01-3.webp" alt="Content calendar dashboard with scheduled posts and performance stats" width="1400" height="788" decoding="async"></div></div>
+            <div class="sc-grid g-pair"><div class="sc-img has" data-slot="0-0"><img loading="lazy" src="services/01-1.webp" alt="Instagram profile grid on a phone with likes, comments and a growth chart" width="900" height="506" decoding="async"></div><div class="sc-img has" data-slot="0-1"><img loading="lazy" src="services/01-2.webp" alt="TikTok, Instagram and YouTube posts with engagement stats" width="900" height="506" decoding="async"></div><div class="sc-img big has" data-slot="0-2"><img loading="lazy" src="services/01-3.webp" alt="Content calendar dashboard with scheduled posts and performance stats" width="1400" height="788" decoding="async"></div></div>
           </div>
         </article>
         <article class="scard" style="--i:1">
@@ -1313,7 +1326,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
               <div class="sc-title"><span class="sc-label">Web</span><h3>Web Development</h3><p>Websites that feel like experiences, not brochures. Fast, beautiful, and built to convert.</p></div>
               <button class="sc-pill" data-svc="1" data-hot>Explore</button>
             </header>
-            <div class="sc-grid g-web"><div class="sc-img has web" data-slot="1-0"><img src="services/02-1.webp" alt="NOVA fashion store website homepage" width="760" height="1578" decoding="async"></div><div class="sc-img has web" data-slot="1-1" style="--d:-6s"><img src="services/02-2.webp" alt="CareWell healthcare website homepage" width="760" height="1532" decoding="async"></div><div class="sc-img big has web" data-slot="1-2" style="--d:-3s"><img src="services/02-3.webp" alt="Lumière Interiors website homepage" width="1100" height="2113" decoding="async"></div></div>
+            <div class="sc-grid g-web"><div class="sc-img has web" data-slot="1-0"><img loading="lazy" src="services/02-1.webp" alt="NOVA fashion store website homepage" width="760" height="1578" decoding="async"></div><div class="sc-img has web" data-slot="1-1" style="--d:-6s"><img loading="lazy" src="services/02-2.webp" alt="CareWell healthcare website homepage" width="760" height="1532" decoding="async"></div><div class="sc-img big has web" data-slot="1-2" style="--d:-3s"><img loading="lazy" src="services/02-3.webp" alt="Lumière Interiors website homepage" width="1100" height="2113" decoding="async"></div></div>
           </div>
         </article>
         <article class="scard" style="--i:2">
@@ -1323,7 +1336,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
               <div class="sc-title"><span class="sc-label">Video</span><h3>Video Editing</h3><p>Cuts that stop the thumb. Reels, ads, and long-form edits made for how people watch now.</p></div>
               <button class="sc-pill" data-svc="2" data-hot>Explore</button>
             </header>
-            <div class="sc-grid g-stack"><div class="sc-img has" data-slot="2-0"><img src="services/03-1.webp" alt="Editing studio: the art of the cut" width="820" height="325" decoding="async"></div><div class="sc-img has" data-slot="2-1"><img src="services/03-2.webp" alt="Short form, big impact: a Reel edit timeline" width="820" height="325" decoding="async"></div><div class="sc-img big has" data-slot="2-2"><img src="services/03-3.webp" alt="Post-production colour and sound edit suite" width="1300" height="638" decoding="async"></div></div>
+            <div class="sc-grid g-stack"><div class="sc-img has" data-slot="2-0"><img loading="lazy" src="services/03-1.webp" alt="Editing studio: the art of the cut" width="820" height="325" decoding="async"></div><div class="sc-img has" data-slot="2-1"><img loading="lazy" src="services/03-2.webp" alt="Short form, big impact: a Reel edit timeline" width="820" height="325" decoding="async"></div><div class="sc-img big has" data-slot="2-2"><img loading="lazy" src="services/03-3.webp" alt="Post-production colour and sound edit suite" width="1300" height="638" decoding="async"></div></div>
           </div>
         </article>
         <article class="scard" style="--i:3">
@@ -1333,7 +1346,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
               <div class="sc-title"><span class="sc-label">Brand</span><h3>Branding</h3><p>A look and a voice people remember at a glance. From logo to tone, everything works as one.</p></div>
               <button class="sc-pill" data-svc="3" data-hot>Explore</button>
             </header>
-            <div class="sc-grid g-stack"><div class="sc-img has" data-slot="3-0"><img src="services/04-1.webp" alt="Visual identity type and colour palette" width="820" height="325" decoding="async"></div><div class="sc-img has" data-slot="3-1"><img src="services/04-2.webp" alt="Brand system with logo, stationery and bags" width="820" height="325" decoding="async"></div><div class="sc-img big has" data-slot="3-2"><img src="services/04-3.webp" alt="Brand kit with type and colours on a laptop" width="1300" height="638" decoding="async"></div></div>
+            <div class="sc-grid g-stack"><div class="sc-img has" data-slot="3-0"><img loading="lazy" src="services/04-1.webp" alt="Visual identity type and colour palette" width="820" height="325" decoding="async"></div><div class="sc-img has" data-slot="3-1"><img loading="lazy" src="services/04-2.webp" alt="Brand system with logo, stationery and bags" width="820" height="325" decoding="async"></div><div class="sc-img big has" data-slot="3-2"><img loading="lazy" src="services/04-3.webp" alt="Brand kit with type and colours on a laptop" width="1300" height="638" decoding="async"></div></div>
           </div>
         </article>
         <article class="scard" style="--i:4">
@@ -1343,7 +1356,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
               <div class="sc-title"><span class="sc-label">Ads</span><h3>Performance Marketing</h3><p>Meta and Google ads that pay for themselves. Tested, tracked, and scaled with clear reports.</p></div>
               <button class="sc-pill" data-svc="4" data-hot>Explore</button>
             </header>
-            <div class="sc-grid g-stack"><div class="sc-img has" data-slot="4-0"><img src="services/05-1.webp" alt="Return on ad spend chart" width="820" height="325" decoding="async"></div><div class="sc-img has" data-slot="4-1"><img src="services/05-2.webp" alt="Ad creatives with a campaign health score" width="820" height="325" decoding="async"></div><div class="sc-img big has" data-slot="4-2"><img src="services/05-3.webp" alt="Marketing dashboard with campaign results" width="1300" height="638" decoding="async"></div></div>
+            <div class="sc-grid g-stack"><div class="sc-img has" data-slot="4-0"><img loading="lazy" src="services/05-1.webp" alt="Return on ad spend chart" width="820" height="325" decoding="async"></div><div class="sc-img has" data-slot="4-1"><img loading="lazy" src="services/05-2.webp" alt="Ad creatives with a campaign health score" width="820" height="325" decoding="async"></div><div class="sc-img big has" data-slot="4-2"><img loading="lazy" src="services/05-3.webp" alt="Marketing dashboard with campaign results" width="1300" height="638" decoding="async"></div></div>
           </div>
         </article>
         <article class="scard" style="--i:5">
@@ -1353,7 +1366,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
               <div class="sc-title"><span class="sc-label">Content</span><h3>Content Creation</h3><p>Content made to be saved and shared. Scripts, shoots, and posts that sound like you.</p></div>
               <button class="sc-pill" data-svc="5" data-hot>Explore</button>
             </header>
-            <div class="sc-grid g-stack"><div class="sc-img has" data-slot="5-0"><img src="services/06-1.webp" alt="Social post cards from a content studio" width="820" height="325" decoding="async"></div><div class="sc-img has" data-slot="5-1"><img src="services/06-2.webp" alt="Social-first creative for Reels, posts, ads and stories" width="820" height="325" decoding="async"></div><div class="sc-img big has" data-slot="5-2"><img src="services/06-3.webp" alt="Content workflow from concept to publish" width="1300" height="638" decoding="async"></div></div>
+            <div class="sc-grid g-stack"><div class="sc-img has" data-slot="5-0"><img loading="lazy" src="services/06-1.webp" alt="Social post cards from a content studio" width="820" height="325" decoding="async"></div><div class="sc-img has" data-slot="5-1"><img loading="lazy" src="services/06-2.webp" alt="Social-first creative for Reels, posts, ads and stories" width="820" height="325" decoding="async"></div><div class="sc-img big has" data-slot="5-2"><img loading="lazy" src="services/06-3.webp" alt="Content workflow from concept to publish" width="1300" height="638" decoding="async"></div></div>
           </div>
         </article>
         <article class="scard" style="--i:6">
@@ -1363,7 +1376,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
               <div class="sc-title"><span class="sc-label">AI · Web & Apps</span><h3>AI-Powered Website &amp; App Development</h3><p>Smart websites and apps, built faster with AI. Features that learn, respond, and grow with you.</p></div>
               <button class="sc-pill" data-svc="6" data-hot>Explore</button>
             </header>
-            <div class="sc-grid g-stack"><div class="sc-img has" data-slot="6-0"><img src="services/07-1.webp" alt="Responsive website on laptop, tablet and phone" width="820" height="325" decoding="async"></div><div class="sc-img has" data-slot="6-1"><img src="services/07-2.webp" alt="App development code with a live preview" width="820" height="325" decoding="async"></div><div class="sc-img big has" data-slot="6-2"><img src="services/07-3.webp" alt="AI-built website on a laptop and phone" width="1300" height="638" decoding="async"></div></div>
+            <div class="sc-grid g-stack"><div class="sc-img has" data-slot="6-0"><img loading="lazy" src="services/07-1.webp" alt="Responsive website on laptop, tablet and phone" width="820" height="325" decoding="async"></div><div class="sc-img has" data-slot="6-1"><img loading="lazy" src="services/07-2.webp" alt="App development code with a live preview" width="820" height="325" decoding="async"></div><div class="sc-img big has" data-slot="6-2"><img loading="lazy" src="services/07-3.webp" alt="AI-built website on a laptop and phone" width="1300" height="638" decoding="async"></div></div>
           </div>
         </article>
         <article class="scard" style="--i:7">
@@ -1373,7 +1386,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
               <div class="sc-title"><span class="sc-label">AI · Agents</span><h3>AI Agent Development</h3><p>AI agents that work while you sleep. They answer leads, book calls, and handle the busywork.</p></div>
               <button class="sc-pill" data-svc="7" data-hot>Explore</button>
             </header>
-            <div class="sc-grid g-stack"><div class="sc-img has" data-slot="7-0"><img src="services/08-1.webp" alt="AI assistant chat organising leads" width="820" height="325" decoding="async"></div><div class="sc-img has" data-slot="7-1"><img src="services/08-2.webp" alt="Automation flow that qualifies and responds to leads" width="820" height="325" decoding="async"></div><div class="sc-img big has" data-slot="7-2"><img src="services/08-3.webp" alt="AI agent automating lead follow-ups" width="1300" height="638" decoding="async"></div></div>
+            <div class="sc-grid g-stack"><div class="sc-img has" data-slot="7-0"><img loading="lazy" src="services/08-1.webp" alt="AI assistant chat organising leads" width="820" height="325" decoding="async"></div><div class="sc-img has" data-slot="7-1"><img loading="lazy" src="services/08-2.webp" alt="Automation flow that qualifies and responds to leads" width="820" height="325" decoding="async"></div><div class="sc-img big has" data-slot="7-2"><img loading="lazy" src="services/08-3.webp" alt="AI agent automating lead follow-ups" width="1300" height="638" decoding="async"></div></div>
           </div>
         </article>
         <article class="scard" style="--i:8">
@@ -1383,7 +1396,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
               <div class="sc-title"><span class="sc-label">Strategy</span><h3>Digital Strategy &amp; Growth Consulting</h3><p>The plan before the post. Clear goals, the right channels, and a roadmap to grow.</p></div>
               <button class="sc-pill" data-svc="8" data-hot>Explore</button>
             </header>
-            <div class="sc-grid g-stack"><div class="sc-img has" data-slot="8-0"><img src="services/09-1.webp" alt="90-day growth roadmap" width="820" height="325" decoding="async"></div><div class="sc-img has" data-slot="8-1"><img src="services/09-2.webp" alt="Customer growth funnel" width="820" height="325" decoding="async"></div><div class="sc-img big has" data-slot="8-2"><img src="services/09-3.webp" alt="Growth strategy dashboard" width="1300" height="638" decoding="async"></div></div>
+            <div class="sc-grid g-stack"><div class="sc-img has" data-slot="8-0"><img loading="lazy" src="services/09-1.webp" alt="90-day growth roadmap" width="820" height="325" decoding="async"></div><div class="sc-img has" data-slot="8-1"><img loading="lazy" src="services/09-2.webp" alt="Customer growth funnel" width="820" height="325" decoding="async"></div><div class="sc-img big has" data-slot="8-2"><img loading="lazy" src="services/09-3.webp" alt="Growth strategy dashboard" width="1300" height="638" decoding="async"></div></div>
           </div>
         </article>
       </div>
@@ -1735,7 +1748,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
 <div class="story" id="story" hidden role="dialog" aria-modal="true" aria-label="Harshit's story">
   <div class="story-frame" id="story-frame">
     <div class="bars" id="bars"></div>
-    <div class="story-top"><span class="av-s"><img src="founder/harshit.jpg" alt="" width="36" height="36"></span><b>socialharshit_</b><span class="muted" id="st-time">now</span><button class="icon-btn x" id="story-x" aria-label="Close story" data-hot><svg><use href="#i-x"/></svg></button></div>
+    <div class="story-top"><span class="av-s"><img loading="lazy" src="founder/harshit.jpg" alt="" width="36" height="36"></span><b>socialharshit_</b><span class="muted" id="st-time">now</span><button class="icon-btn x" id="story-x" aria-label="Close story" data-hot><svg><use href="#i-x"/></svg></button></div>
     <div id="st-body"></div>
     <button class="st-tap l" id="st-l" aria-label="Previous"></button>
     <button class="st-tap r" id="st-r" aria-label="Next"></button>
@@ -1744,7 +1757,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
 
 <div class="portal" id="portal" hidden aria-hidden="true"><div class="portal-disc"></div><div class="portal-ring"></div></div>
 
-<script src="vendor/three.min.js"></script>
+<script>window.THREE_SRC="vendor/three.min.js"</script>
 <script>
 (function(){
 'use strict';
@@ -1754,7 +1767,7 @@ const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const FINE=matchMedia('(pointer: fine)').matches;
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)), lerp=(a,b,t)=>a+(b-a)*t;
-const fmt=n=>Math.round(n).toLocaleString('en-IN');
+const NF=new Intl.NumberFormat('en-IN'), fmt=n=>NF.format(Math.round(n));
 const isMobile=()=>innerWidth<=760;
 
 /* ---------- Data ---------- */
@@ -1811,6 +1824,36 @@ const touchDev=matchMedia('(pointer: coarse)').matches;
 const TIER=!touchDev?(mem>=4?'high':'medium'):(cores>=6&&mem>=4?'medium':'lite');
 $('#tier-label').textContent='Rendering: '+TIER[0].toUpperCase()+TIER.slice(1);
 
+/* ---------- Adaptive quality ----------
+   0 full · 1 balanced (lighter glass, 3D at 30fps and 1x, still background) · 2 lite (no 3D, no blur, no background wall).
+   Starts from what the device and connection report, then watches the real frame rate and steps down while a device struggles. */
+const PERF={level:-1};
+function setPerf(L,save){
+  L=Math.min(2,L); if(L<=PERF.level) return; PERF.level=L;
+  const c=document.documentElement.classList; c.toggle('perf-1',L>=1); c.toggle('perf-2',L>=2);
+  if(save){try{localStorage.setItem('stayup-perf',JSON.stringify({L,t:Date.now()}))}catch(e){}}
+  if(L>=2&&typeof startFallback==='function'&&save) startFallback();
+}
+(function(){
+  const net=navigator.connection||{}, slow=net.saveData||/2g|3g/.test(net.effectiveType||'');
+  let L=0;
+  if(cores<=4||mem<=4) L=1;                 // e.g. i3 laptops, entry phones
+  if(touchDev&&(cores<6||mem<4)) L=1;
+  if(slow||RM) L=2;                         // slow data or reduced motion: lightest page
+  try{const s=JSON.parse(localStorage.getItem('stayup-perf')||'null');if(s&&Date.now()-s.t<3*864e5)L=Math.max(L,s.L)}catch(e){}
+  setPerf(L,false);
+})();
+(function watchFps(){ // step down after 2.5s of under 40fps (ignores hidden tabs and page transitions)
+  let n=0,t0=0,calm=performance.now()+4000;
+  requestAnimationFrame(function f(t){
+    requestAnimationFrame(f);
+    if(document.hidden||(typeof busy!=='undefined'&&busy)||PERF.level>=2||t<calm){n=0;t0=t;return}
+    n++; if(t-t0<2500) return;
+    const fps=n*1000/(t-t0); n=0; t0=t;
+    if(fps<40){setPerf(PERF.level+1,true);calm=t+3000}
+  });
+})();
+
 /* ---------- State ---------- */
 const S={view:'home',likes:0,shown:0,sound:false,px:innerWidth/2,py:innerHeight/2,nx:0,ny:0,scrollY:0,vel:0,altIdx:0,dive:0,modal:null,overlay:false,portalUppy:false};
 
@@ -1838,8 +1881,8 @@ function addLikes(n){S.likes+=n}
 function tickLikes(){
   const d=S.likes-S.shown; if(Math.abs(d)<.5) return;
   S.shown+=d*.12+Math.sign(d)*.3;
-  const v=fmt(Math.max(0,S.shown)); likesN.textContent=v; tallyEl.textContent=v;
-  const n=performance.now(); if(n-lastBump>320){lastBump=n;likesEl.classList.remove('bump');void likesEl.offsetWidth;likesEl.classList.add('bump')}
+  const v=fmt(Math.max(0,S.shown)); if(likesN.textContent!==v){likesN.textContent=v; tallyEl.textContent=v}
+  const n=performance.now(); if(n-lastBump>320){lastBump=n;likesEl.classList.remove('bump');requestAnimationFrame(()=>likesEl.classList.add('bump'))}
 }
 document.addEventListener('click',e=>{if(e.target.closest('[data-hot],button,a')) addLikes(8)});
 
@@ -1910,8 +1953,8 @@ function computeAlt(){
 function drawAlt(){
   const p=S.altP||0, q=p*4; $('#alt-fill').style.height=(p*100)+'%'; $('#alt-dot').style.bottom=(p*100)+'%';
   const i=Math.floor(q),f=q-i; const v=i>=4?1e6:lerp(ALT_FOLLOW[i],ALT_FOLLOW[i+1],f);
-  $('#alt-read').textContent=kfmt(v)+' followers';
-  $$('#alt-ticks button').forEach((b,k)=>b.classList.toggle('on',k===Math.round(q)));
+  const txt=kfmt(v)+' followers', r=$('#alt-read'); if(r.textContent!==txt) r.textContent=txt;
+  const on=Math.round(q); if(on!==drawAlt.on){drawAlt.on=on;$$('#alt-ticks button').forEach((b,k)=>b.classList.toggle('on',k===on))}
 }
 $$('#alt-ticks button').forEach(b=>b.addEventListener('click',()=>{const s=scenes[Math.round(+b.dataset.scene/4*(scenes.length-1))];window.scrollTo({top:s.offsetTop,behavior:RM?'auto':'smooth'})}));
 let lastY=0;
@@ -1948,7 +1991,7 @@ function burst(n,cx,cy,sx,sy,stagger){
 const orbitEl=$('#orbit'); const planets=[]; let orbT=0,orbPaused=false,orbW=0;
 const RINGS=[{r:.2,sp:.42},{r:.31,sp:.27},{r:.42,sp:.17}]; let TILT=.36;
 RINGS.forEach((g,k)=>{const d=document.createElement('div');d.className='ring r'+k;orbitEl.prepend(d);g.el=d});
-const logoHTML=c=>c.logo?`<img src="${c.logo}" alt="${c.n}" width="160" height="160">`:c.s;
+const logoHTML=c=>c.logo?`<img src="${c.logo}" alt="${c.n}" width="160" height="160" loading="lazy">`:c.s;
 CLIENTS.forEach(c=>{
   const b=document.createElement('button'); b.className='av'+(c.slot?' slot':''); b.setAttribute('data-hot','');
   b.setAttribute('aria-label',c.n); b.innerHTML=`<span>${logoHTML(c)}</span>`;
@@ -1959,8 +2002,9 @@ CLIENTS.forEach(c=>{
   const peers=CLIENTS.filter(x=>x.ring===c.ring);
   planets.push({el:b,ring:c.ring,ph:peers.indexOf(c)/peers.length*Math.PI*2+c.ring*.9});
 });
+let orbVis=true; new IntersectionObserver(e=>{orbVis=e[0].isIntersecting},{rootMargin:'200px'}).observe(orbitEl);
 function updOrbit(dt){
-  if(S.view!=='home') return;
+  if(S.view!=='home'||!orbVis) return;
   orbT+=dt; // planets never stop orbiting, even with reduce motion on
   const W=orbitEl.clientWidth;
   if(W!==orbW){orbW=W;TILT=W<600?.62:.36;RINGS.forEach(g=>{g.el.style.width=(W*g.r*2)+'px';g.el.style.height=(W*g.r*2*TILT)+'px'})}
@@ -1970,7 +2014,7 @@ function updOrbit(dt){
     p.el.style.zIndex=d>.5?3:1; p.el.style.opacity=(.5+d*.5).toFixed(2);
   });
 }
-const mqSet=hide=>`<div class="mq-set"${hide?' aria-hidden="true"':''}>${BRANDS.map(b=>`<span class="brand-logo" style="background:${b.bg}"><img src="${b.logo}" alt="${hide?'':b.n}" height="60"></span>`).join('')}</div>`;
+const mqSet=hide=>`<div class="mq-set"${hide?' aria-hidden="true"':''}>${BRANDS.map(b=>`<span class="brand-logo" style="background:${b.bg}"><img src="${b.logo}" alt="${hide?'':b.n}" height="60" loading="lazy"></span>`).join('')}</div>`;
 $('#marquee-track').innerHTML=mqSet(false)+mqSet(true);
 // "Followed by" line loops through the clients, two at a time
 (function(){const pairs=[['Hiranandani','Godrej Properties'],['Mura','Dereva Pharma'],['Ananta Hospital','Nivesh Sarthi'],['Avani Interior','OneStream'],['Cakes & Bakes','Joom'],['Open Interior Design','Rare Bean'],['Chorus','The Decor Vibe']];
@@ -2098,7 +2142,7 @@ const THUMBS=[
  {l:'A',img:sv(9,3),pos:'82% 50%',k:'Strategy',t:['Strategy','& Growth'],h:'The plan before the post.'}
 ];
 function thumbHTML(i,total){ const d=THUMBS[i], sec=Math.round(total);
-  return `<span class="th th-${d.l}" aria-hidden="true"><span class="th-media"${d.l==='C'?` style="clip-path:${STAR}"`:''}><img src="${d.img}" alt="" style="object-position:${d.pos};transform-origin:${d.pos};--z:${d.z||1}" decoding="async"></span>`+
+  return `<span class="th th-${d.l}" aria-hidden="true"><span class="th-media"${d.l==='C'?` style="clip-path:${STAR}"`:''}><img src="${d.img}" alt="" loading="lazy" style="object-position:${d.pos};transform-origin:${d.pos};--z:${d.z||1}" decoding="async"></span>`+
     `<span class="th-kick"><b>0${i+1}</b><span>${d.k}</span></span><span class="th-title"><span>${d.t[0]}</span><em>${d.t[1]}</em></span>`+
     `<span class="th-hook">${d.h}</span><span class="th-dur"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg>0:${String(sec).padStart(2,'0')}</span></span>`;
 }
@@ -2248,7 +2292,7 @@ function wkTile(w,i){
 // --- Spotlight: each piece grows from a card to the full stage as you scroll
 const wkSpot=$('#wk-spot'),wkStage=$('#wk-stage'),wkStrip=$('#wk-strip'),SPOT_PER=1.15;
 const wkCards=WSPOT.map(x=>{const d=document.createElement('div');d.className='wk-card';
-  d.innerHTML=x.v?`<video muted loop playsinline preload="none" poster="${x.p}" src="${x.v}"></video>`:`<img src="${x.p}" alt="" decoding="async"${x.web?' class="web"':''}>`;
+  d.innerHTML=x.v?`<video muted loop playsinline preload="none" poster="${x.p}" src="${x.v}"></video>`:`<img src="${x.p}" alt="" loading="lazy" decoding="async"${x.web?' class="web"':''}>`;
   wkStage.appendChild(d);wkStrip.insertAdjacentHTML('beforeend','<i><b></b></i>');return d});
 function wkLayout(){wkSpot.style.height=(WSPOT.length*SPOT_PER*innerHeight+innerHeight*.35)+'px'}
 function wkSpotTick(){
@@ -2502,7 +2546,7 @@ const galleryEl=$('#gallery'), GCOLS=[];
   measure(); addEventListener('resize',measure);
 })();
 let gT=0, gLast=0, gSy=0;
-function tickGallery(){ // each column loops on its own, alternate directions; scroll is eased in so the wall glides instead of jumping
+function tickGallery(){ if(PERF.level>=1) return; // each column loops on its own, alternate directions; scroll is eased in so the wall glides instead of jumping
   const now=performance.now()/1000, dt=gLast?Math.min(.05,now-gLast):0; gLast=now;
   if(!RM) gT+=dt;
   const target=S.view==='home'?(S.scrollY||0):0;
@@ -2811,8 +2855,10 @@ function initGL(){
 
   let last=performance.now();
   function frame(now){
+    if(PERF.level>=2){renderer.dispose();startFallback();return}
     requestAnimationFrame(frame);
-    if(TIER==='lite'&&now-last<32) return;
+    if(PERF.level>=1&&renderer.getPixelRatio()>1){renderer.setPixelRatio(1);layout()}
+    if((TIER==='lite'||PERF.level>=1)&&now-last<32) return;
     const dt=Math.max(0,Math.min((now-last)/1000,.05)); last=now; t+=dt;
     tickLikes(); tickCursor(); tickSpot(); updOrbit(dt); tickStory(dt); if(S.view==='home') drawAlt();
     heroSeq.forEach(h=>{if(!h.done&&t>h.at){h.done=1;h.f()}});
@@ -2884,7 +2930,10 @@ function initGL(){
 /* Home service cards open that service's post on the Services page */
 $$('.sc-pill').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();go('services',{svc:+a.dataset.svc})}));
 /* Service card images: fetch and decode them right after the page loads, so no slot is blank when its card scrolls in */
-addEventListener('load',()=>{const imgs=$$('#stack img');let k=0;(function next(){const im=imgs[k++];if(!im)return;const pre=new Image();pre.src=im.currentSrc||im.src;(pre.decode?pre.decode():Promise.resolve()).catch(()=>{}).then(next)})()});
+// service card images: fetched one by one once the visitor nears the founder section, so they are ready before the cards scroll in without slowing the first screen
+(function(){const imgs=$$('#stack img');let started=false;const go=()=>{if(started)return;started=true;let k=0;(function next(){const im=imgs[k++];if(!im)return;im.loading='eager';const pre=new Image();pre.src=im.currentSrc||im.src;(pre.decode?pre.decode():Promise.resolve()).catch(()=>{}).then(next)})()};
+  const o=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){o.disconnect();go()}},{rootMargin:'500px 0px'});['s3','s4'].forEach(id=>{const el=document.getElementById(id);if(el)o.observe(el)});
+  addEventListener('load',()=>setTimeout(()=>{const c=navigator.connection||{};if(!c.saveData&&!/2g|3g/.test(c.effectiveType||''))go()},6000))})();
 /* Stacked service cards: earlier cards shrink and dim as the next one slides over them */
 const stackCards=$$('#stack .scard');
 function updStack(){
@@ -2902,8 +2951,16 @@ try{const ld=document.createElement('script');ld.type='application/ld+json';
 
 /* ---------- Boot ---------- */
 measureScenes(); computeAlt();
-try{GL=initGL()}catch(e){document.documentElement.classList.add('no-gl');GL=null;
-  (function loop(){requestAnimationFrame(loop);const dt=1/60;tickLikes();tickCursor();tickSpot();setAurora(S.view==='home'?(S.altP||0):({services:.45,work:.65,dm:.98}[S.view]||0));updOrbit(dt);tickStory(dt);if(S.view==='home')drawAlt()})();}
+let fbOn=false;
+function fallbackLoop(){if(!fbOn)return;requestAnimationFrame(fallbackLoop);const dt=1/60;tickLikes();tickCursor();tickSpot();setAurora(S.view==='home'?(S.altP||0):({services:.45,work:.65,dm:.98}[S.view]||0));updOrbit(dt);tickStory(dt);if(S.view==='home')drawAlt()}
+function startFallback(){document.documentElement.classList.add('no-gl');GL=null;if(!fbOn){fbOn=true;fallbackLoop()}}
+(function bootGL(){
+  startFallback(); // the CSS sky runs until the 3D is ready
+  if(PERF.level>=2||!window.WebGLRenderingContext||!window.THREE_SRC) return;
+  const sc=document.createElement('script'); sc.src=window.THREE_SRC; sc.async=true;
+  sc.onload=()=>{if(PERF.level>=2)return;try{const g=initGL();fbOn=false;document.documentElement.classList.remove('no-gl');GL=g;GL.snap()}catch(e){startFallback()}};
+  document.head.appendChild(sc);
+})();
 const start=(location.hash||'').slice(1);
 swap(['home','services','work','dm'].includes(start)?start:'home');
 })();
