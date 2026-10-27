@@ -36,6 +36,7 @@ Every device gets the same full look (3D sky, moving gallery wall, glass). The h
 - The 3D sky uses dynamic resolution: on a weaker graphics chip it renders a little softer instead of dropping frames, then sharpens again. It redraws at 30 fps while nothing is moving and at 60 fps while scrolling.
 - The gallery wall moves with CSS animations, which run off the main thread, and fades its centre columns with per-column opacity instead of full-screen masks.
 - Glass blur radii are moderate, and the film grain uses a normal blend.
+- The home hero is plain HTML and CSS: a glass phone scrolling through real work (`site/hero/`), four notification cards, service chips and a trusted-by logo strip. Its animations pause when the hero is off screen.
 - Three.js loads after the page and the images load lazily, so the first screen appears quickly on 4G.
 
 ## Contact form

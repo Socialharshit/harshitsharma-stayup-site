@@ -236,6 +236,63 @@ html.js .rv:not(.in){opacity:0;transform:translateY(36px) scale(.96)}
   .hero{align-content:start;padding-top:calc(var(--head) + 28px)}
   .scroll-up{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 }
+/* Hero visual: a glass phone scrolling through real work, with one notification per service around it */
+.hero-chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.hero-chips li{height:34px;display:inline-flex;align-items:center;gap:8px;padding:0 14px;border-radius:999px;font-size:13.5px;font-weight:500;color:#fff;background:var(--g-bg);border:1px solid var(--g-bd);box-shadow:var(--g-hi)}
+.hero-chips li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.hero-vis{--u:10px;position:relative;font-size:var(--u);height:58em;width:100%;max-width:56em;justify-self:center}
+.hv-phone{position:absolute;left:50%;top:2em;width:26em;height:53em;margin-left:-13em;border-radius:4.6em;padding:1em;background:linear-gradient(160deg,rgba(255,255,255,.34),rgba(255,255,255,.08));box-shadow:0 5em 9em -3em rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.24),inset 0 1px 0 rgba(255,255,255,.5);animation:hvFloat 7s ease-in-out infinite}
+.hv-scr{position:relative;width:100%;height:100%;border-radius:3.6em;overflow:hidden;background:#050a3a;transform:translateZ(0)}
+.hv-isl{position:absolute;top:.9em;left:50%;width:7.8em;height:2.2em;margin-left:-3.9em;border-radius:2em;background:#000;z-index:3}
+.hv-top{position:absolute;left:0;right:0;top:0;height:6.6em;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;padding:0 1.6em .8em;background:linear-gradient(#050a3a 72%,rgba(5,10,58,0));font-weight:600;font-size:1em}
+.hv-top span{font-size:1.45em}
+.hv-top img{width:2.4em;height:2.4em;border-radius:.7em}
+.hv-feed{position:absolute;left:0;right:0;top:6.6em;display:grid;gap:1em;padding:0 1em;animation:hvFeed 20s cubic-bezier(.65,0,.2,1) infinite;will-change:transform}
+.hv-post{border-radius:1.6em;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+.hv-ph{position:relative;height:26em}
+.hv-ph img{display:block;width:100%;height:100%;object-fit:cover}
+.hv-reel::after{content:"";position:absolute;right:1em;top:1em;width:2.4em;height:2.4em;border-radius:.7em;background:rgba(0,0,0,.4) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7v10l8-5z' fill='white'/%3E%3C/svg%3E") center/70% no-repeat}
+.hv-meta{display:flex;align-items:center;gap:.7em;height:3.6em;padding:0 1.2em;font-size:1.2em;font-weight:600;color:#fff}
+.hv-meta svg{width:1.3em;height:1.3em;color:var(--red);flex:none}
+.hv-toast{position:absolute;display:flex;align-items:center;gap:1.2em;width:25em;padding:1.1em 1.4em 1.1em 1.1em;border-radius:2em;background:rgba(18,30,128,.72);border:1px solid rgba(255,255,255,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 2.4em 5em -2.4em rgba(0,0,0,.9);-webkit-backdrop-filter:blur(14px) saturate(1.6);backdrop-filter:blur(14px) saturate(1.6);animation:hvPop 10s ease-in-out infinite both}
+.hv-toast b{display:block;font-size:1.36em;font-weight:600;line-height:1.3;color:#fff}
+.hv-toast small{display:block;font-size:1.2em;color:var(--steel);line-height:1.3}
+.hv-ic{width:3.8em;height:3.8em;border-radius:1.2em;display:grid;place-items:center;flex:none;font-weight:700;font-size:1em;color:#fff}
+.hv-ic svg{width:1.8em;height:1.8em}
+.hv-ic.ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)}
+.hv-ic.ad{background:#1877F2;font-size:1.9em;font-family:var(--f-display)}
+.hv-ic.ai{background:var(--grad)}
+.hv-ic.web{background:#fff;color:var(--blue)}
+.hv-toast.t1{left:0;top:9em;animation-delay:0s}
+.hv-toast.t2{right:0;top:21em;animation-delay:2.5s}
+.hv-toast.t3{left:-1em;top:34em;animation-delay:5s}
+.hv-toast.t4{right:-1em;top:45em;animation-delay:7.5s}
+.hero-vis.hv-off *,.trusted.hv-off .tr-track{animation-play-state:paused!important}
+@keyframes hvFeed{0%,13%{transform:translateY(0)}20%,33%{transform:translateY(-30.6em)}40%,53%{transform:translateY(-61.2em)}60%,73%{transform:translateY(-91.8em)}80%,93%{transform:translateY(-122.4em)}100%{transform:translateY(-153em)}}
+@keyframes hvPop{0%,3%{opacity:0;transform:translateY(1.4em) scale(.96)}9%,40%{opacity:1;transform:none}46%,100%{opacity:0;transform:translateY(-.8em) scale(.98)}}
+@keyframes hvFloat{50%{transform:translateY(-1em)}}
+/* trusted-by strip */
+.trusted{display:flex;align-items:center;gap:24px;margin-top:clamp(28px,5vh,56px)}
+.trusted .label{white-space:nowrap;flex:none}
+.tr-logos{flex:1;min-width:0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.tr-track{list-style:none;margin:0;padding:0;display:flex;gap:12px;width:max-content;animation:trq 48s linear infinite}
+.tr-track li{flex:none;width:124px;height:54px;border-radius:16px;background:#fff;display:grid;place-items:center;padding:8px 14px;box-shadow:0 10px 24px -14px rgba(0,0,0,.8)}
+.tr-track img{max-width:100%;max-height:36px;width:auto;height:auto;object-fit:contain}
+.tr-logos:hover .tr-track{animation-play-state:paused}
+@keyframes trq{to{transform:translateX(calc(-50% - 6px))}}
+.hero .scroll-up{display:none}
+@media (max-width:1100px) and (min-width:761px){.hero-vis{--u:8.4px;max-width:46em;justify-self:start}}
+@media (max-width:760px){
+  .hero-vis{--u:6.4px;height:56em;max-width:none;margin-top:4px}
+  .hv-toast{width:24em;-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(18,30,128,.94)}
+  .hv-toast.t1{left:0;top:6em}.hv-toast.t2{right:0;top:19em}.hv-toast.t3{left:0;top:33em}.hv-toast.t4{right:0;top:44em}
+  .trusted{flex-direction:column;align-items:stretch;gap:12px;margin-top:24px}
+  .trusted .label{text-align:center}
+  .tr-track li{width:104px;height:48px;border-radius:14px}
+  .tr-track img{max-height:30px}
+  #view-home .scene.hero{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+}
+@media (prefers-reduced-motion:reduce){.hv-phone,.hv-feed,.tr-track{animation:none}.hv-toast{animation:none;opacity:1}.hv-toast.t3,.hv-toast.t4{display:none}}
 #notif-layer{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}
 .notif{position:absolute;display:flex;align-items:center;gap:4px;padding:5px 9px 5px 7px;border-radius:999px;background:var(--red);color:#fff;font-weight:700;font-size:12px;box-shadow:0 6px 18px -6px rgba(255,45,85,.8);animation:notif 1.9s var(--spring) forwards;will-change:transform,opacity}
 .notif svg{width:12px;height:12px}
@@ -1020,9 +1077,6 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
 /* ===== mobile-only polish ===== */
 .tile-cta{display:none}
 @media (max-width:760px){
-  /* hero: copy, then a band for the 3D logo + phone, then the scroll cue */
-  .hero .hero-grid > [aria-hidden]{display:block;height:clamp(120px,calc(100svh - 610px),280px)}
-  #view-home .scene.hero{padding-bottom:150px}
 }
 @media (max-width:760px) and (max-height:780px){
   .hero .scroll-up{display:none}
@@ -1156,10 +1210,7 @@ html.perf-2 #gallery{display:none}
 html.perf-2 #aurora i{animation:none}
 html.perf-2 .wk-lb{background:rgba(0,3,31,.97)}
 /* without 3D, the hero shows the logo where the 3D scene would be */
-html.no-gl .hero .hero-grid > [aria-hidden]{display:block;min-height:300px;background:url(logo/stayup-mark-circle.png) center/min(260px,70%) no-repeat;filter:drop-shadow(0 24px 60px rgba(18,216,250,.5));animation:heroFloat 6s ease-in-out infinite alternate}
 @keyframes heroFloat{to{transform:translateY(-14px)}}
-@media (max-width:760px){html.no-gl .hero .hero-grid > [aria-hidden]{min-height:0;background-size:auto 78%}}
-@media (prefers-reduced-motion:reduce){html.no-gl .hero .hero-grid > [aria-hidden]{animation:none}}
 /* ===== smooth rendering, same look ===== */
 @keyframes gloop{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,calc(-1 * var(--h)),0)}}
 #gallery,#gallery .gfade{-webkit-mask-image:none;mask-image:none}
@@ -1252,12 +1303,20 @@ html.no-gl .hero .hero-grid > [aria-hidden]{display:block;min-height:300px;backg
         <span class="label rv in">Social Media Agency · Web · AI</span>
         <h1 class="rv in">We build <em>presence</em> the world can’t scroll past.</h1>
         <p class="hero-line rv in">A social media agency for brands ready to rise. Websites, AI agents and content that take you up, and keep you there.</p>
+        <ul class="hero-chips rv in" aria-label="What we do"><li>Social media</li><li>Websites</li><li>AI agents</li></ul>
         <div class="hero-sub rv in">
           <button class="btn grad" data-go="dm" data-hot><svg><use href="#i-arrow"/></svg>Start your climb</button>
           <button class="btn" data-go="work" data-hot>See our work</button>
         </div>
       </div>
-      <div aria-hidden="true"></div>
+      <div class="hero-vis" aria-hidden="true">
+        <div class="hv-phone"><div class="hv-scr"><i class="hv-isl"></i><div class="hv-top"><span>stayup.social</span><img src="logo/stayup-mark-square.png" alt="" width="44" height="44"></div><div class="hv-feed"><div class="hv-post"><div class="hv-ph hv-reel"><img src="hero/feed-1.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Real-estate reel</div></div><div class="hv-post"><div class="hv-ph"><img src="hero/feed-2.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Interior launch post</div></div><div class="hv-post"><div class="hv-ph hv-reel"><img src="hero/feed-3.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Personal-brand reel</div></div><div class="hv-post"><div class="hv-ph"><img src="hero/feed-4.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Retail store post</div></div><div class="hv-post"><div class="hv-ph hv-reel"><img src="hero/feed-5.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Doctor’s growth reel</div></div><div class="hv-post"><div class="hv-ph hv-reel"><img src="hero/feed-1.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Real-estate reel</div></div><div class="hv-post"><div class="hv-ph"><img src="hero/feed-2.webp" alt="" width="480" height="520" decoding="async"></div><div class="hv-meta"><svg><use href="#i-heart"/></svg>Interior launch post</div></div></div></div></div>
+        <div class="hv-toast t1"><span class="hv-ic ig"><svg><use href="#i-heart"/></svg></span><span><b>Your reel is trending</b><small>Instagram · just now</small></span></div><div class="hv-toast t2"><span class="hv-ic ad">f</span><span><b>New lead from your ad</b><small>Meta Ads · 2 min ago</small></span></div><div class="hv-toast t3"><span class="hv-ic ai"><svg><use href="#i-send"/></svg></span><span><b>AI agent booked a call</b><small>WhatsApp · 10:42 AM</small></span></div><div class="hv-toast t4"><span class="hv-ic web"><svg><use href="#i-grid"/></svg></span><span><b>New website enquiry</b><small>Contact form · today</small></span></div>
+      </div>
+    </div>
+    <div class="wrap trusted rv in">
+      <span class="label">Trusted by</span>
+      <div class="tr-logos"><ul class="tr-track"><li><img src="clients/mura.png" alt="Hotel Mura Bliss" width="160" height="80" decoding="async"></li><li><img src="clients/hiranandani.png" alt="Hiranandani" width="160" height="80" decoding="async"></li><li><img src="clients/godrej-properties.jpg" alt="Godrej Properties" width="160" height="80" decoding="async"></li><li><img src="clients/ananta-hospital.jpg" alt="Ananta Multispeciality Hospital" width="160" height="80" decoding="async"></li><li><img src="clients/joom.jpg" alt="Joom" width="160" height="80" decoding="async"></li><li><img src="clients/nivesh-sarthi.png" alt="Nivesh Sarthi" width="160" height="80" decoding="async"></li><li><img src="clients/onestream.jpg" alt="OneStream" width="160" height="80" decoding="async"></li><li><img src="clients/avani-interior.png" alt="Avani Interior" width="160" height="80" decoding="async"></li><li><img src="clients/dereva-pharma.jpg" alt="Dereva Pharma" width="160" height="80" decoding="async"></li><li><img src="clients/rare-bean.jpg" alt="Rare Bean" width="160" height="80" decoding="async"></li><li><img src="clients/the-decor-vibe.jpg" alt="The Decor Vibe" width="160" height="80" decoding="async"></li><li><img src="clients/chorus.jpg" alt="Chorus" width="160" height="80" decoding="async"></li><li><img src="clients/cakes-and-bakes.png" alt="Cakes &amp; Bakes" width="160" height="80" decoding="async"></li><li><img src="clients/open-interior.png" alt="Open Interior Design" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/mura.png" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/hiranandani.png" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/godrej-properties.jpg" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/ananta-hospital.jpg" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/joom.jpg" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/nivesh-sarthi.png" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/onestream.jpg" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/avani-interior.png" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/dereva-pharma.jpg" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/rare-bean.jpg" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/the-decor-vibe.jpg" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/chorus.jpg" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/cakes-and-bakes.png" alt="" width="160" height="80" decoding="async"></li><li aria-hidden="true"><img src="clients/open-interior.png" alt="" width="160" height="80" decoding="async"></li></ul></div>
     </div>
     <div class="scroll-up" aria-hidden="true"><span><svg><use href="#i-arrow"/></svg></span>Scroll up</div>
   </section>
@@ -2882,7 +2941,7 @@ function initGL(){
   const ray=new T.Raycaster(), tmp=new T.Vector3(), tmp2=new T.Vector3(), uT=new T.Vector3();
   const heroSeq=[{at:.6,f:()=>{phoneLit=.1;drawPhone();const p=proj(phone);burst(1,p.x,p.y,20,20,0)}},
                  {at:1.5,f:()=>{phoneLit=1;const p=proj(phone);const n=TIER==='lite'?8:TIER==='medium'?10:12;burst(RM?8:n,p.x,p.y,isMobile()?300:380,isMobile()?320:460,RM?0:22)}}];
-  function proj(o){o.getWorldPosition(tmp2);tmp2.project(camera);return{x:(tmp2.x+1)/2*innerWidth,y:(1-tmp2.y)/2*innerHeight}}
+  function proj(o){const el=document.querySelector('.hv-phone');if(el){const r=el.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height*.35}}o.getWorldPosition(tmp2);tmp2.project(camera);return{x:(tmp2.x+1)/2*innerWidth,y:(1-tmp2.y)/2*innerHeight}}
 
   function renderStage(ts,el,dt){
     const r=el.getBoundingClientRect(); if(r.bottom<0||r.top>innerHeight||r.width<2) return;
@@ -2916,7 +2975,7 @@ function initGL(){
     starMat.opacity=clamp((camY-26)/16,0,1);
 
     // hero
-    hero.visible=camY<16;
+    hero.visible=false; // the hero visual is now HTML (.hero-vis)
     if(hero.visible){
       const lift=launched?clamp((t-launchAt-.3)/1.4,0,1):0, e=1-Math.pow(1-lift,3);
       phone.position.y=1.95+e*.45+(RM?0:Math.sin(t*1.3)*.06*e);
@@ -2930,12 +2989,13 @@ function initGL(){
     else if(t-launchAt<.7&&!RM){uT.set(tmp.x,tmp.y+5.5,tmp.z+1.4)}
     else if(S.portalUppy){uT.set(camera.position.x,camY+.2,camera.position.z-3.2)}
     else{const mob=isMobile();uT.set(camera.position.x+(mob?1.05:2.75),camY+(mob?-1.25:-.85)+(RM?0:Math.sin(t*1.6)*.12),camera.position.z-4.6)}
+    uppy.visible=!!S.portalUppy; // the arrow only appears for page transitions
     const before=uppy.position.clone(); uppy.position.lerp(uT,RM?1:launched&&t-launchAt<.7?.16:.07);
     const spd=before.distanceTo(uppy.position)/Math.max(dt,.001);
     uppy.rotation.y+=RM?0:dt*(.8+Math.min(Math.abs(S.vel)*.6,14));
     uppy.rotation.z=lerp(uppy.rotation.z,clamp(-(uT.x-uppy.position.x)*.25,-.5,.5),.1);
     // cyan trail
-    if(spd>2.5&&!RM){const tr=trail[trailK++%trail.length];tr.s.position.copy(before);tr.s.visible=true;tr.life=1;tr.s.scale.setScalar(.5)}
+    if(spd>2.5&&!RM&&uppy.visible){const tr=trail[trailK++%trail.length];tr.s.position.copy(before);tr.s.visible=true;tr.life=1;tr.s.scale.setScalar(.5)}
     trail.forEach(tr=>{if(tr.life<=0)return;tr.life-=dt*1.6;tr.s.material.opacity=Math.max(0,tr.life)*.8;tr.s.scale.setScalar(.15+tr.life*.45);if(tr.life<=0)tr.s.visible=false});
 
     // posts: drift + magnetic field around the cursor
@@ -2991,6 +3051,9 @@ try{const ld=document.createElement('script');ld.type='application/ld+json';
   ld.textContent=JSON.stringify({'@context':'https://schema.org','@graph':[{'@type':'FAQPage',mainEntity:$$('#faq-home details').map(d=>({'@type':'Question',name:$('summary',d).textContent,acceptedAnswer:{'@type':'Answer',text:$('p',d).textContent}}))}].concat(SERVICES.map(x=>({'@type':'Service',name:x.name,description:x.what,provider:{'@type':'Organization',name:'StayUp Social'}})))});
   document.head.appendChild(ld)}catch(e){}
 
+/* Hero visual: animate only while it is on screen */
+(function(){const v=document.querySelector('.hero-vis'),tr=document.querySelector('.trusted');if(!('IntersectionObserver' in window))return;
+  const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('hv-off',!e.isIntersecting)));[v,tr].forEach(el=>el&&io.observe(el))})();
 /* ---------- Boot ---------- */
 measureScenes(); computeAlt();
 let fbOn=false;
