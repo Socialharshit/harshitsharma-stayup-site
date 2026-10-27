@@ -271,6 +271,8 @@ html.js .rv:not(.in){opacity:0;transform:translateY(36px) scale(.96)}
 .hero .scroll-up{display:none}
 @media (max-width:760px){
   .hero .hx{font-size:clamp(38px,11.5vw,48px)}
+  /* phones: the hero is as tall as its content, so there is no empty band above or below it */
+  #view-home .scene.hero{min-height:0;align-content:start;padding-top:calc(var(--head) + 30px);padding-bottom:40px}
   .hero-ed{gap:16px}
   .hx-cta{flex-direction:column;align-items:stretch;width:100%;gap:6px}
   .hx-lgb{justify-content:space-between;height:52px}
@@ -279,7 +281,6 @@ html.js .rv:not(.in){opacity:0;transform:translateY(36px) scale(.96)}
   .cl-set li{padding:5px;border-radius:18px}
   .cl-set span{height:46px;min-width:120px;padding:0 14px;border-radius:13px}
   .cl-set img{height:30px;max-width:120px}
-  #view-home .scene.hero{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
 }
 @media (prefers-reduced-motion:reduce){.hx .w,.hx-in{animation:none}.cl-track{animation:none}}
 #notif-layer{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}
@@ -1063,7 +1064,6 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
 }
 @media (max-width:760px) and (max-height:780px){
   .hero .scroll-up{display:none}
-  #view-home .scene.hero{padding-bottom:96px}
   .hero h1{font-size:34px}
   .hero .hero-sub{flex-wrap:nowrap;gap:8px}
   .hero .hero-sub .btn{height:44px;padding:0 16px;font-size:14px;white-space:nowrap}
